@@ -1,5 +1,7 @@
 package com.doula.models;
 
+import java.awt.Image;
+
 public class User extends AbstractEntity{
 	
 	
@@ -8,9 +10,8 @@ public class User extends AbstractEntity{
 	private String email;
 	private String pwHash;
 	private String scope;
-	
+	private Image profilePic;
 	//TODO: figure out some way of storing user information for the Doula Journey.
-	//TODO: figure out some kind of image object for profile pics
 
 	//CONSTRUCTORS
 	//TODO: create constructors
@@ -28,6 +29,9 @@ public class User extends AbstractEntity{
 	public String getScope(){
 		return this.scope;
 	}
+	public Image getProfilePic(){
+		return this.profilePic;
+	}
 	
 	
 	//SETTERS
@@ -42,6 +46,9 @@ public class User extends AbstractEntity{
 	}
 	public void setScope(String scope){
 		this.scope = scope;
+	}
+	public void setProfilePic(Image profilePic){
+		this.profilePic = profilePic;
 	}
 	
 	//METHODS

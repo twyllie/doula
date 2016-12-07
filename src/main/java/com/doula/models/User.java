@@ -11,10 +11,10 @@ public class User extends AbstractEntity{
 	private String pwHash;
 	private String scope;
 	private Image profilePic;
-	//TODO: figure out some way of storing user information for the Doula Journey.
+	//TODO:User: figure out some way of storing user information for the Doula Journey.
 
 	//CONSTRUCTORS
-	//TODO: create constructors
+	//TODO:User: create constructors
 	
 	//GETTERS
 	public String getUsername(){
@@ -53,12 +53,12 @@ public class User extends AbstractEntity{
 	
 	//METHODS
 	public static boolean isValidUsername(String username){
-		//TODO: Implement some kind of username regex
+		//TODO:User: Implement some kind of username regex
 	}
 	public static boolean isValidPassword(String pw){
-		//TODO: Implement some kind of password regex
+		//TODO:User: Implement some kind of password regex
 	}
 	public static boolean isValidEmail(String email){
-		//TODO: Implement some kind of email regex
+		//TODO:User: Implement some kind of email regex
 	}
 }

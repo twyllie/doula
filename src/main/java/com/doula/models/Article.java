@@ -6,12 +6,12 @@ public class Article extends AbstractEntity{
 	private String title;
 	private String body;
 	
-	//TODO: Some way of implementing thumbnail image
-	//TODO: Some way of implementing header image
-	//TODO: Some way of implementing in-content images.
+	//TODO:Article: Some way of implementing thumbnail image
+	//TODO:Article: Some way of implementing header image
+	//TODO:Article: Some way of implementing in-content images.
 	
 	//CONSTRUCTORS
-	//TODO: Implement constructor
+	//TODO:Article: Implement constructor
 		
 	//GETTERS
 	public String getTitle(){

@@ -6,10 +6,10 @@ public class Definition extends AbstractEntity{
 	//ATTRIBUTES
 	private String title;
 	private String body;
-	//TODO: Some method of indexing these items for search
+	//TODO:Definition: Some method of indexing these items for search
 	
 	//CONSTRUCTORS
-	//TODO: Implement constructors
+	//TODO:Definition: Implement constructors
 	
 	//GETTERS
 	public String getTitle(){

@@ -1,11 +1,24 @@
 package com.doula.models;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+@Entity
+@Table(name = "user")
 public class User extends AbstractEntity{
 	
 	
 	//ATTRIBUTES
 	private String email;
 	private String pwHash;
+	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 	//TODO:User: figure out some way of storing user information for the Doula Journey.
 
 	//CONSTRUCTORS
@@ -13,38 +26,49 @@ public class User extends AbstractEntity{
 	
 	public User(String email, String password){
 		this.email = email;
-		this.pwHash = password;
+		this.pwHash = hashPassword(password);
 		
 	}
-	//TODO:User: create constructors
-	
+		
 	//GETTERS
+	@NotNull
+    @Column(name = "email", unique = true)
 	public String getEmail(){
 		return this.email;
 	}
+	@NotNull
+    @Column(name = "pwhash")
 	public String getPwHash(){
 		return this.pwHash;
 	}
 	
 	
 	//SETTERS
+	@SuppressWarnings("unused")
 	public void setEmail(String email){
 		this.email = email;
 	}
+	@SuppressWarnings("unused")
 	public void setPwHash(String pw){
 		this.pwHash = pw;
 	}
 
 	
 	//METHODS
-	public static boolean isValidPassword(String pw){
-		//TODO:User: Implement some kind of password regex
+	public static boolean isValidPassword(String password){
+		Pattern validUsernamePattern = Pattern.compile("(\\S){6,30}");
+		Matcher matcher = validUsernamePattern.matcher(password);
+		return matcher.matches();
 	}
 	public static boolean isValidEmail(String email){
-		//TODO:User: Implement some kind of email regex
+		Pattern validEmailPattern = Pattern.compile("^[A-Z0-9+_.-]+@[A-Z0-9.-]+$");
+		Matcher matcher = validEmailPattern.matcher(email);
+		return matcher.matches();
 	}
-	
+	private static String hashPassword(String password) {		
+		return encoder.encode(password);
+	}
 	public boolean isMatchingPassword(String password){
-		//TODO:User: Implement password check.
+		return encoder.matches(password, pwHash);
 	}
 }

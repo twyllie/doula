@@ -17,4 +17,6 @@ public interface ArticleDao extends CrudRepository<Article, Integer>{
 	
 	List<Article> findAll();
 	
+	void deletebyUid(int uid);
+	
 }

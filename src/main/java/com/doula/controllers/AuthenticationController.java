@@ -12,7 +12,7 @@ import com.doula.models.User;
 
 /*
  * Description of functions:
- * Controls /signin, /signup, /signout, and the initial root URL.
+ * Controls /signin, /signup, /signout, /preview, and the initial root URL.
  */
 
 @Controller
@@ -23,6 +23,11 @@ public class AuthenticationController extends AbstractController {
 		//TODO: Implement a check to see if the user is logged in already.
 		//If they are redirect straight to the dash.
 		return "redirect:/preview";
+	}
+	
+	@RequestMapping(value = "/preview", method = RequestMethod.GET)
+	public String preview(){
+		return "preview";
 	}
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
@@ -92,4 +97,6 @@ public class AuthenticationController extends AbstractController {
 		request.getSession().invalidate();
 		return "redirect:/preview";
 	}
+	
+	//TODO: Create a method of changing passwords
 }

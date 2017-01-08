@@ -16,4 +16,6 @@ public interface LessonDao extends CrudRepository<Lesson, Integer> {
 	Lesson findByUid(int uid);
 	
 	List<Lesson> findAll();
+	
+	void deletebyUid(int uid);
 }

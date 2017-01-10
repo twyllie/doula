@@ -1,10 +1,13 @@
 package com.doula.models;
 
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -16,8 +19,12 @@ public class User extends AbstractEntity{
 	
 	
 	//ATTRIBUTES
+	private Date created;
+	private Date updated;
 	private String email;
 	private String pwHash;
+	private Plan plan;
+	
 	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 	//TODO:User: figure out some way of storing user information for the Doula Journey.
 
@@ -35,6 +42,16 @@ public class User extends AbstractEntity{
 		
 	//GETTERS
 	@NotNull
+	@Column(name = "created")
+	public Date getCreated(){
+		return this.created;
+	}
+	@NotNull
+	@Column(name = "updated")
+	public Date getUpdated(){
+		return this.updated;
+	}
+	@NotNull
     @Column(name = "email", unique = true)
 	public String getEmail(){
 		return this.email;
@@ -44,14 +61,28 @@ public class User extends AbstractEntity{
 	public String getPwHash(){
 		return this.pwHash;
 	}
+	@OneToOne
+	@JoinColumn(name = "plan_uid")
+	public Plan getPlan(){
+		return this.plan;
+	}
 	
 	
 	//SETTERS
+	public void setCreated(Date created){
+		this.created = created;
+	}
+	public void setUpdated(Date updated){
+		this.updated = updated;
+	}
 	public void setEmail(String email){
 		this.email = email;
 	}
 	public void setPwHash(String pw){
 		this.pwHash = pw;
+	}
+	public void setPlan(Plan plan){
+		this.plan = plan;
 	}
 
 	

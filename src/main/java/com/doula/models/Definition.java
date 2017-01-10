@@ -1,5 +1,7 @@
 package com.doula.models;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,6 +14,8 @@ public class Definition extends AbstractEntity{
 	
 	
 	//ATTRIBUTES
+	private Date created;
+	private Date updated;
 	private String title;
 	private String body;
 
@@ -23,11 +27,23 @@ public class Definition extends AbstractEntity{
 		
 		super();
 		
+		this.created = new Date();
+		this.updated = this.created;
 		this.body = body;
 		this.title = title;
 	}
 	
 	//GETTERS
+	@NotNull
+	@Column(name = "created")
+	public Date getCreated(){
+		return this.created;
+	}
+	@NotNull
+	@Column(name = "updated")
+	public Date getUpdated(){
+		return this.updated;
+	}
 	@NotNull
 	@Column(name = "title")
 	public String getTitle(){
@@ -40,6 +56,12 @@ public class Definition extends AbstractEntity{
 	}
 	
 	//SETTERS
+	public void setCreated(Date created){
+		this.created = created;
+	}
+	public void setUpdated(Date updated){
+		this.updated = updated;
+	}
 	public void setTitle(String title){
 		this.title = title;
 	}
@@ -48,4 +70,7 @@ public class Definition extends AbstractEntity{
 	}
 	
 	//METHODS
+	public void modified(){
+		this.updated = new Date();
+	}
 }

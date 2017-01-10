@@ -47,11 +47,9 @@ public class User extends AbstractEntity{
 	
 	
 	//SETTERS
-	@SuppressWarnings("unused")
 	public void setEmail(String email){
 		this.email = email;
 	}
-	@SuppressWarnings("unused")
 	public void setPwHash(String pw){
 		this.pwHash = pw;
 	}

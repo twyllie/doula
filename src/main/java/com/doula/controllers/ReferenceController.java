@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.doula.models.Article;
 import com.doula.models.Definition;
 
 /*
@@ -25,9 +26,22 @@ public class ReferenceController extends AbstractController {
 		return "reference";
 	}
 
-	@RequestMapping(value = "/reference/{uid}")
+	@RequestMapping(value = "/reference/{uid}", method = RequestMethod.GET)
 	public String singleReference(@PathVariable int uid, Model model){
 		model.addAttribute("definition", definitionDao.findByUid(uid));
 		return "single_reference";
+	}
+
+	@RequestMapping(value = "/blog", method = RequestMethod.GET)
+	public String blog(Model model){
+		List<Article> articles = articleDao.findAll();
+		model.addAttribute("articles", articles);
+		return "blog";
+	}
+	
+	@RequestMapping(value = "/blog/{uid}", method = RequestMethod.GET)
+	public String singleArticle(@PathVariable int uid, Model model){
+		model.addAttribute("article", articleDao.findByUid(uid));
+		return "single_article";
 	}
 }

@@ -99,4 +99,6 @@ public class AuthenticationController extends AbstractController {
 	}
 	
 	//TODO: Create a method of changing passwords
+	//TODO: Email verification of account.
+	//TODO: Figure out about SQL injection via email fields in db's
 }

@@ -23,10 +23,8 @@ public class User extends AbstractEntity{
 	private Date updated;
 	private String email;
 	private String pwHash;
-	private Plan plan;
-	
+	private Plan plan;	
 	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-	//TODO:User: figure out some way of storing user information for the Doula Journey.
 
 	//CONSTRUCTORS
 	public User(){}
@@ -37,6 +35,7 @@ public class User extends AbstractEntity{
 		
 		this.email = email;
 		this.pwHash = hashPassword(password);
+		this.plan = new Plan(this);
 		
 	}
 		

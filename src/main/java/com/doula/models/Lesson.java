@@ -51,7 +51,7 @@ public class Lesson extends AbstractEntity{
 		return this.title;
 	}
 	@NotNull
-	@Column(name = "orderId", unique = true)
+	@Column(name = "orderId")
 	public int getOrderId(){
 		return this.orderId;
 	}

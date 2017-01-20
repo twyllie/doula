@@ -37,8 +37,9 @@ public class AdminController extends AbstractController {
 		switch(type){
 			case "article":
 				title = request.getParameter("title");
+				String headline = request.getParameter("headline");
 				body = request.getParameter("body");
-				Article article = new Article(title, body);
+				Article article = new Article(title, headline, body);
 				//TODO: Figure out images
 				boolean image1 = Boolean.parseBoolean("image1"), image2 = Boolean.parseBoolean("image2"), image3 = Boolean.parseBoolean("image3");
 				if(image1){

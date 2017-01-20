@@ -21,20 +21,20 @@ public class ReferenceController extends AbstractController {
 
 	@RequestMapping(value = "/reference", method = RequestMethod.GET)
 	public String reference(Model model){
-		List<Definition> definitions = definitionDao.findAll();
+		List<Definition> definitions = definitionDao.findAllOrderByCreatedAsc();
 		model.addAttribute("definitions", definitions);
 		return "reference";
 	}
 
 	@RequestMapping(value = "/reference/{uid}", method = RequestMethod.GET)
 	public String singleReference(@PathVariable int uid, Model model){
-		model.addAttribute("definition", definitionDao.findByUid(uid));
+		model.addAttribute("def", definitionDao.findByUid(uid));
 		return "single_reference";
 	}
 
 	@RequestMapping(value = "/blog", method = RequestMethod.GET)
 	public String blog(Model model){
-		List<Article> articles = articleDao.findAll();
+		List<Article> articles = articleDao.findAllOrderByCreatedAsc();
 		model.addAttribute("articles", articles);
 		return "blog";
 	}

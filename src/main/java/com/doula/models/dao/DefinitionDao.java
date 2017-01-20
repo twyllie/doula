@@ -17,5 +17,7 @@ public interface DefinitionDao extends CrudRepository<Definition, Integer> {
 	
 	List<Definition> findAll();
 	
+	List<Definition> findAllOrderByCreatedAsc();
+	
 	void deletebyUid(int uid);
 }

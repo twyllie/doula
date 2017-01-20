@@ -21,9 +21,9 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
 
-        List<String> authPages = Arrays.asList("/home", "/plan", "/class", "/reference", "/blog");
+        List<String> authPages = Arrays.asList("/signin", "/", "preview", "/signup", "/signout");
 
-        if ( authPages.contains(request.getRequestURI()) ) {
+        if (!authPages.contains(request.getRequestURI()) ) {
 
         	boolean isLoggedIn = false;
         	User user;

@@ -15,6 +15,7 @@ public class Article extends AbstractEntity{
 	private Date created;
 	private Date updated;
 	private String title;
+	private String headline;
 	private String body;
 	private String thumbnailRef;
 	private String headerRef;
@@ -24,12 +25,13 @@ public class Article extends AbstractEntity{
 	//CONSTRUCTORS
 	public Article(){}
 	
-	public Article(String title, String body){
+	public Article(String title, String headline, String body){
 		super();
 		
 		this.created = new Date();
 		this.updated = this.created;
 		this.title = title;
+		this.headline = headline;
 		this.body = body;
 	}
 		
@@ -48,6 +50,11 @@ public class Article extends AbstractEntity{
 	@Column(name = "title")
 	public String getTitle(){
 		return this.title;
+	}
+	@NotNull
+	@Column(name = "headline")
+	public String getHeadline(){
+		return this.headline;
 	}
 	@NotNull
 	@Column(name = "body")
@@ -73,6 +80,9 @@ public class Article extends AbstractEntity{
 	}
 	public void setTitle(String title){
 		this.title = title;
+	}
+	public void setHeadline(String headline){
+		this.headline = headline;
 	}
 	public void setBody(String body){
 		this.body = body;

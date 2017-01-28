@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+	<head th:fragment="dochead">
+		<link th:href="@{/css/normalize.css}" rel="stylesheet" />
+		<link th:href="@{/css/styles.css}" rel="stylesheet" />
+		<title>Doula</title>
+	</head>
+	
+	<body>
+	
+		<nav th:fragment="user_navigation">
+			<ul>
+				<li><a href="/home">Home</a></li>
+				<li><a href="/myplan">MyPlan</a></li>
+				<li><a href="/blog">Articles</a></li>
+				<li><a href="/classroom">Class</a></li>
+				<li><a href="/signout">Logout</a></li>
+			</ul>
+		</nav>
+	
+		<nav th:fragment="admin_navigation">
+			<ul>
+				<li><a href="/admin">Home</a></li>
+				<li><a href="/admin/create">Add Content</a></li>
+				<li><a href="/admin/update">Edit Content</a></li>
+				<li><a href="/signout">Logout</a></li>
+			</ul>
+		</nav>
+		
+	</body>
+</html>

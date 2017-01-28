@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+	<head th:replace="template :: dochead">
+	</head>
+
+	<body>
+		<nav th:replace="template :: user_navigation"></nav>
+		
+		<aside>
+			<ul>
+				<li th:each="lesson : ${lessons}"><a th:href="'/classroom/'+${lesson.uid}" th:text="${lesson.title}"></a></li>
+			</ul>
+		</aside>
+		
+		<section>
+			<div>
+				<iframe src="https://player.vimeo.com/video/198772847/bc83114d1a" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			</div>
+			
+			<div>
+				<p th:text="${single_lesson.body}"></p>
+			</div>
+		</section>
+		
+	</body>
+</html>

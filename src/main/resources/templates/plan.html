@@ -13,9 +13,9 @@
 			<article>
 				<h2>In order to help anyone who might be assisting you, collect some important numbers here:</h2>
 				<form action="/myplan" method="post">
-					<label>Your doctor/midwife:<input id="doctor" type="tel"></label>
-					<label>Baby's pediatrician:<input id="pedi" type="tel"></label>
-					<label>Doula/Support person:<input id ="doula" type="tel"></label>
+					<label>Your doctor/midwife:<input id="doctor" type="tel" th:value="${plan.doctor}"></label>
+					<label>Baby's pediatrician:<input id="pedi" type="tel" th:value="${plan.pedi}"></label>
+					<label>Doula/Support person:<input id ="doula" type="tel" th:value="${plan.doula}"></label>
 					<input type="submit" value="Save">
 				</form>
 			</article>
@@ -33,7 +33,7 @@
 				<h2>Warriors</h2>
 				<p>I call these folks your warriors because they are not your rescuers, they are friends and family who are willing to jump in with you and for you. I've broken it down into two basic groups: the do-ers and the encouragers (and sometimes they overlap, in which case, you have some excellent folks in your corner). Before we get to naming those folks, though, a thought about accepting help. We are a culture that values independence and it can be difficult to shake off the inner voice that tells you "you really should just get up and do it." I have found that asking someone else to be the coordinator for your help can relieve some of the pressure of that (incorrect) inner voice. Consider asking someone you love & trust to coordinate helpers and meals for you for a few weeks. Then when anyone asks how they can help, you can leave it to your coordinator to fit people with your needs. This can also help clearly define the boundaries around receiving help. Most of us need solid help during the early postpartum weeks. It is good to be surrounded by willing hands and supportive words. In short, look for the helpers, encouragers, and the do-ers and feel free to say no to those who you will need to host or who want to receive from you, not give to you. The early weeks of pastpartum is a season of receiving for mothers.</p>
 				<form action="" method="post">
-					<label>Postpartum coordinator's number:<input id="coordinator" type="tel"></label>
+					<label>Postpartum coordinator's number:<input id="coordinator" type="tel" th:value="${plan.coordinator}"></label>
 					<input type="submit" value="Save">
 				</form>
 			</article>

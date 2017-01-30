@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+	<head th:replace="template :: dochead">
+	</head>
+	
+	<body>
+		<div>
+			<form action="/signup" method="POST">
+				<label>Email:<input id="email" type="email" th:value="${email}"></label>
+				<span class="error" th:text="${email_error}"></span>
+				<label>Password:<input id="password" type="password"></label>
+				<span class="error" th:text="${password_error}"></span>
+				<label><input id="verify" type="password"></label>
+				<span class="error" th:text="${verify_error}"></span>
+				<input type="submit">
+			</form>
+		</div>
+	</body>
+	
+</html>

@@ -14,7 +14,8 @@ import com.doula.models.Lesson;
 public class ClassroomController extends AbstractController {
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String dashboard(){
+	public String dashboard(Model model){
+		
 		return "dashboard";
 	}
 

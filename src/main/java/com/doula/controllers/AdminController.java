@@ -26,54 +26,145 @@ public class AdminController extends AbstractController {
 	public String adminCreateForm(Model model){
 		List<Lesson> orderedLessons = lessonDao.findAllOrderByOrderIdAsc();
 		model.addAttribute("orderedLessons", orderedLessons);
-		return "admin_create";
+		return "admin_create_query";
 	}
 	
-	@RequestMapping(value = "/admin/create", method = RequestMethod.PUT)
+	@RequestMapping(value = "/admin/create", method = RequestMethod.POST)
 	public String adminCreate(HttpServletRequest request ,Model model){
 		String type = request.getParameter("type");
-		String title;
-		String body;
 		switch(type){
 			case "article":
-				title = request.getParameter("title");
-				String headline = request.getParameter("headline");
-				body = request.getParameter("body");
-				Article article = new Article(title, headline, body);
-				//TODO: Figure out images
-				boolean image1 = Boolean.parseBoolean("image1"), image2 = Boolean.parseBoolean("image2"), image3 = Boolean.parseBoolean("image3");
-				if(image1){
-					String thumbnailRef = request.getParameter("thumbnailRef");
-					article.setThumbnailRef(thumbnailRef);
-				}
-				if(image2){
-					String headerRef = request.getParameter("headerRef");
-					article.setHeaderRef(headerRef);
-				}
-				if(image3){
-					String bodyImageRef = request.getParameter("bodyImageRef");
-					article.setBodyImageRef(bodyImageRef);
-				}
-				articleDao.save(article);
-				return "redirect:/admin";
+				return "redirect:/admin/create/article";
 			case "definition":
-				title = request.getParameter("title");
-				body = request.getParameter("body");
-				Definition def = new Definition(title, body);
-				definitionDao.save(def);
-				return "redirect:/admin";
+				return "redirect:/admin/create/definition";
 			case "lesson":
-				title = request.getParameter("title");
-				body = request.getParameter("body");
-				int oid = Integer.parseInt(request.getParameter("oid"));
-				String videoRef = request.getParameter("videoRef");
-				Lesson lesson = new Lesson(title, body, oid, videoRef);
-				lessonDao.save(lesson);
-				return "redirect:/admin";
+				return "redirect:/admin/create/lesson";
 			default:
 				break;
 		}
 		return "admin_create";
+	}
+	
+	@RequestMapping(value = "/admin/create/article", method = RequestMethod.GET)
+	public String adminCreateArticleForm(){
+		return "admin_create_article";
+	}
+	
+	@RequestMapping(value = "/admin/create/article", method = RequestMethod.POST)
+	public String adminCreateArticle(HttpServletRequest request, Model model){
+		String title = request.getParameter("title");
+		String headline = request.getParameter("headline");
+		String body = request.getParameter("body");
+		boolean error = false;
+		String title_error;
+		String headline_error;
+		String body_error;
+		
+		
+		if(title.isEmpty()){
+			title_error = "Title field can not be empty";
+			model.addAttribute("title_error", title_error);
+			error = true;
+		}
+		if(headline.isEmpty()){
+			headline_error = "Headline field can not be empty";
+			model.addAttribute("headline_error", headline_error);
+			error = true;
+		}
+		if(body.isEmpty()){
+			body_error = "Body field can not be empty";
+			model.addAttribute("body_error", body_error);
+			error = true;
+		}
+		
+		if(error){
+			model.addAttribute("title", title);
+			model.addAttribute("headline", headline);
+			model.addAttribute("body", body);
+			return "admin_create_article";
+		}else{
+			Article article = new Article(title, headline, body);
+			articleDao.save(article);
+			return "redirect:/admin/article/" + article.getUid();
+		}
+	}
+	
+	@RequestMapping(value = "/admin/create/definition", method = RequestMethod.GET)
+	public String adminCreateDefinitionForm(){
+		return "admin_create_definition";
+	}
+	
+	@RequestMapping(value = "/admin/create/definition", method = RequestMethod.POST)
+	public String adminCreateDefinition(HttpServletRequest request, Model model){
+		String title = request.getParameter("title");
+		String body = request.getParameter("body");
+		String title_error;
+		String body_error;
+		boolean error = false;
+		
+		if(title.isEmpty()){
+			title_error = "Title field can not be empty";
+			model.addAttribute("title_error", title_error);
+			error = true;
+		}
+		if(body.isEmpty()){
+			body_error = "Body field can not be empty";
+			model.addAttribute("body_error", body_error);
+			error = true;
+		}
+
+		if(error){
+			model.addAttribute("title" , title);
+			model.addAttribute("body", body);
+			return "admin_create_definition";
+		}else{
+			Definition definition = new Definition(title, body);
+			definitionDao.save(definition);
+			return "redirect:/admin/definition/" + definition.getUid();
+		}
+	}
+	
+	@RequestMapping(value = "/admin/create/lesson", method = RequestMethod.GET)
+	public String adminCreateLessonForm(){
+		return "admin_create_lesson";
+	}
+	
+	@RequestMapping(value = "/admin/create/lesson", method = RequestMethod.POST)
+	public String adminCreateLesson(HttpServletRequest request, Model model){
+		String title = request.getParameter("title");
+		String body = request.getParameter("body");
+		String videoRef = request.getParameter("videoRef");
+		String title_error;
+		String body_error;
+		String videoRef_error;
+		boolean error = false;
+		
+		if(title.isEmpty()){
+			title_error = "Title field can not be empty";
+			model.addAttribute("title_error", title_error);
+			error = true;
+		}
+		if(body.isEmpty()){
+			body_error = "Body field can not be empty";
+			model.addAttribute("body_error", body_error);
+			error = true;
+		}
+		if(videoRef.isEmpty()){
+			videoRef_error = "You must provide a link to a vimeo video resource.";
+			model.addAttribute("videoRef_error", videoRef_error);
+			error = true;
+		}
+
+		if(error){
+			model.addAttribute("title", title);
+			model.addAttribute("body", body);
+			model.addAttribute("videoRef", videoRef);
+			return "admin_create_definition";
+		}else{
+			Lesson lesson = new Lesson(title, body, oid, videoRef);
+			lessonDao.save(lesson);
+			return "redirect:/admin/lesson/" + lesson.getUid();
+		}
 	}
 	
 	@RequestMapping(value = "admin/update", method = RequestMethod.GET)

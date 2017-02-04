@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+	<head th:replace="template :: dochead">
+	</head>
+	
+	<body>
+		<nav th:replace="template :: admin_navigation"></nav>
+		
+		<form action="/admin/create" method="post">
+			<fieldset>
+				
+				<legend>Content Type?</legend>
+			
+				<label for="article">Article</label>
+				<input type="radio" name="type" id="article" value="article">
+				
+				<label for="definition">Definition</label>
+				<input type="radio" name="type" id="definition" value="definition">
+				
+				<label for="lesson">Lesson</label>
+				<input type="radio" name="type" id="lesson" value="lesson">
+			</fieldset>
+			
+			<input type="submit">
+			
+		</form>
+	</body>
+	
+</html>

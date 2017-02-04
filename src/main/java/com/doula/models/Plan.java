@@ -69,7 +69,7 @@ public class Plan extends AbstractEntity {
 		return this.pedi;
 	}
 	@Column(name = "doula")
-	public String getGoula(){
+	public String getDoula(){
 		return this.doula;
 	}
 	@Column(name = "coordinator")

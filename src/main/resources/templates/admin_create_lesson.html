@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+	<head th:replace="template :: dochead">
+	</head>
+	
+	<body>
+		<nav th:replace="template :: admin_navigation"></nav>
+		<h1>Article</h1>
+		<form>
+			<input name="title" type="text" th:value="${title}">
+			<div class="error" th:text="title_error"></div>
+			<input name="videoRef" type="text" th:value="${videoRef}">
+			<div class="error" th:text="videoRef_error"></div>
+			<textarea name="body" th:value="${body}"></textarea>
+			<div class="error" th:text="body_error"></div>
+			<input type="submit">
+		</form>
+	</body>
+	
+</html>

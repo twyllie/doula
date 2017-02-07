@@ -41,6 +41,20 @@ public class Plan extends AbstractEntity {
 		this.created = new Date();
 		this.updated = this.created;
 		this.owner = owner;
+		
+		for(int i = 0; i < 3; i++){
+			this.doers.add("");
+			this.encouragers.add("");
+			this.emergencyFood.add("");
+			this.pantry.add("");
+			this.chores.add("");
+			this.sitters.add("");
+			this.dates.add("");
+			this.outtings.add("");
+			this.lactators.add("");
+			this.moodyPeople.add("");
+		}
+		
 	}
 	
 	//GETTERS
@@ -174,34 +188,75 @@ public class Plan extends AbstractEntity {
 	public void modified(){
 		this.updated = new Date();
 	}
+	
 	public void addDoers(String doer){
 		this.doers.add(doer);
 	}
+	public void setDoersAt(int index, String doer){
+		this.doers.set(index, doer);
+	}
+	
 	public void addEncouragers(String encourager){
 		this.encouragers.add(encourager);
 	}
+	public void setEncouragersAt(int index, String encourager){
+		this.encouragers.set(index, encourager);
+	}
+	
 	public void addEmergencyFood(String ef){
 		this.emergencyFood.add(ef);
 	}
+	public void setEmergencyFoodAt(int index, String ef){
+		this.emergencyFood.set(index, ef);
+	}
+	
 	public void addPantry(String item){
 		this.pantry.add(item);
 	}
+	public void setPantryAt(int index, String item){
+		this.pantry.set(index, item);
+	}
+	
 	public void addChores(String chore){
 		this.chores.add(chore);
 	}
+	public void setChoresAt(int index, String chore){
+		this.chores.set(index, chore);
+	}
+	
 	public void addSitters(String sitter){
 		this.sitters.add(sitter);
 	}
+	public void setSittersAt(int index, String sitter){
+		this.sitters.set(index, sitter);
+	}
+	
 	public void addDates(String date){
 		this.dates.add(date);
 	}
+	public void setDatesAt(int index, String date){
+		this.dates.set(index, date);
+	}
+	
 	public void addOuttings(String outting){
 		this.outtings.add(outting);
 	}
+	public void setOuttingsAt(int index, String outting){
+		this.outtings.set(index, outting);
+	}
+	
 	public void addLactators(String lactator){
 		this.lactators.add(lactator);
 	}
-	public void addMoodyPeople(String moodyBitch){
-		this.moodyPeople.add(moodyBitch);
+	public void setLactactorsAt(int index, String lactator){
+		this.lactators.set(index, lactator);
 	}
+	
+	public void addMoodyPeople(String moody){
+		this.moodyPeople.add(moody);
+	}
+	public void setMoodyPeopleAt(int index, String moody){
+		this.moodyPeople.set(index, moody);
+	}
+	
 }

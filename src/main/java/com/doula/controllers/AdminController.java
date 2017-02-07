@@ -161,7 +161,7 @@ public class AdminController extends AbstractController {
 			model.addAttribute("videoRef", videoRef);
 			return "admin_create_definition";
 		}else{
-			Lesson lesson = new Lesson(title, body, oid, videoRef);
+			Lesson lesson = new Lesson(title, body, 120, videoRef);
 			lessonDao.save(lesson);
 			return "redirect:/admin/lesson/" + lesson.getUid();
 		}
@@ -175,22 +175,25 @@ public class AdminController extends AbstractController {
 	@RequestMapping(value = "admin/update", method = RequestMethod.POST)
 	public String updateSelection(HttpServletRequest request, Model model){
 		String type = request.getParameter("type");
+		String error;
 		switch(type){
 			case "article":
 				List<Article> articles = articleDao.findAll();
 				model.addAttribute("articles", articles);
-				break;
+				return "admin_update_article_list";
 			case "definition":
 				List<Definition> definitions = definitionDao.findAll();
 				model.addAttribute("definitions", definitions);
-				break;
+				return "admin_update_definition_list";
 			case "lesson":
 				List<Lesson> lessons = lessonDao.findAllOrderByOrderIdAsc();
 				model.addAttribute("lessons", lessons);
-				break;
+				return "admin_update_lesson_list";
 			default:
 				break;
 		}
+		error = "Please select an item from the list.";
+		model.addAttribute("error", error);
 		return "admin_update";
 	}
 	
@@ -287,7 +290,14 @@ public class AdminController extends AbstractController {
 	
 	@RequestMapping(value = "admin/update/lessonorder", method = RequestMethod.POST)
 	public String updateLessonOrder(HttpServletRequest request, Model model){
-		//TODO: Implement
+		int counter = Integer.parseInt(request.getParameter("counter"));
+		for(int i=1; i <= counter;i++){
+			int uid = Integer.parseInt(request.getParameter("uid"+ i));
+			int oid = Integer.parseInt(request.getParameter("newOrder"+i));
+			Lesson lesson = lessonDao.findByUid(uid);
+			lesson.setOrderId(oid);
+			lessonDao.save(lesson);
+		}
 		return "admin_update_lesson_order";
 	}
 	

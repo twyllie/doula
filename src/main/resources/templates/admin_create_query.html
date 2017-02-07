@@ -7,20 +7,13 @@
 		<nav th:replace="template :: admin_navigation"></nav>
 		
 		<form action="/admin/create" method="post">
-			<fieldset>
 				
-				<legend>Content Type?</legend>
-			
-				<label for="article">Article</label>
-				<input type="radio" name="type" id="article" value="article">
-				
-				<label for="definition">Definition</label>
-				<input type="radio" name="type" id="definition" value="definition">
-				
-				<label for="lesson">Lesson</label>
-				<input type="radio" name="type" id="lesson" value="lesson">
-			</fieldset>
-			
+				<select name="type">
+					<option value="article">Article</option>
+					<option value="definition">Definition</option>
+					<option value="lesson">Lesson</option>
+				</select>
+						
 			<input type="submit">
 			
 		</form>

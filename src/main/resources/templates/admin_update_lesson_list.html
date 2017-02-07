@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+	<head th:replace="template :: dochead"></head>
+	
+	<body>
+		<nav th:replace="template :: admin_navigation"></nav>
+		<section>
+			<article th:each="lesson : ${lessons}">
+				<a th:href="'/admin/update/lesson/'+${lesson.uid}" th:text="${lesson.title}"></a>
+				<p th:text="${lesson.created}"></p>
+			</article>
+		</section>
+	</body>
+	
+</html>

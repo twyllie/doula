@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+	<head th:replace="template :: dochead"></head>
+	
+	<body>
+		<nav th:replace="template :: admin_navigation"></nav>
+		
+		<form action="/admin/update" method="POST">
+			<select name="type">
+				<option value="article">Article</option>
+				<option value="definition">Definition</option>
+				<option value="lesson">Lesson</option>
+			</select>
+			<input type="submit" value="Select">
+			<div><span class="error" th:text="${error}"></span></div>
+		</form>
+	
+	</body>
+	
+</html>

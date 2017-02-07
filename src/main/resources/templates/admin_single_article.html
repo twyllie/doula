@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+	<head th:replace="template :: dochead">
+	</head>
+	
+	<body>
+		<nav th:replace="template :: admin_navigation"></nav>
+		<section>
+			<article>
+				<h2 th:text="${article.title}"></h2>
+				<p th:text=${article.created}></p>
+				<p th:text="${article.headline}"></p>
+				<p th:text="${article.body}"></p>
+			</article>
+		</section>
+	</body>
+	
+</html>

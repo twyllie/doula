@@ -201,6 +201,7 @@ public class AdminController extends AbstractController {
 	public String updateArticleForm(Model model, @PathVariable int uid){
 		Article article = articleDao.findByUid(uid);
 		model.addAttribute("title", article.getTitle());
+		model.addAttribute("headline", article.getHeadline());
 		model.addAttribute("body", article.getBody());
 		//TODO: Figure out images
 		return "admin_update_article";
@@ -213,6 +214,7 @@ public class AdminController extends AbstractController {
 		Article article = articleDao.findByUid(uid);
 		article.setBody(body);
 		article.setTitle(title);
+		article.getHeadline();
 		article.modified();
 		articleDao.save(article);
 		//TODO: Figure out images
@@ -222,8 +224,7 @@ public class AdminController extends AbstractController {
 	@RequestMapping(value = "admin/article/{uid}", method = RequestMethod.GET)
 	public String singleArticleView(Model model, @PathVariable int uid){
 		Article article = articleDao.findByUid(uid);
-		model.addAttribute("title", article.getTitle());
-		model.addAttribute("body", article.getBody());
+		model.addAttribute("article", article);
 		return "admin_single_article";
 	}
 	
@@ -250,8 +251,7 @@ public class AdminController extends AbstractController {
 	@RequestMapping(value = "admin/definition/{uid}", method = RequestMethod.GET)
 	public String singleDefinitionView(Model model, @PathVariable int uid){
 		Definition def = definitionDao.findByUid(uid);
-		model.addAttribute("title", def.getTitle());
-		model.addAttribute("body", def.getBody());
+		model.addAttribute("def", def);
 		return "admin_single_definition";
 	}
 	
@@ -304,10 +304,7 @@ public class AdminController extends AbstractController {
 	@RequestMapping(value = "admin/lesson/{uid}", method = RequestMethod.GET)
 	public String singleLessonView(Model model, @PathVariable int uid){
 		Lesson lesson = lessonDao.findByUid(uid);
-		model.addAttribute("title", lesson.getTitle());
-		model.addAttribute("body", lesson.getBody());
-		model.addAttribute("videoRef", lesson.getVideoRef());
-		model.addAttribute("orderId", lesson.getOrderId());
+		model.addAttribute("lesson", lesson);
 		return "admin_single_lesson";
 	}
 }

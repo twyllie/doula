@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+	<head th:replace="template :: dochead">
+	</head>
+	
+	<body>
+		<nav th:replace="template :: admin_navigation"></nav>
+		<section>
+			<div>
+				<iframe th:src="${lesson.videoRef}" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			</div>
+			
+			<div>
+				<p th:text="${lesson.body}"></p>
+			</div>
+		</section>
+	</body>
+	
+</html>
+

@@ -6,11 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.doula.models.Plan;
-import com.doula.models.User;
 
 @Transactional
 @Repository
-public interface PlanDao extends CrudRepository<User, Integer>{
+public interface PlanDao extends CrudRepository<Plan, Integer>{
 
 	Plan findByUid(int uid);
 	

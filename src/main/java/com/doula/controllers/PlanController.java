@@ -18,7 +18,8 @@ public class PlanController extends AbstractController {
 	@RequestMapping(value = "/myplan", method = RequestMethod.GET)
 	public String myplanForm(HttpServletRequest request, Model model){
 		User user = getUserFromSession(request.getSession());
-		Plan plan = user.getPlan();
+		int planuid = user.getPlan().getUid();
+		Plan plan = planDao.findByUid(planuid);
 		model.addAttribute("plan", plan);
 		return "plan";
 	}
@@ -26,7 +27,8 @@ public class PlanController extends AbstractController {
 	@RequestMapping(value = "/myplan", method = RequestMethod.POST)
 	public String myplan(HttpServletRequest request, Model model){
 		User user = getUserFromSession(request.getSession());
-		Plan plan = user.getPlan();
+		int planuid = user.getPlan().getUid();
+		Plan plan = planDao.findByUid(planuid);
 		boolean change = false;
 		
 		//Get every field and check if they are different from existing fields, if so reset them.

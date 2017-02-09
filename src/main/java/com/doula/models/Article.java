@@ -78,6 +78,9 @@ public class Article extends AbstractEntity{
 	public void setCreated(Date date){
 		this.created = date;
 	}
+	public void setUpdated(Date date){
+		this.updated = date;
+	}
 	public void setTitle(String title){
 		this.title = title;
 	}

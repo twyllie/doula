@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -16,7 +15,6 @@ public class Plan extends AbstractEntity {
 	//ATTRIBUTES
 	private Date created;
 	private Date updated;
-	private User owner;
 	private String doctor;
 	private String pedi;
 	private String doula;
@@ -35,12 +33,11 @@ public class Plan extends AbstractEntity {
 	//CONSTRUCTORS
 	public Plan(){}
 	
-	public Plan(User owner){
+	public Plan(Date time){
 		super();
 		
-		this.created = new Date();
+		this.created = time;
 		this.updated = this.created;
-		this.owner = owner;
 		
 		for(int i = 0; i < 3; i++){
 			this.doers.add("");
@@ -67,12 +64,6 @@ public class Plan extends AbstractEntity {
 	@Column(name = "updated")
 	public Date getUpdated(){
 		return this.updated;
-	}
-	@OneToOne(mappedBy = "plan")
-	@NotNull
-	@Column(name = "owner")
-	public User getOwner(){
-		return this.owner;
 	}
 	@Column(name = "doctor")
 	public String getDoctor(){
@@ -137,9 +128,6 @@ public class Plan extends AbstractEntity {
 	}
 	public void setUpdated(Date updated){
 		this.updated = updated;
-	}
-	public void setOwner(User owner){
-		this.owner = owner;
 	}
 	public void setDoctor(String doctor){
 		this.doctor = doctor;

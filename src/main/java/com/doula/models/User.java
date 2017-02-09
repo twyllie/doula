@@ -33,9 +33,11 @@ public class User extends AbstractEntity{
 		
 		super();
 		
+		this.created = new Date();
+		this.updated = created;
 		this.email = email;
 		this.pwHash = hashPassword(password);
-		this.plan = new Plan(this);
+		this.plan = new Plan(this.created);
 		
 	}
 		

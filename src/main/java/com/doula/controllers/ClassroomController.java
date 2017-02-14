@@ -28,7 +28,7 @@ public class ClassroomController extends AbstractController {
 	
 	@RequestMapping(value = "/classroom/{uid}", method = RequestMethod.GET)
 	public String classRoomLesson(Model model, @PathVariable int uid){
-		List<Lesson> orderedLessons = lessonDao.findAllOrderByOrderIdAsc();
+		List<Lesson> orderedLessons = lessonDao.findAllOrderByOrderId();
 		model.addAttribute("lessons", orderedLessons);
 		Lesson singleLesson = lessonDao.findByUid(uid);
 		model.addAttribute("single_lesson", singleLesson);

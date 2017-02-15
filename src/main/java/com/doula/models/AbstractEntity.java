@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @MappedSuperclass
 public abstract class AbstractEntity {
 
-private int uid;
+	private int uid;
 	
 	@Id
     @GeneratedValue

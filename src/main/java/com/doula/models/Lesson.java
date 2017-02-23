@@ -12,13 +12,33 @@ import javax.validation.constraints.NotNull;
 public class Lesson extends AbstractEntity{
 
 	
+	
 	//ATTRIBUTES
+	@NotNull
+	@Column(name = "created")
 	private Date created;
+	
+	@NotNull
+	@Column(name = "updated")
 	private Date updated;
+	
+	@NotNull
+	@Column(name = "title")
 	private String title;
+	
+	@NotNull
+	@Column(name = "body")
 	private String body;
+	
+	@NotNull
+	@Column(name = "orderId")
 	private int orderId;
+	
+	@NotNull
+	@Column(name = "videoRef")
 	private	String videoRef;
+	
+	
 	
 	//CONSTRUCTORS
 	public Lesson(){}
@@ -29,63 +49,67 @@ public class Lesson extends AbstractEntity{
 		this.created = new Date();
 		this.updated = this.created;
 		this.title = title;
+		this.body = body;
 		this.orderId = oid;
 		this.videoRef = videoRef;
-		this.body = body;
 	}
 	
-	//GETTERS
-	@NotNull
-	@Column(name = "created")
+	
+	
+	//GETTERS / SETTERS
 	public Date getCreated(){
 		return this.created;
 	}
-	@NotNull
-	@Column(name = "updated")
-	public Date getUpdated(){
-		return this.updated;
-	}
-	@NotNull
-	@Column(name = "title")
-	public String getTitle(){
-		return this.title;
-	}
-	@NotNull
-	@Column(name = "orderId")
-	public int getOrderId(){
-		return this.orderId;
-	}
-	@NotNull
-	@Column(name = "videoRef")
-	public String getVideoRef(){
-		return this.videoRef;
-	}
-	@NotNull
-	@Column(name = "body")
-	public String getBody(){
-		return this.body;
-	}
-	
-	
-	//SETTERS
 	public void setCreated(Date created){
 		this.created = created;
+	}
+	
+	
+	
+	public Date getUpdated(){
+		return this.updated;
 	}
 	public void setUpdated(Date updated){
 		this.updated = updated;
 	}
+	
+	
+	
+	public String getTitle(){
+		return this.title;
+	}
 	public void setTitle(String title){
 		this.title = title;
 	}
-	public void setOrderId(int oid){
-		this.orderId = oid;
-	}
-	public void setVideoRef(String ref){
-		this.videoRef = ref;
+
+	
+	
+	public String getBody(){
+		return this.body;
 	}
 	public void setBody(String body){
 		this.body = body;
 	}
+	
+	
+	
+	public int getOrderId(){
+		return this.orderId;
+	}
+	public void setOrderId(int oid){
+		this.orderId = oid;
+	}
+	
+	
+	
+	public String getVideoRef(){
+		return this.videoRef;
+	}
+	public void setVideoRef(String ref){
+		this.videoRef = ref;
+	}
+	
+	
 	
 	
 	//METHODS

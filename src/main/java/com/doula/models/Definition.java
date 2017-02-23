@@ -14,11 +14,23 @@ public class Definition extends AbstractEntity{
 	
 	
 	//ATTRIBUTES
+	@NotNull
+	@Column(name = "created")
 	private Date created;
+	
+	@NotNull
+	@Column(name = "updated")
 	private Date updated;
+	
+	@NotNull
+	@Column(name = "title")
 	private String title;
+	
+	@NotNull
+	@Column(name = "body")
 	private String body;
 
+	
 	
 	//CONSTRUCTORS
 	public Definition() {}
@@ -33,41 +45,44 @@ public class Definition extends AbstractEntity{
 		this.title = title;
 	}
 	
-	//GETTERS
-	@NotNull
-	@Column(name = "created")
+	
+	
+	//GETTERS / SETTERS
 	public Date getCreated(){
 		return this.created;
 	}
-	@NotNull
-	@Column(name = "updated")
-	public Date getUpdated(){
-		return this.updated;
-	}
-	@NotNull
-	@Column(name = "title")
-	public String getTitle(){
-		return this.title;
-	}
-	@NotNull
-	@Column(name = "body")
-	public String getBody(){
-		return this.body;
-	}
-	
-	//SETTERS
 	public void setCreated(Date created){
 		this.created = created;
+	}
+	
+	
+	
+	public Date getUpdated(){
+		return this.updated;
 	}
 	public void setUpdated(Date updated){
 		this.updated = updated;
 	}
+	
+	
+	
+	public String getTitle(){
+		return this.title;
+	}
 	public void setTitle(String title){
 		this.title = title;
+	}
+	
+	
+	
+	public String getBody(){
+		return this.body;
 	}
 	public void setBody(String body){
 		this.body = body;
 	}
+	
+	
 	
 	//METHODS
 	public void modified(){

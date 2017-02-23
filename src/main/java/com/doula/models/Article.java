@@ -12,13 +12,33 @@ import javax.validation.constraints.NotNull;
 public class Article extends AbstractEntity{
 
 	//ATTRIBUTES
+	@NotNull
+	@Column(name = "created")
 	private Date created;
+
+	@NotNull
+	@Column(name = "updated")
 	private Date updated;
+	
+	@NotNull
+	@Column(name = "title")
 	private String title;
+	
+	@NotNull
+	@Column(name = "headline")
 	private String headline;
+	
+	@NotNull
+	@Column(name = "body")
 	private String body;
+	
+	@Column(name = "thumbnailRef")
 	private String thumbnailRef;
+	
+	@Column(name = "headerRef")
 	private String headerRef;
+	
+	@Column(name = "bodyImageRef")
 	private String bodyImageRef;
 
 	
@@ -34,71 +54,79 @@ public class Article extends AbstractEntity{
 		this.headline = headline;
 		this.body = body;
 	}
-		
-	//GETTERS
-	@NotNull
-	@Column(name = "created")
+	
+	
+	
+	//GETTERS / SETTERS
 	public Date getCreated(){
 		return this.created;
 	}
-	@NotNull
-	@Column(name = "updated")
-	public Date getUpdated(){
-		return this.updated;
-	}
-	@NotNull
-	@Column(name = "title")
-	public String getTitle(){
-		return this.title;
-	}
-	@NotNull
-	@Column(name = "headline")
-	public String getHeadline(){
-		return this.headline;
-	}
-	@NotNull
-	@Column(name = "body")
-	public String getBody(){
-		return this.body;
-	}
-	@Column(name = "thumbnailRef")
-	public String getThumbnailRef(){
-		return this.thumbnailRef;
-	}
-	@Column(name = "headerRef")
-	public String getHeaderRef(){
-		return this.headerRef;
-	}
-	@Column(name = "bodyImageRef")
-	public String getBodyImageRef(){
-		return this.bodyImageRef;
-	}
-	
-	//SETTERS
 	public void setCreated(Date date){
 		this.created = date;
+	}
+	
+	
+	public Date getUpdated(){
+		return this.updated;
 	}
 	public void setUpdated(Date date){
 		this.updated = date;
 	}
+	
+	
+	
+	public String getTitle(){
+		return this.title;
+	}
 	public void setTitle(String title){
 		this.title = title;
+	}
+	
+	
+	
+	public String getHeadline(){
+		return this.headline;
 	}
 	public void setHeadline(String headline){
 		this.headline = headline;
 	}
+	
+	
+	public String getBody(){
+		return this.body;
+	}
 	public void setBody(String body){
 		this.body = body;
+	}
+	
+	
+	
+	public String getThumbnailRef(){
+		return this.thumbnailRef;
 	}
 	public void setThumbnailRef(String ref){
 		this.thumbnailRef = ref;
 	}
+	
+	
+	
+	public String getHeaderRef(){
+		return this.headerRef;
+	}
 	public void setHeaderRef(String ref){
 		this.headerRef = ref;
+	}
+	
+	
+	
+	public String getBodyImageRef(){
+		return this.bodyImageRef;
 	}
 	public void setBodyImageRef(String ref){
 		this.bodyImageRef = ref;
 	}
+	
+	
 	
 	//METHODS
 	public void modified(){

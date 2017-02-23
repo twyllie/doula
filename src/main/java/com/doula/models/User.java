@@ -18,14 +18,33 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class User extends AbstractEntity{
 	
 	
+	
 	//ATTRIBUTES
+	@NotNull
+	@Column(name = "created")
 	private Date created;
+	
+	@NotNull
+	@Column(name = "updated")
 	private Date updated;
+	
+	@NotNull
+    @Column(name = "email", unique = true)
 	private String email;
+	
+	@NotNull
+    @Column(name = "pwhash")
 	private String pwHash;
+	
+	@OneToOne
+	@JoinColumn(name = "plan_uid")
 	private Plan plan;	
+	
+	
 	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+	
+	
 	//CONSTRUCTORS
 	public User(){}
 	
@@ -40,51 +59,53 @@ public class User extends AbstractEntity{
 		this.plan = new Plan(this.created);
 		
 	}
-		
-	//GETTERS
-	@NotNull
-	@Column(name = "created")
+	
+	
+	
+	//GETTERS / SETTERS
 	public Date getCreated(){
 		return this.created;
 	}
-	@NotNull
-	@Column(name = "updated")
-	public Date getUpdated(){
-		return this.updated;
-	}
-	@NotNull
-    @Column(name = "email", unique = true)
-	public String getEmail(){
-		return this.email;
-	}
-	@NotNull
-    @Column(name = "pwhash")
-	public String getPwHash(){
-		return this.pwHash;
-	}
-	@OneToOne
-	@JoinColumn(name = "plan_uid")
-	public Plan getPlan(){
-		return this.plan;
-	}
-	
-	
-	//SETTERS
 	public void setCreated(Date created){
 		this.created = created;
+	}
+	
+	
+	
+	public Date getUpdated(){
+		return this.updated;
 	}
 	public void setUpdated(Date updated){
 		this.updated = updated;
 	}
+	
+	
+	
+	public String getEmail(){
+		return this.email;
+	}
 	public void setEmail(String email){
 		this.email = email;
+	}
+	
+	
+	
+	public String getPwHash(){
+		return this.pwHash;
 	}
 	public void setPwHash(String pw){
 		this.pwHash = pw;
 	}
+	
+	
+	
+	public Plan getPlan(){
+		return this.plan;
+	}
 	public void setPlan(Plan plan){
 		this.plan = plan;
 	}
+	
 
 	
 	//METHODS
@@ -93,14 +114,23 @@ public class User extends AbstractEntity{
 		Matcher matcher = validUsernamePattern.matcher(password);
 		return matcher.matches();
 	}
+	
+	
+	
 	public static boolean isValidEmail(String email){
 		Pattern validEmailPattern = Pattern.compile("^[A-Z0-9+_.-]+@[A-Z0-9.-]+$");
 		Matcher matcher = validEmailPattern.matcher(email);
 		return matcher.matches();
 	}
+	
+	
+	
 	private static String hashPassword(String password) {		
 		return encoder.encode(password);
 	}
+	
+	
+	
 	public boolean isMatchingPassword(String password){
 		return encoder.matches(password, pwHash);
 	}

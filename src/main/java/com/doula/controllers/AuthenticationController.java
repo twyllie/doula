@@ -9,14 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.doula.models.User;
 
-
-/*
- * Description of functions:
- * Controls /signin, /signup, /signout, /preview, and the initial root URL.
- */
-
 @Controller
 public class AuthenticationController extends AbstractController {
+	
+	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String root(){
@@ -25,15 +21,21 @@ public class AuthenticationController extends AbstractController {
 		return "redirect:/preview";
 	}
 	
+	
+	
 	@RequestMapping(value = "/preview", method = RequestMethod.GET)
 	public String preview(){
 		return "preview";
 	}
 	
+	
+	
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public String signinForm(){
 		return "signin";
 	}
+	
+	
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public String signin(HttpServletRequest request, Model model){
@@ -59,6 +61,8 @@ public class AuthenticationController extends AbstractController {
 	public String signupForm(){
 		return "signup";
 	}
+	
+	
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String signup(HttpServletRequest request, Model model){
@@ -91,6 +95,8 @@ public class AuthenticationController extends AbstractController {
 		
 		return "redirect:/home";
 	}
+	
+	
 	
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
 	public String signout(HttpServletRequest request){

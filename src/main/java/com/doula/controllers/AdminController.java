@@ -17,10 +17,14 @@ import com.doula.models.Lesson;
 @Controller
 public class AdminController extends AbstractController {
 
+	
+	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminForm(){
 		return "admin";
 	}
+	
+	
 	
 	@RequestMapping(value = "/admin/create", method = RequestMethod.GET)
 	public String adminCreateForm(Model model){
@@ -28,6 +32,8 @@ public class AdminController extends AbstractController {
 		model.addAttribute("orderedLessons", orderedLessons);
 		return "admin_create_query";
 	}
+	
+	
 	
 	@RequestMapping(value = "/admin/create", method = RequestMethod.POST)
 	public String adminCreate(HttpServletRequest request ,Model model){
@@ -45,10 +51,14 @@ public class AdminController extends AbstractController {
 		return "admin_create";
 	}
 	
+	
+	
 	@RequestMapping(value = "/admin/create/article", method = RequestMethod.GET)
 	public String adminCreateArticleForm(){
 		return "admin_create_article";
 	}
+	
+	
 	
 	@RequestMapping(value = "/admin/create/article", method = RequestMethod.POST)
 	public String adminCreateArticle(HttpServletRequest request, Model model){
@@ -89,10 +99,14 @@ public class AdminController extends AbstractController {
 		}
 	}
 	
+	
+	
 	@RequestMapping(value = "/admin/create/definition", method = RequestMethod.GET)
 	public String adminCreateDefinitionForm(){
 		return "admin_create_definition";
 	}
+	
+	
 	
 	@RequestMapping(value = "/admin/create/definition", method = RequestMethod.POST)
 	public String adminCreateDefinition(HttpServletRequest request, Model model){
@@ -124,10 +138,14 @@ public class AdminController extends AbstractController {
 		}
 	}
 	
+	
+	
 	@RequestMapping(value = "/admin/create/lesson", method = RequestMethod.GET)
 	public String adminCreateLessonForm(){
 		return "admin_create_lesson";
 	}
+	
+	
 	
 	@RequestMapping(value = "/admin/create/lesson", method = RequestMethod.POST)
 	public String adminCreateLesson(HttpServletRequest request, Model model){
@@ -167,10 +185,14 @@ public class AdminController extends AbstractController {
 		}
 	}
 	
+	
+	
 	@RequestMapping(value = "admin/update", method = RequestMethod.GET)
 	public String updateSelection(){
 		return "admin_update";
 	}
+	
+	
 	
 	@RequestMapping(value = "admin/update", method = RequestMethod.POST)
 	public String updateSelection(HttpServletRequest request, Model model){
@@ -197,15 +219,18 @@ public class AdminController extends AbstractController {
 		return "admin_update";
 	}
 	
+	
+	
 	@RequestMapping(value = "admin/update/article/{uid}", method = RequestMethod.GET)
 	public String updateArticleForm(Model model, @PathVariable int uid){
 		Article article = articleDao.findByUid(uid);
 		model.addAttribute("title", article.getTitle());
 		model.addAttribute("headline", article.getHeadline());
 		model.addAttribute("body", article.getBody());
-		//TODO: Figure out images
 		return "admin_update_article";
 	}
+	
+	
 	
 	@RequestMapping(value = "admin/update/article/{uid}", method = RequestMethod.POST)
 	public String updateArticle(HttpServletRequest request, Model model, @PathVariable int uid){
@@ -217,9 +242,10 @@ public class AdminController extends AbstractController {
 		article.getHeadline();
 		article.modified();
 		articleDao.save(article);
-		//TODO: Figure out images
 		return "redirect:/admin/article/" + uid;
 	}
+	
+	
 	
 	@RequestMapping(value = "admin/article/{uid}", method = RequestMethod.GET)
 	public String singleArticleView(Model model, @PathVariable int uid){
@@ -228,6 +254,8 @@ public class AdminController extends AbstractController {
 		return "admin_single_article";
 	}
 	
+	
+	
 	@RequestMapping(value = "admin/update/definition/{uid}", method = RequestMethod.GET)
 	public String updateDefinitionForm(Model model, @PathVariable int uid){
 		Definition def = definitionDao.findByUid(uid);
@@ -235,6 +263,8 @@ public class AdminController extends AbstractController {
 		model.addAttribute("body", def.getBody());
 		return "admin_update_definition";
 	}
+	
+	
 	
 	@RequestMapping(value = "admin/update/definition/{uid}", method = RequestMethod.POST)
 	public String updateDefinition(HttpServletRequest request, Model model, @PathVariable int uid){
@@ -248,12 +278,16 @@ public class AdminController extends AbstractController {
 		return "redirect:/admin/definition/" + uid;
 	}
 	
+	
+	
 	@RequestMapping(value = "admin/definition/{uid}", method = RequestMethod.GET)
 	public String singleDefinitionView(Model model, @PathVariable int uid){
 		Definition def = definitionDao.findByUid(uid);
 		model.addAttribute("def", def);
 		return "admin_single_definition";
 	}
+	
+	
 	
 	@RequestMapping(value = "admin/update/lesson/{uid}", method = RequestMethod.GET)
 	public String updateLessonForm(HttpServletRequest request, Model model, @PathVariable int uid){
@@ -264,6 +298,8 @@ public class AdminController extends AbstractController {
 		model.addAttribute("orderId", lesson.getOrderId());
 		return "admin_update_single";
 	}
+	
+	
 	
 	@RequestMapping(value = "admin/update/lesson/{uid}", method = RequestMethod.POST)
 	public String updateLesson(HttpServletRequest request, Model model, @PathVariable int uid){
@@ -281,12 +317,16 @@ public class AdminController extends AbstractController {
 		return "redirect:/admin/lesson/" + uid;
 	}
 	
+	
+	
 	@RequestMapping(value = "admin/update/lessonorder", method = RequestMethod.GET)
 	public String updateLessonOrderForm(Model model){
 		List<Lesson> lessons = lessonDao.findAllOrderByOrderId();
 		model.addAttribute("lessons", lessons);
 		return "admin_update_lesson_order";
 	}
+	
+	
 	
 	@RequestMapping(value = "admin/update/lessonorder", method = RequestMethod.POST)
 	public String updateLessonOrder(HttpServletRequest request, Model model){
@@ -300,6 +340,8 @@ public class AdminController extends AbstractController {
 		}
 		return "admin_update_lesson_order";
 	}
+	
+	
 	
 	@RequestMapping(value = "admin/lesson/{uid}", method = RequestMethod.GET)
 	public String singleLessonView(Model model, @PathVariable int uid){

@@ -38,7 +38,7 @@ public class User extends AbstractEntity{
 	
 	@OneToOne
 	@JoinColumn(name = "plan_uid")
-	private Plan plan;	
+	private Plan plan;
 	
 	
 	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

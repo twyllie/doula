@@ -14,24 +14,30 @@ import com.doula.models.dao.UserDao;
 public abstract class AbstractController {
 
 	
+	
 	@Autowired
 	protected ArticleDao articleDao;
 	
 	
+	
 	@Autowired
 	protected DefinitionDao definitionDao;
+
 	
 	
 	@Autowired
 	protected LessonDao lessonDao;
 	
 	
+	
 	@Autowired
 	protected UserDao userDao;
 	
 	
+	
 	@Autowired
 	protected PlanDao planDao;
+	
 	
 	
     public static final String userSessionKey = "user_id";
@@ -39,10 +45,10 @@ public abstract class AbstractController {
     
     
     protected User getUserFromSession(HttpSession session) {
-    	
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         return userId == null ? null : userDao.findByUid(userId);
     }
+    
     
     
     

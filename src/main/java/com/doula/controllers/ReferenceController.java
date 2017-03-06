@@ -19,7 +19,7 @@ public class ReferenceController extends AbstractController {
 	
 	@RequestMapping(value = "/reference", method = RequestMethod.GET)
 	public String reference(Model model){
-		List<Definition> definitions = definitionDao.findAllOrderByCreated();
+		List<Definition> definitions = definitionDao.findAllByOrderByCreated();
 		model.addAttribute("definitions", definitions);
 		return "reference";
 	}
@@ -36,7 +36,7 @@ public class ReferenceController extends AbstractController {
 	
 	@RequestMapping(value = "/blog", method = RequestMethod.GET)
 	public String blog(Model model){
-		List<Article> articles = articleDao.findAllOrderByCreated();
+		List<Article> articles = articleDao.findAllByOrderByCreated();
 		model.addAttribute("articles", articles);
 		return "blog";
 	}

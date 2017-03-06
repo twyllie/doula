@@ -13,6 +13,5 @@ public interface PlanDao extends CrudRepository<Plan, Integer>{
 
 	Plan findByUid(int uid);
 	
-	void deleteByUid(int uid);
 	
 }

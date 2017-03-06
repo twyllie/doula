@@ -28,7 +28,7 @@ public class AdminController extends AbstractController {
 	
 	@RequestMapping(value = "/admin/create", method = RequestMethod.GET)
 	public String adminCreateForm(Model model){
-		List<Lesson> orderedLessons = lessonDao.findAllOrderByOrderId();
+		List<Lesson> orderedLessons = lessonDao.findAllByOrderByOrderId();
 		model.addAttribute("orderedLessons", orderedLessons);
 		return "admin_create_query";
 	}
@@ -200,15 +200,15 @@ public class AdminController extends AbstractController {
 		String error;
 		switch(type){
 			case "article":
-				List<Article> articles = articleDao.findAll();
+				List<Article> articles = articleDao.findAllByOrderByCreated();
 				model.addAttribute("articles", articles);
 				return "admin_update_article_list";
 			case "definition":
-				List<Definition> definitions = definitionDao.findAll();
+				List<Definition> definitions = definitionDao.findAllByOrderByCreated();
 				model.addAttribute("definitions", definitions);
 				return "admin_update_definition_list";
 			case "lesson":
-				List<Lesson> lessons = lessonDao.findAllOrderByOrderId();
+				List<Lesson> lessons = lessonDao.findAllByOrderByOrderId();
 				model.addAttribute("lessons", lessons);
 				return "admin_update_lesson_list";
 			default:
@@ -321,7 +321,7 @@ public class AdminController extends AbstractController {
 	
 	@RequestMapping(value = "admin/update/lessonorder", method = RequestMethod.GET)
 	public String updateLessonOrderForm(Model model){
-		List<Lesson> lessons = lessonDao.findAllOrderByOrderId();
+		List<Lesson> lessons = lessonDao.findAllByOrderByOrderId();
 		model.addAttribute("lessons", lessons);
 		return "admin_update_lesson_order";
 	}

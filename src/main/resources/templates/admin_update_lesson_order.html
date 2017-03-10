@@ -15,12 +15,12 @@
 						<select name="'newOrder'+${counter}">
 							<option th:each="number : ${counter}" value="${numberStat}"></option>
 						</select>
-						<input type="hidden" name="'uid'+${counter}" value="${lesson.uid}">
+						<input type="hidden" name="'uid'+${counter}" value="${lesson.uid}"></input>
 					</td>
 					<td th:text="${lesson.name}"></td>
 				</tr>
 			</table>
-			<input type="hidden" name="counter" value="${lessons.size()}">
+			<input type="hidden" name="counter" value="${lessons.size()}"></input>
 			<input type="submit" value="Save">
 		</form>
 	</body>

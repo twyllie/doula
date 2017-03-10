@@ -13,9 +13,9 @@
 			<article>
 				<h2>In order to help anyone who might be assisting you, collect some important numbers here:</h2>
 				<form action="/myplan" method="post">
-					<label>Your doctor/midwife:<input id="doctor" type="tel" th:value="${plan.doctor}"></label>
-					<label>Baby's pediatrician:<input id="pedi" type="tel" th:value="${plan.pedi}"></label>
-					<label>Doula/Support person:<input id ="doula" type="tel" th:value="${plan.doula}"></label>
+					<label>Your doctor/midwife:<input id="doctor" type="tel" th:value="${plan.doctor}"></input></label>
+					<label>Baby's pediatrician:<input id="pedi" type="tel" th:value="${plan.pedi}"></input></label>
+					<label>Doula/Support person:<input id ="doula" type="tel" th:value="${plan.doula}"></input></label>
 					<input type="submit" value="Save">
 				</form>
 			</article>
@@ -33,7 +33,7 @@
 				<h2>Warriors</h2>
 				<p>I call these folks your warriors because they are not your rescuers, they are friends and family who are willing to jump in with you and for you. I've broken it down into two basic groups: the do-ers and the encouragers (and sometimes they overlap, in which case, you have some excellent folks in your corner). Before we get to naming those folks, though, a thought about accepting help. We are a culture that values independence and it can be difficult to shake off the inner voice that tells you "you really should just get up and do it." I have found that asking someone else to be the coordinator for your help can relieve some of the pressure of that (incorrect) inner voice. Consider asking someone you love & trust to coordinate helpers and meals for you for a few weeks. Then when anyone asks how they can help, you can leave it to your coordinator to fit people with your needs. This can also help clearly define the boundaries around receiving help. Most of us need solid help during the early postpartum weeks. It is good to be surrounded by willing hands and supportive words. In short, look for the helpers, encouragers, and the do-ers and feel free to say no to those who you will need to host or who want to receive from you, not give to you. The early weeks of pastpartum is a season of receiving for mothers.</p>
 				<form action="" method="post">
-					<label>Postpartum coordinator's number:<input id="coordinator" type="tel" th:value="${plan.coordinator}"></label>
+					<label>Postpartum coordinator's number:<input id="coordinator" type="tel" th:value="${plan.coordinator}"></input></label>
 					<input type="submit" value="Save">
 				</form>
 			</article>
@@ -41,9 +41,9 @@
 				<h3>Do-ers</h3>
 				<p>List three people who would be able to be an extra set of hands or come fold that mountain of laundry, get your house back to it's bare minimum, etc. These are the do-ers in your life whose love language is taking care of you.</p>
 				<form action="" method="post">
-					<label>1.<input id="doer1" type="text" th:value="${plan.doers.get(0)}"></label>
-					<label>2.<input id="doer2" type="text" th:value="${plan.doers.get(1)}"></label>
-					<label>3.<input id="doer3" type="text" th:value="${plan.doers.get(2)}"></label>
+					<label>1.<input id="doer1" type="text" th:value="${plan.doers.get(0)}"></input></label>
+					<label>2.<input id="doer2" type="text" th:value="${plan.doers.get(1)}"></input></label>
+					<label>3.<input id="doer3" type="text" th:value="${plan.doers.get(2)}"></input></label>
 					<input type="submit" value="Save">
 				</form>
 			</article>
@@ -51,9 +51,9 @@
 				<h3>Encouragers</h3>
 				<p>The think of the people in your life who are the listeners and encouragers. These are the people whom you can call when you are overwhelmed and just need a non-judgmental ear. We all get to the place in the first few weeks and months of having a new baby where we just need to vent and hear some encouragment.</p>
 				<form action="" method="post">
-					<label>1.<input id="encourager1" type="text" th:value="${plan.encouragers.get(0)}"></label>
-					<label>2.<input id="encourager2" type="text" th:value="${plan.encouragers.get(1)}"></label>
-					<label>3.<input id="encourager3" type="text" th:value="${plan.encouragers.get(2)}"></label>
+					<label>1.<input id="encourager1" type="text" th:value="${plan.encouragers.get(0)}"></input></label>
+					<label>2.<input id="encourager2" type="text" th:value="${plan.encouragers.get(1)}"></input></label>
+					<label>3.<input id="encourager3" type="text" th:value="${plan.encouragers.get(2)}"></input></label>
 					<input type="submit" value="Save">
 				</form>
 			</article>
@@ -62,14 +62,14 @@
 				<p>Also, stock the pantry with high far, high protein and quick to prepare foods (you will especially want these if nursing). Consider using some of your nesting energy for preparing and freezing individual portions: lasgna roll-ups, breakfast sandwiches/burritos, groaning muffins, small portions of soup. If your partner does not cook or if the family is out of town, you might consider making large frozen meals as well to feed the family. You can ask family/friends to host a "stock the freezer" shower for you, manage a meal-train for the first few weeks postpartum. Consider using a meal delivery service or prep service for a time (Time For Dinner, Blue Apron, etc). Don't forget to have on hand nuts, fruit, avocados, yogurt, etc for healthy snacks too.</p>
 				<form action="" method="post">
 					<label>Restaurants/Grocery stores that deliver:
-						<input id="emergencyFood1" type="text"  th:value="${plan.emergencyFood.get(0)}">
-						<input id="emergencyFood2" type="text"  th:value="${plan.emergencyFood.get(1)}">
-						<input id="emergencyFood3" type="text"  th:value="${plan.emergencyFood.get(2)}">
+						<input id="emergencyFood1" type="text"  th:value="${plan.emergencyFood.get(0)}"></input>
+						<input id="emergencyFood2" type="text"  th:value="${plan.emergencyFood.get(1)}"></input>
+						<input id="emergencyFood3" type="text"  th:value="${plan.emergencyFood.get(2)}"></input>
 					</label>
 					<label>Ways you plan to stock the pantry:
-						<input id="pantry1" type="text"  th:value="${plan.pantry.get(0)}">
-						<input id="pantry2" type="text"  th:value="${plan.pantry.get(1)}">
-						<input id="pantry3" type="text"  th:value="${plan.pantry.get(2)}">					
+						<input id="pantry1" type="text"  th:value="${plan.pantry.get(0)}"></input>
+						<input id="pantry2" type="text"  th:value="${plan.pantry.get(1)}"></input>
+						<input id="pantry3" type="text"  th:value="${plan.pantry.get(2)}"></input>		
 					</label>
 					<input type="submit" value="Save">
 				</form>
@@ -79,9 +79,9 @@
 				<p>For so many of us, how our home feels directly impacts how we feel. Make a plan for you bare minimum and then ask for help getting there. What are the most important housekeeping things to you (dishes kept up, generally tidy, laundry done, floors clean, bathrooms clean, kitchen sink shiny, etc)?</p>
 				<form action="" method="post">
 					<label>Three things your partner needs to maintain:
-						<input id="chore1" type="text" th:value="${plan.chores.get(0)}">
-						<input id="chore2" type="text" th:value="${plan.chores.get(1)}">
-						<input id="chore3" type="text" th:value="${plan.chores.get(2)}">						
+						<input id="chore1" type="text" th:value="${plan.chores.get(0)}"></input>
+						<input id="chore2" type="text" th:value="${plan.chores.get(1)}"></input>
+						<input id="chore3" type="text" th:value="${plan.chores.get(2)}"></input>				
 					</label>
 					<input type="submit" value="Save">
 				</form>
@@ -92,9 +92,9 @@
 				<p>After baby comes, it helps to have a plan for making sure older siblings aren't feeling neglected or displaced. Having special activities available for while you are nursing baby (books, puzzles, etc) is one idea. Consider making plans for older siblings to play with friends or family outside of the house, especially for the first couple of weeks postpartum. Or consider hiring a mother's helper or postpartum doula to assist.</p>
 				<form action="" method="post">
 					<label>List folks who can either come play with your older kids or take them out for special excursions/playdates:
-						<input id="sitter1" type="text" th:value="${plan.sitters.get(0)}">
-						<input id="sitter2" type="text" th:value="${plan.sitters.get(1)}">
-						<input id="sitter3" type="text" th:value="${plan.sitters.get(2)}">
+						<input id="sitter1" type="text" th:value="${plan.sitters.get(0)}"></input>
+						<input id="sitter2" type="text" th:value="${plan.sitters.get(1)}"></input>
+						<input id="sitter3" type="text" th:value="${plan.sitters.get(2)}"></input>
 					</label>
 					<input type="submit" value="Save">
 				</form>
@@ -104,9 +104,9 @@
 				<p>Brainstorm some ways you can actively foster connection during the postpartum year. If you are comfortable leaving baby early on for date-nights, super! If you are not, be proactive about finding ways to tune-in to each other. This is so important to your well-being!! Be creative: can you set aside a date night at home (no screens? Special drinks? Read aloud? Order in after the kids are in bed? Collaborative art-making?). Lack of money and time are not obstacles unless you let them be. There is always a way to foster connection with each other even in the most restrictive of circumstances.</p>
 				<form action="" method="post">
 					<label>List your best ideas:
-						<input id="date1" type="text" th:value="${plan.dates.get(0)}">
-						<input id="date2" type="text" th:value="${plan.dates.get(1)}">
-						<input id="date3" type="text" th:value="${plan.dates.get(2)}">
+						<input id="date1" type="text" th:value="${plan.dates.get(0)}"></input>
+						<input id="date2" type="text" th:value="${plan.dates.get(1)}"></input>
+						<input id="date3" type="text" th:value="${plan.dates.get(2)}"></input>
 					</label>
 					<input type="submit" value="Save">
 				</form>
@@ -116,9 +116,9 @@
 			<p>Take walks, find peer groups at places like Kangaroo Kids, AmberSky, Parenting Resource. If you took a private childbirth class, that is often a good place to start. Plan an outing and connection time for you every week after the initial rest period. Isolation in motherhood can feel utterly overwhelming!</p>
 				<form action="" method="post">
 					<label>Name three favorite places/people you can go to/call to get out of the house.
-						<input id="outting1" type="text" th:value="${plan.outtings.get(0)}">
-						<input id="outting2" type="text" th:value="${plan.outtings.get(1)}">
-						<input id="outting3" type="text" th:value="${plan.outtings.get(2)}">
+						<input id="outting1" type="text" th:value="${plan.outtings.get(0)}"></input>
+						<input id="outting2" type="text" th:value="${plan.outtings.get(1)}"></input>
+						<input id="outting3" type="text" th:value="${plan.outtings.get(2)}"></input>
 					</label>
 					<input type="submit" value="Save">
 				</form>
@@ -128,9 +128,9 @@
 				<p>The first few days/weeks of breastfeeding are sometimes bumpy. List three lactation counselors you can call if you need help troubleshooting breastfeeding. These can also be breastfeeding circles/support groups but do include at least one counselor.</p>
 				<form action="" method="post">
 					<label>
-						<input id="lactator1" type="text" th:value="${plan.lactators.get(0)}">
-						<input id="lactator2" type="text" th:value="${plan.lactators.get(1)}">
-						<input id="lactator3" type="text" th:value="${plan.lactators.get(2)}">
+						<input id="lactator1" type="text" th:value="${plan.lactators.get(0)}"></input>
+						<input id="lactator2" type="text" th:value="${plan.lactators.get(1)}"></input>
+						<input id="lactator3" type="text" th:value="${plan.lactators.get(2)}"></input>
 					</label>
 					<input type="submit" value="Save">
 				</form>
@@ -146,9 +146,9 @@
 				</ul>
 				<p>If you have a counselor already, list their number here. If you do not have a counselor already then list three resources of counselors who specialize in postpartum support. Having someone who understands postpartum resources is important to getting good care. Ask your doctor, midwife, doula, or a friend who may have already received care for postpartum mood disorders.</p>
 				<form action="" method="post">
-					<input id="moodyPeople1" type="text" th:value="${plan.moodyPeople.get(0)}">
-					<input id="moodyPeople2" type="text" th:value="${plan.moodyPeople.get(1)}">
-					<input id="moodyPeople3" type="text" th:value="${plan.moodyPeople.get(2)}">
+					<input id="moodyPeople1" type="text" th:value="${plan.moodyPeople.get(0)}"></input>
+					<input id="moodyPeople2" type="text" th:value="${plan.moodyPeople.get(1)}"></input>
+					<input id="moodyPeople3" type="text" th:value="${plan.moodyPeople.get(2)}"></input>
 					<input type="submit" value="Save">
 				</form>
 			</article>

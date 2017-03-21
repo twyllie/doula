@@ -1,5 +1,6 @@
 package com.doula.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -41,6 +42,10 @@ public class User extends AbstractEntity{
 	private Plan plan;
 	
 	
+	@Column(name = "roles")
+	private ArrayList<String> roles;
+	
+	
 	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 	
@@ -48,7 +53,7 @@ public class User extends AbstractEntity{
 	//CONSTRUCTORS
 	public User(){}
 	
-	public User(String email, String password){
+	public User(String email, String password, boolean admin){
 		
 		super();
 		
@@ -57,6 +62,11 @@ public class User extends AbstractEntity{
 		this.email = email;
 		this.pwHash = hashPassword(password);
 		this.plan = new Plan(this.created);
+		this.roles.add("ROLE_USER");
+		if(admin){
+			this.roles.add("ROLE_ADMIN");
+		}
+		
 		
 	}
 	
@@ -104,6 +114,13 @@ public class User extends AbstractEntity{
 	}
 	public void setPlan(Plan plan){
 		this.plan = plan;
+	}
+	
+	public ArrayList<String> getRoles(){
+		return this.roles;
+	}
+	public void setRoles(ArrayList<String> roles){
+		this.roles = roles;
 	}
 	
 

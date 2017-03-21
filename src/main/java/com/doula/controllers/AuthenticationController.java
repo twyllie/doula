@@ -89,7 +89,7 @@ public class AuthenticationController extends AbstractController {
 			return "/signup";
 		}
 		
-		User user = new User(email, password);
+		User user = new User(email, password, false);
 		userDao.save(user);
 		setUserInSession(request.getSession(), user);
 		

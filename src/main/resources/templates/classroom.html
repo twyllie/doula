@@ -8,13 +8,13 @@
 		
 		<aside>
 			<ul>
-				<li th:each="lesson : ${lessons}"><a th:href="'/classroom/'+${lesson.uid}" th:text="${lesson.title}"></a></li>
+				<li th:each="lesson : ${lessons}"><a th:href="'/u/classroom/'+${lesson.uid}" th:text="${lesson.title}"></a></li>
 			</ul>
 		</aside>
 		
 		<section>
 			<div>
-				<iframe src="${single_lesson.videoRef}" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				<iframe src="${single_lesson.videoRef}" width="640" height="360"></iframe>
 			</div>
 			
 			<div>

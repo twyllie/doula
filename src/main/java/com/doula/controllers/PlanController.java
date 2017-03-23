@@ -17,7 +17,7 @@ public class PlanController extends AbstractController {
 	
 	
 	
-	@RequestMapping(value = "/myplan", method = RequestMethod.GET)
+	@RequestMapping(value = "/u/myplan", method = RequestMethod.GET)
 	public String myplanForm(HttpServletRequest request, Model model){
 		User user = getUserFromSession(request.getSession());
 		int planuid = user.getPlan().getUid();
@@ -28,7 +28,7 @@ public class PlanController extends AbstractController {
 	
 	
 	
-	@RequestMapping(value = "/myplan", method = RequestMethod.POST)
+	@RequestMapping(value = "/u/myplan", method = RequestMethod.POST)
 	public String myplan(HttpServletRequest request, Model model){
 		User user = getUserFromSession(request.getSession());
 		int planuid = user.getPlan().getUid();

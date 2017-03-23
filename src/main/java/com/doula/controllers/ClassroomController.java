@@ -15,7 +15,7 @@ public class ClassroomController extends AbstractController {
 
 	
 	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/u/home", method = RequestMethod.GET)
 	public String dashboard(Model model){
 		
 		return "dashboard";
@@ -23,16 +23,16 @@ public class ClassroomController extends AbstractController {
 
 	
 	
-	@RequestMapping(value = "/classroom", method = RequestMethod.GET)
+	@RequestMapping(value = "/u/classroom", method = RequestMethod.GET)
 	public String classRoom(){
 		Lesson lesson = lessonDao.findByOrderId(1);
 		int uid = lesson.getUid();
-		return "redirect: /classroom/"+ uid;
+		return "redirect: /u/classroom/"+ uid;
 	}
 	
 	
 	
-	@RequestMapping(value = "/classroom/{uid}", method = RequestMethod.GET)
+	@RequestMapping(value = "/u/classroom/{uid}", method = RequestMethod.GET)
 	public String classRoomLesson(Model model, @PathVariable int uid){
 		List<Lesson> orderedLessons = lessonDao.findAllByOrderByOrderId();
 		model.addAttribute("lessons", orderedLessons);

@@ -17,7 +17,7 @@ public class ReferenceController extends AbstractController {
 
 	
 	
-	@RequestMapping(value = "/reference", method = RequestMethod.GET)
+	@RequestMapping(value = "/u/reference", method = RequestMethod.GET)
 	public String reference(Model model){
 		List<Definition> definitions = definitionDao.findAllByOrderByCreated();
 		model.addAttribute("definitions", definitions);
@@ -26,7 +26,7 @@ public class ReferenceController extends AbstractController {
 
 	
 	
-	@RequestMapping(value = "/reference/{uid}", method = RequestMethod.GET)
+	@RequestMapping(value = "/u/reference/{uid}", method = RequestMethod.GET)
 	public String singleReference(@PathVariable int uid, Model model){
 		model.addAttribute("def", definitionDao.findByUid(uid));
 		return "single_reference";
@@ -34,7 +34,7 @@ public class ReferenceController extends AbstractController {
 
 	
 	
-	@RequestMapping(value = "/blog", method = RequestMethod.GET)
+	@RequestMapping(value = "/u/blog", method = RequestMethod.GET)
 	public String blog(Model model){
 		List<Article> articles = articleDao.findAllByOrderByCreated();
 		model.addAttribute("articles", articles);
@@ -43,7 +43,7 @@ public class ReferenceController extends AbstractController {
 	
 	
 	
-	@RequestMapping(value = "/blog/{uid}", method = RequestMethod.GET)
+	@RequestMapping(value = "/u/blog/{uid}", method = RequestMethod.GET)
 	public String singleArticle(@PathVariable int uid, Model model){
 		model.addAttribute("article", articleDao.findByUid(uid));
 		return "single_article";

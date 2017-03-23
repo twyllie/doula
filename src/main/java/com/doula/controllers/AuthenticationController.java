@@ -47,7 +47,7 @@ public class AuthenticationController extends AbstractController {
 			User user = userDao.findByEmail(email);
 			if(user.isMatchingPassword(password)){
 				setUserInSession(request.getSession(), user);
-				return "redirect:/home";
+				return "redirect: /u/home";
 			}
 		}
 		
@@ -93,7 +93,7 @@ public class AuthenticationController extends AbstractController {
 		userDao.save(user);
 		setUserInSession(request.getSession(), user);
 		
-		return "redirect:/home";
+		return "redirect: /u/home";
 	}
 	
 	

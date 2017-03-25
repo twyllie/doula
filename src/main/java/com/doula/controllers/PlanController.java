@@ -75,7 +75,7 @@ public class PlanController extends AbstractController {
 		//Get the collection that Plan already has, for comparison
 		ArrayList<String> doers = plan.getDoers();
 		//Iterate through the received elements to see if they are different from the present ones.
-		for(int i=0; i <= doerCounter;i++){
+		for(int i=0; i <= doerCounter; i++){
 			String doer = request.getParameter("doer"+i);
 			//See if the current received doer is in the collection already.
 			if(doers.size() <= i){
@@ -127,22 +127,22 @@ public class PlanController extends AbstractController {
 		
 		
 		
-		String pantry1 = request.getParameter("pantry1");
-		String pantry2 = request.getParameter("pantry2");
-		String pantry3 = request.getParameter("pantry3");
-		ArrayList <String> pantry = plan.getPantry();
-		if(!pantry.get(0).equals(pantry1)){
-			plan.setPantryAt(0, pantry1);
-			change = true;
-		}
-		if(!pantry.get(1).equals(pantry2)){
-			plan.setPantryAt(1, pantry2);
-			change = true;
-		}
-		if(!pantry.get(2).equals(pantry3)){
-			plan.setPantryAt(2, pantry3);
-			change = true;
-		}
+//		String pantry1 = request.getParameter("pantry1");
+//		String pantry2 = request.getParameter("pantry2");
+//		String pantry3 = request.getParameter("pantry3");
+//		ArrayList <String> pantry = plan.getPantry();
+//		if(!pantry.get(0).equals(pantry1)){
+//			plan.setPantryAt(0, pantry1);
+//			change = true;
+//		}
+//		if(!pantry.get(1).equals(pantry2)){
+//			plan.setPantryAt(1, pantry2);
+//			change = true;
+//		}
+//		if(!pantry.get(2).equals(pantry3)){
+//			plan.setPantryAt(2, pantry3);
+//			change = true;
+//		}
 		
 		String chore1 = request.getParameter("chore1");
 		String chore2 = request.getParameter("chore2");

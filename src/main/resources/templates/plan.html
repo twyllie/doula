@@ -47,7 +47,10 @@
 				<h3>Do-ers</h3>
 				<p>List three people who would be able to be an extra set of hands or come fold that mountain of laundry, get your house back to it's bare minimum, etc. These are the do-ers in your life whose love language is taking care of you.</p>
 				<form action="/u/myplan" method="post">
-					<label th:each="doer,doerCounter : ${plan.doers}">Doer:<input name="'doer'+${doerCounter}" type="text" th:value="${doer}"></input></label>
+					<label th:each="doer,doerCounter : ${plan.doers}">Doer:
+						<input name="'doer'+${doerCounter}" type="text" th:value="${doer}"></input>
+						<input th:if="${doerCounter.last}" name="doerCounter" type="hidden" th:value="${doerCounter}"></input>					
+					</label>
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
@@ -56,7 +59,9 @@
 				<h3>Encouragers</h3>
 				<p>The think of the people in your life who are the listeners and encouragers. These are the people whom you can call when you are overwhelmed and just need a non-judgmental ear. We all get to the place in the first few weeks and months of having a new baby where we just need to vent and hear some encouragment.</p>
 				<form action="/u/myplan" method="post">
-					<label th:each="encourager, encouragerCounter : ${plan.encouragers}">Encourager:<input name="'encourager'+${encouragerCounter}" type="text" th:value="${encourager}"></input></label>
+					<label th:each="encourager, encouragerCounter : ${plan.encouragers}">Encourager:
+						<input name="'encourager'+${encouragerCounter}" type="text" th:value="${encourager}"></input>	
+					</label>
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
@@ -69,9 +74,7 @@
 						<input th:each="emergencyFood, foodCounter : ${plan.emergencyFoods}" name="'emergencyFood'+${foodCounter}" type="text" th:value="${emergencyFood}"></input>
 					</label>
 					<label>Ways you plan to stock the pantry:
-						<input id="pantry1" type="text"  th:value="${plan.pantry.get(0)}"></input>
-						<input id="pantry2" type="text"  th:value="${plan.pantry.get(1)}"></input>
-						<input id="pantry3" type="text"  th:value="${plan.pantry.get(2)}"></input>		
+						<input th:each="pantryItem, pantryCounter : ${plan.pantry}" name="'pantryItem'+${pantryCounter}" type="text" th:value="${pantryItem}"></input>	
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -82,9 +85,7 @@
 				<p>For so many of us, how our home feels directly impacts how we feel. Make a plan for you bare minimum and then ask for help getting there. What are the most important housekeeping things to you (dishes kept up, generally tidy, laundry done, floors clean, bathrooms clean, kitchen sink shiny, etc)?</p>
 				<form action="/u/myplan" method="post">
 					<label>Three things your partner needs to maintain:
-						<input id="chore1" type="text" th:value="${plan.chores.get(0)}"></input>
-						<input id="chore2" type="text" th:value="${plan.chores.get(1)}"></input>
-						<input id="chore3" type="text" th:value="${plan.chores.get(2)}"></input>				
+						<input th:each="chore, choreCounter : ${plan.chores}" name="'chore'+${choreCounter}" type="text" th:value="${chore}"></input>				
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -96,9 +97,7 @@
 				<p>After baby comes, it helps to have a plan for making sure older siblings aren't feeling neglected or displaced. Having special activities available for while you are nursing baby (books, puzzles, etc) is one idea. Consider making plans for older siblings to play with friends or family outside of the house, especially for the first couple of weeks postpartum. Or consider hiring a mother's helper or postpartum doula to assist.</p>
 				<form action="/u/myplan" method="post">
 					<label>List folks who can either come play with your older kids or take them out for special excursions/playdates:
-						<input id="sitter1" type="text" th:value="${plan.sitters.get(0)}"></input>
-						<input id="sitter2" type="text" th:value="${plan.sitters.get(1)}"></input>
-						<input id="sitter3" type="text" th:value="${plan.sitters.get(2)}"></input>
+						<input th:each="sitter, sitterCounter : ${plan.sitters}" name="'sitter'+ ${sitterCounter}" type="text" th:value="${sitter}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -109,9 +108,7 @@
 				<p>Brainstorm some ways you can actively foster connection during the postpartum year. If you are comfortable leaving baby early on for date-nights, super! If you are not, be proactive about finding ways to tune-in to each other. This is so important to your well-being!! Be creative: can you set aside a date night at home (no screens? Special drinks? Read aloud? Order in after the kids are in bed? Collaborative art-making?). Lack of money and time are not obstacles unless you let them be. There is always a way to foster connection with each other even in the most restrictive of circumstances.</p>
 				<form action="/u/myplan" method="post">
 					<label>List your best ideas:
-						<input id="date1" type="text" th:value="${plan.dates.get(0)}"></input>
-						<input id="date2" type="text" th:value="${plan.dates.get(1)}"></input>
-						<input id="date3" type="text" th:value="${plan.dates.get(2)}"></input>
+						<input th:each="date, dateCounter : ${plan.dates}" name="'date'+${dateCounter}" type="text" th:value="${date}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -122,9 +119,7 @@
 			<p>Take walks, find peer groups at places like Kangaroo Kids, AmberSky, Parenting Resource. If you took a private childbirth class, that is often a good place to start. Plan an outing and connection time for you every week after the initial rest period. Isolation in motherhood can feel utterly overwhelming!</p>
 				<form action="/u/myplan" method="post">
 					<label>Name three favorite places/people you can go to/call to get out of the house.
-						<input id="outting1" type="text" th:value="${plan.outtings.get(0)}"></input>
-						<input id="outting2" type="text" th:value="${plan.outtings.get(1)}"></input>
-						<input id="outting3" type="text" th:value="${plan.outtings.get(2)}"></input>
+						<input th:each="outting, outCounter : ${plan.outtings}" name="'outting'+${outCounter}" type="text" th:value="${outting}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -135,9 +130,7 @@
 				<p>The first few days/weeks of breastfeeding are sometimes bumpy. List three lactation counselors you can call if you need help troubleshooting breastfeeding. These can also be breastfeeding circles/support groups but do include at least one counselor.</p>
 				<form action="/u/myplan" method="post">
 					<label>
-						<input id="lactator1" type="text" th:value="${plan.lactators.get(0)}"></input>
-						<input id="lactator2" type="text" th:value="${plan.lactators.get(1)}"></input>
-						<input id="lactator3" type="text" th:value="${plan.lactators.get(2)}"></input>
+						<input th:each="lactator, lactCounter : ${plan.lactators}" name="'lactator'+${lactCounter}" type="text" th:value="${lactator}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -154,9 +147,7 @@
 				</ul>
 				<p>If you have a counselor already, list their number here. If you do not have a counselor already then list three resources of counselors who specialize in postpartum support. Having someone who understands postpartum resources is important to getting good care. Ask your doctor, midwife, doula, or a friend who may have already received care for postpartum mood disorders.</p>
 				<form action="/u/myplan" method="post">
-					<input id="moodyPeople1" type="text" th:value="${plan.moodyPeople.get(0)}"></input>
-					<input id="moodyPeople2" type="text" th:value="${plan.moodyPeople.get(1)}"></input>
-					<input id="moodyPeople3" type="text" th:value="${plan.moodyPeople.get(2)}"></input>
+					<input th:each="moodyPerson, moodyCounter : ${plan.moodyPeople}" name="'moodyPerson'+${moodyCounter}" type="text" th:value="${moodyPerson}"></input>
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>

@@ -12,7 +12,7 @@
 		
 		<div>
 			<form action="/signup" method="POST">
-				<label>Email:<input name="email" type="text" th:value="${email}"></input></label>
+				<label>Email:<input name="email" type="email" th:value="${email}"></input></label>
 				<span class="error" th:text="${email_error}"></span>
 				<label>Password:<input name="password" type="password"></input></label>
 				<span class="error" th:text="${password_error}"></span>

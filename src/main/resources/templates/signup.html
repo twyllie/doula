@@ -12,11 +12,11 @@
 		
 		<div>
 			<form action="/signup" method="POST">
-				<label>Email:<input id="email" type="email" th:value="${email}"></input></label>
+				<label>Email:<input name="email" type="text" th:value="${email}"></input></label>
 				<span class="error" th:text="${email_error}"></span>
-				<label>Password:<input id="password" type="password"></input></label>
+				<label>Password:<input name="password" type="password"></input></label>
 				<span class="error" th:text="${password_error}"></span>
-				<label><input id="verify" type="password"></input></label>
+				<label><input name="verify" type="password"></input></label>
 				<span class="error" th:text="${verify_error}"></span>
 				<input type="submit"></input>
 			</form>

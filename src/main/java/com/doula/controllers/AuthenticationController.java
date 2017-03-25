@@ -54,7 +54,7 @@ public class AuthenticationController extends AbstractController {
 		model.addAttribute("error", "Either the email address or password are incorrect.");
 		model.addAttribute("email", email);
 		
-		return "/signin";
+		return "signin";
 	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -71,29 +71,28 @@ public class AuthenticationController extends AbstractController {
 		String verify = request.getParameter("verify");
 		
 		
-		if(!User.isValidEmail(email)){
-			model.addAttribute("email", email);
-			model.addAttribute("email_error", "This is an invalid email");
-			return "/signup";
-		}
-		
-		if(!User.isValidPassword(password)){
-			model.addAttribute("email", email);
-			model.addAttribute("password_error", "This is an invalid password");
-			return "/signup";
-		}
-		
 		if(!password.equals(verify)){
 			model.addAttribute("email", email);
 			model.addAttribute("verify_error", "The passwords do not match");
-			return "/signup";
+			return "signup";
 		}
+		if(!User.isValidPassword(password)){
+			model.addAttribute("email", email);
+			model.addAttribute("password_error", "This is an invalid password");
+			return "signup";
+		}		
+		if(!User.isValidEmail(email)){
+			model.addAttribute("email", email);
+			model.addAttribute("email_error", "This is an invalid email");
+			return "signup";
+		}
+
 		
 		User user = new User(email, password, false);
 		userDao.save(user);
 		setUserInSession(request.getSession(), user);
 		
-		return "redirect: /u/home";
+		return "redirect: /signin";
 	}
 	
 	

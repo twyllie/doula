@@ -39,8 +39,8 @@ public class Plan extends AbstractEntity {
 	@Column(name = "encouragers")
 	private ArrayList<String> encouragers;
 	
-	@Column(name = "emergency_food")
-	private ArrayList<String> emergencyFood;
+	@Column(name = "emergency_foods")
+	private ArrayList<String> emergencyFoods;
 	
 	@Column(name = "pantry")
 	private ArrayList<String> pantry;
@@ -72,18 +72,6 @@ public class Plan extends AbstractEntity {
 		this.created = time;
 		this.updated = this.created;
 		
-		for(int i = 0; i < 3; i++){
-			this.doers.add("");
-			this.encouragers.add("");
-			this.emergencyFood.add("");
-			this.pantry.add("");
-			this.chores.add("");
-			this.sitters.add("");
-			this.dates.add("");
-			this.outtings.add("");
-			this.lactators.add("");
-			this.moodyPeople.add("");
-		}
 		
 	}
 	
@@ -160,11 +148,11 @@ public class Plan extends AbstractEntity {
 	
 	
 	
-	public ArrayList<String> getEmergencyFood(){
-		return this.emergencyFood;
+	public ArrayList<String> getEmergencyFoods(){
+		return this.emergencyFoods;
 	}
-	public void setEmergencyFood(ArrayList<String> input){
-		this.emergencyFood = input;
+	public void setEmergencyFoods(ArrayList<String> input){
+		this.emergencyFoods = input;
 	}
 	
 	
@@ -259,10 +247,10 @@ public class Plan extends AbstractEntity {
 	
 	
 	public void addEmergencyFood(String ef){
-		this.emergencyFood.add(ef);
+		this.emergencyFoods.add(ef);
 	}
 	public void setEmergencyFoodAt(int index, String ef){
-		this.emergencyFood.set(index, ef);
+		this.emergencyFoods.set(index, ef);
 	}
 	
 	

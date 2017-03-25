@@ -127,15 +127,15 @@ public class User extends AbstractEntity{
 	
 	//METHODS
 	public static boolean isValidPassword(String password){
-		Pattern validUsernamePattern = Pattern.compile("(\\S){6,30}");
-		Matcher matcher = validUsernamePattern.matcher(password);
+		Pattern validPasswordPattern = Pattern.compile("(\\S){6,30}");
+		Matcher matcher = validPasswordPattern.matcher(password);
 		return matcher.matches();
 	}
 	
 	
 	
 	public static boolean isValidEmail(String email){
-		Pattern validEmailPattern = Pattern.compile("^[A-Z0-9+_.-]+@[A-Z0-9.-]+$");
+		Pattern validEmailPattern = Pattern.compile("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
 		Matcher matcher = validEmailPattern.matcher(email);
 		return matcher.matches();
 	}

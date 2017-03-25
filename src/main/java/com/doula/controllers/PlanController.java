@@ -35,6 +35,8 @@ public class PlanController extends AbstractController {
 		Plan plan = planDao.findByUid(planuid);
 		boolean change = false;
 		
+		
+		
 		//Get every field and check if they are different from existing fields, if so reset them.
 		String doctor = request.getParameter("doctor");
 		if(!doctor.equals(plan.getDoctor())){
@@ -42,11 +44,15 @@ public class PlanController extends AbstractController {
 			change = true;
 		}
 		
+		
+		
 		String pedi = request.getParameter("pedi");
 		if(!pedi.equals(plan.getPedi())){
 			plan.setPedi(pedi);
 			change = true;
 		}
+		
+		
 		
 		String doula = request.getParameter("doula");
 		if(!doula.equals(plan.getDoula())){
@@ -55,63 +61,71 @@ public class PlanController extends AbstractController {
 		}
 		
 		
+		
 		String coordinator = request.getParameter("coordinator");
 		if(!coordinator.equals(plan.getCoordinator())){
 			plan.setCoordinator(coordinator);
 			change  = true;
 		}
 		
-		String doer1 = request.getParameter("doer1");
-		String doer2 = request.getParameter("doer2");
-		String doer3 = request.getParameter("doer3");
+		
+		
+		//Get the number of elements that the form has sent.
+		int doerCounter = Integer.parseInt(request.getParameter("doerCounter"));
+		//Get the collection that Plan already has, for comparison
 		ArrayList<String> doers = plan.getDoers();
-		if(!doers.get(0).equals(doer1)){
-			plan.setDoersAt(0, doer1);
-			change = true;
-		}
-		if(!doers.get(1).equals(doer2)){
-			plan.setDoersAt(1, doer2);
-			change = true;
-		}
-		if(!doers.get(2).equals(doer3)){
-			plan.setDoersAt(2, doer3);
-			change = true;
+		//Iterate through the received elements to see if they are different from the present ones.
+		for(int i=0; i <= doerCounter;i++){
+			String doer = request.getParameter("doer"+i);
+			//See if the current received doer is in the collection already.
+			if(doers.size() <= i){
+				//If it is, see if it has changed and update accordingly.
+				if(!doers.get(i).equals(doer)){
+					plan.setDoersAt(i, doer);
+					change = true;
+				}
+			}else{
+				plan.addDoers(doer);
+				change = true;
+			}
+			
 		}
 		
 		
-		String encourager1 = request.getParameter("encourager1");
-		String encourager2 = request.getParameter("encourage2");
-		String encourager3 = request.getParameter("encourager3");
+		
+		int encouragerCounter = Integer.parseInt(request.getParameter("encouragerCounter"));
 		ArrayList<String> encouragers = plan.getEncouragers();
-		if(!encouragers.get(0).equals(encourager1)){
-			plan.setEncouragersAt(0, encourager1);
-			change = true;
-		}
-		if(!encouragers.get(1).equals(encourager2)){
-			plan.setEncouragersAt(1, encourager2);
-			change = true;
-		}
-		if(!encouragers.get(2).equals(encourager3)){
-			plan.setEncouragersAt(2, encourager3);
-			change = true;
+		for(int i=0; i <= encouragerCounter;i++){
+			String encourager = request.getParameter("encourager"+i);
+			if(encouragers.size() <= i){
+				if(!encouragers.get(i).equals(encourager)){
+					plan.setEncouragersAt(i, encourager);
+					change = true;
+				}
+			}else{
+				plan.addEncouragers(encourager);
+				change = true;
+			}
 		}
 		
-		String emergencyFood1 = request.getParameter("emergencyFood1");
-		String emergencyFood2 = request.getParameter("emergencyFood2");
-		String emergencyFood3 = request.getParameter("emergencyFood3");
-		ArrayList<String> emergencyFood = plan.getEmergencyFood();
-		if(!emergencyFood.get(0).equals(emergencyFood1)){
-			plan.setEmergencyFoodAt(0, emergencyFood1);
-			change = true;
+		
+		
+		int foodCounter = Integer.parseInt(request.getParameter("foodCounter"));
+		ArrayList<String> emergencyFoods = plan.getEmergencyFoods();
+		for(int i=0; i <= foodCounter;i++){
+			String emergencyFood = request.getParameter("emergencyFood"+i);
+			if(emergencyFoods.size() <= i){
+				if(!emergencyFoods.get(i).equals(emergencyFood)){
+					plan.setEmergencyFoodAt(i, emergencyFood);
+					change = true;
+				}
+			}else{
+				plan.addEmergencyFood(emergencyFood);
+				change = true;
+			}
 		}
-		if(!emergencyFood.get(1).equals(emergencyFood2)){
-			plan.setEmergencyFoodAt(1, emergencyFood2);
-			change = true;
-		}
-		if(!emergencyFood.get(2).equals(emergencyFood3)){
-			plan.setEmergencyFoodAt(2, emergencyFood3);
-			change = true;
-		}
+		
+		
 		
 		String pantry1 = request.getParameter("pantry1");
 		String pantry2 = request.getParameter("pantry2");

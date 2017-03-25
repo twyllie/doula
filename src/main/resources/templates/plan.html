@@ -5,11 +5,14 @@
 	
 	<body>
 		<nav th:replace="template :: user_navigation"></nav>
+		
 		<div>
 			<h1>Postpartum Planning Worksheet</h1>
 			<p>Planning for your postpartum is just as important as planning for your birth! The purpose of the worksheet is to help you think through resources you might need in the postpartum period and to collect them all into one place. It can be difficult to think who and how to ask for help when you are in the middle of it, so thinking creatively about it all before hand can be very helpful.</p>
 		</div>
+		
 		<section>
+			
 			<article>
 				<h2>In order to help anyone who might be assisting you, collect some important numbers here:</h2>
 				<form action="/u/myplan" method="post">
@@ -19,6 +22,7 @@
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
+			
 			<article>
 				<h2>Your body!</h2>
 				<p>Your pelvic floor stretches to twice it's length at the end of pregnancy and three times it's length after vaginal birth. It is recommended to consider yourself on modified bedrest for two weeks after birth (any birth) in order to heal well physically. This means, stairs only a couple of times a day, not standing or walking for long periods and generally allowing yourself to be well taken care of. In order for this to be successful, you will need support and to prepare.</p>
@@ -29,42 +33,40 @@
 					<li><p>Partners need to be prepared to do all the housework for a couple of weeks! Yep, all of it. You just had a baby and that is a tremendously demanding physical feat. And if you are breastfeeding, there's a whole lot more than healing going on in your body now, too. Figure out what the minimum is (agree on it: dishes, floors tidy, you know what makes you feel crazy when it's out of control). If this is just not going to happen for whatever reasons, consider hiring a housecleaning service short-term (makes a great shower gift). But take your physical recovery seriously.</p></li>
 				</ul>
 			</article>
+			
 			<article>
 				<h2>Warriors</h2>
-				<p>I call these folks your warriors because they are not your rescuers, they are friends and family who are willing to jump in with you and for you. I've broken it down into two basic groups: the do-ers and the encouragers (and sometimes they overlap, in which case, you have some excellent folks in your corner). Before we get to naming those folks, though, a thought about accepting help. We are a culture that values independence and it can be difficult to shake off the inner voice that tells you "you really should just get up and do it." I have found that asking someone else to be the coordinator for your help can relieve some of the pressure of that (incorrect) inner voice. Consider asking someone you love & trust to coordinate helpers and meals for you for a few weeks. Then when anyone asks how they can help, you can leave it to your coordinator to fit people with your needs. This can also help clearly define the boundaries around receiving help. Most of us need solid help during the early postpartum weeks. It is good to be surrounded by willing hands and supportive words. In short, look for the helpers, encouragers, and the do-ers and feel free to say no to those who you will need to host or who want to receive from you, not give to you. The early weeks of pastpartum is a season of receiving for mothers.</p>
+				<p>I call these folks your warriors because they are not your rescuers, they are friends and family who are willing to jump in with you and for you. I've broken it down into two basic groups: the do-ers and the encouragers (and sometimes they overlap, in which case, you have some excellent folks in your corner). Before we get to naming those folks, though, a thought about accepting help. We are a culture that values independence and it can be difficult to shake off the inner voice that tells you "you really should just get up and do it." I have found that asking someone else to be the coordinator for your help can relieve some of the pressure of that (incorrect) inner voice. Consider asking someone you love and trust to coordinate helpers and meals for you for a few weeks. Then when anyone asks how they can help, you can leave it to your coordinator to fit people with your needs. This can also help clearly define the boundaries around receiving help. Most of us need solid help during the early postpartum weeks. It is good to be surrounded by willing hands and supportive words. In short, look for the helpers, encouragers, and the do-ers and feel free to say no to those who you will need to host or who want to receive from you, not give to you. The early weeks of pastpartum is a season of receiving for mothers.</p>
 				<form action="/u/myplan" method="post">
 					<label>Postpartum coordinator's number:<input id="coordinator" type="tel" th:value="${plan.coordinator}"></input></label>
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
+			
 			<article>
 				<h3>Do-ers</h3>
 				<p>List three people who would be able to be an extra set of hands or come fold that mountain of laundry, get your house back to it's bare minimum, etc. These are the do-ers in your life whose love language is taking care of you.</p>
 				<form action="/u/myplan" method="post">
-					<label>1.<input id="doer1" type="text" th:value="${plan.doers.get(0)}"></input></label>
-					<label>2.<input id="doer2" type="text" th:value="${plan.doers.get(1)}"></input></label>
-					<label>3.<input id="doer3" type="text" th:value="${plan.doers.get(2)}"></input></label>
+					<label th:each="doer,doerCounter : ${plan.doers}">Doer:<input name="'doer'+${doerCounter}" type="text" th:value="${doer}"></input></label>
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
+			
 			<article>
 				<h3>Encouragers</h3>
 				<p>The think of the people in your life who are the listeners and encouragers. These are the people whom you can call when you are overwhelmed and just need a non-judgmental ear. We all get to the place in the first few weeks and months of having a new baby where we just need to vent and hear some encouragment.</p>
 				<form action="/u/myplan" method="post">
-					<label>1.<input id="encourager1" type="text" th:value="${plan.encouragers.get(0)}"></input></label>
-					<label>2.<input id="encourager2" type="text" th:value="${plan.encouragers.get(1)}"></input></label>
-					<label>3.<input id="encourager3" type="text" th:value="${plan.encouragers.get(2)}"></input></label>
+					<label th:each="encourager, encouragerCounter : ${plan.encouragers}">Encourager:<input name="'encourager'+${encouragerCounter}" type="text" th:value="${encourager}"></input></label>
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
+			
 			<article>
 				<h2>Feed Yourself!</h2>
 				<p>Also, stock the pantry with high far, high protein and quick to prepare foods (you will especially want these if nursing). Consider using some of your nesting energy for preparing and freezing individual portions: lasgna roll-ups, breakfast sandwiches/burritos, groaning muffins, small portions of soup. If your partner does not cook or if the family is out of town, you might consider making large frozen meals as well to feed the family. You can ask family/friends to host a "stock the freezer" shower for you, manage a meal-train for the first few weeks postpartum. Consider using a meal delivery service or prep service for a time (Time For Dinner, Blue Apron, etc). Don't forget to have on hand nuts, fruit, avocados, yogurt, etc for healthy snacks too.</p>
 				<form action="/u/myplan" method="post">
 					<label>Restaurants/Grocery stores that deliver:
-						<input id="emergencyFood1" type="text"  th:value="${plan.emergencyFood.get(0)}"></input>
-						<input id="emergencyFood2" type="text"  th:value="${plan.emergencyFood.get(1)}"></input>
-						<input id="emergencyFood3" type="text"  th:value="${plan.emergencyFood.get(2)}"></input>
+						<input th:each="emergencyFood, foodCounter : ${plan.emergencyFoods}" name="'emergencyFood'+${foodCounter}" type="text" th:value="${emergencyFood}"></input>
 					</label>
 					<label>Ways you plan to stock the pantry:
 						<input id="pantry1" type="text"  th:value="${plan.pantry.get(0)}"></input>
@@ -74,6 +76,7 @@
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
+			
 			<article>
 				<h2>Your Home</h2>
 				<p>For so many of us, how our home feels directly impacts how we feel. Make a plan for you bare minimum and then ask for help getting there. What are the most important housekeeping things to you (dishes kept up, generally tidy, laundry done, floors clean, bathrooms clean, kitchen sink shiny, etc)?</p>
@@ -86,6 +89,7 @@
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
+			
 			<article>
 				<h2>Plan for older siblings</h2>
 				<p>Before baby comes, spend some time (like multiple times, every day, especially if you have preschoolers and toddlers) talking about what newborns are actually like. A lot of kids imagine a playmate just like them and may have expectations of playing with the baby and baby interacting with them. Talking about how newborns can't do anything on their own (even eat, sit, talk, roll over, hug, smile, etc) can help young children understand better how you will have to help baby constantly. Finding  books at the library that emphasize a newborn's dependence as well as books that focus siblings emotion can be helpful. Consider making a booklet of pictures of your older kids as "helpless" newborns that you did everything for when it was their turn.</p>
@@ -99,6 +103,7 @@
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
+			
 			<article>
 				<h2>Connect with your spouse</h2>
 				<p>Brainstorm some ways you can actively foster connection during the postpartum year. If you are comfortable leaving baby early on for date-nights, super! If you are not, be proactive about finding ways to tune-in to each other. This is so important to your well-being!! Be creative: can you set aside a date night at home (no screens? Special drinks? Read aloud? Order in after the kids are in bed? Collaborative art-making?). Lack of money and time are not obstacles unless you let them be. There is always a way to foster connection with each other even in the most restrictive of circumstances.</p>
@@ -111,6 +116,7 @@
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
+			
 			<article>
 			<h2>Get out and about!</h2>
 			<p>Take walks, find peer groups at places like Kangaroo Kids, AmberSky, Parenting Resource. If you took a private childbirth class, that is often a good place to start. Plan an outing and connection time for you every week after the initial rest period. Isolation in motherhood can feel utterly overwhelming!</p>
@@ -123,6 +129,7 @@
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
+			
 			<article>
 				<h2>Breastfeeding troubleshooting</h2>
 				<p>The first few days/weeks of breastfeeding are sometimes bumpy. List three lactation counselors you can call if you need help troubleshooting breastfeeding. These can also be breastfeeding circles/support groups but do include at least one counselor.</p>
@@ -135,6 +142,7 @@
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
+			
 			<article>
 				<h2>Your mental health!</h2>
 				<p>Postpartum mood disorders (PPMD) cover a broad spectrum from depression, rage, anxiety, obsessive-compulsive behaviors to psychosis. These four questions are a short-hand to the Edinburgh Postnatal Depression Scale. Partners, you should be looking out for signs of PPMD. Oftentimes, moms are unable to tell for themselves that what they are experiencing is outside the range of normal (check out <a href="www.postpartumprogress.com">post partum progress</a> for a list of what's normal baby blues and what is indicative of PPMD).</p>
@@ -152,9 +160,11 @@
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>
+			
 			<div>
 				<p>This is by no means a comprehensive list of needs for the postpartum period. Hopefully, though, it helped jog some thoughts for you! My experience is that when you prepare well and take the postpartum phase seriously, you feel better in it.</p>
 			</div>
+		
 		</section>
 	</body>
 </html>

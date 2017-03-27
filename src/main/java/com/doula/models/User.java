@@ -62,6 +62,7 @@ public class User extends AbstractEntity{
 		this.email = email;
 		this.pwHash = hashPassword(password);
 		this.plan = new Plan(this.created);
+		this.roles = new ArrayList<String>();
 		this.roles.add("ROLE_USER");
 		if(admin){
 			this.roles.add("ROLE_ADMIN");

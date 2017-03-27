@@ -78,7 +78,7 @@ public class PlanController extends AbstractController {
 		for(int i=0; i <= doerCounter; i++){
 			String doer = request.getParameter("doer"+i);
 			//See if the current received doer is in the collection already.
-			if(doers.size() <= i){
+			if(doers.size() >= i){
 				//If it is, see if it has changed and update accordingly.
 				if(!doers.get(i).equals(doer)){
 					plan.setDoersAt(i, doer);
@@ -97,7 +97,7 @@ public class PlanController extends AbstractController {
 		ArrayList<String> encouragers = plan.getEncouragers();
 		for(int i=0; i <= encouragerCounter;i++){
 			String encourager = request.getParameter("encourager"+i);
-			if(encouragers.size() <= i){
+			if(encouragers.size() >= i){
 				if(!encouragers.get(i).equals(encourager)){
 					plan.setEncouragersAt(i, encourager);
 					change = true;
@@ -112,9 +112,9 @@ public class PlanController extends AbstractController {
 		
 		int foodCounter = Integer.parseInt(request.getParameter("foodCounter"));
 		ArrayList<String> emergencyFoods = plan.getEmergencyFoods();
-		for(int i=0; i <= foodCounter;i++){
+		for(int i=0; i <= foodCounter; i++){
 			String emergencyFood = request.getParameter("emergencyFood"+i);
-			if(emergencyFoods.size() <= i){
+			if(emergencyFoods.size() >= i){
 				if(!emergencyFoods.get(i).equals(emergencyFood)){
 					plan.setEmergencyFoodAt(i, emergencyFood);
 					change = true;
@@ -127,124 +127,123 @@ public class PlanController extends AbstractController {
 		
 		
 		
-//		String pantry1 = request.getParameter("pantry1");
-//		String pantry2 = request.getParameter("pantry2");
-//		String pantry3 = request.getParameter("pantry3");
-//		ArrayList <String> pantry = plan.getPantry();
-//		if(!pantry.get(0).equals(pantry1)){
-//			plan.setPantryAt(0, pantry1);
-//			change = true;
-//		}
-//		if(!pantry.get(1).equals(pantry2)){
-//			plan.setPantryAt(1, pantry2);
-//			change = true;
-//		}
-//		if(!pantry.get(2).equals(pantry3)){
-//			plan.setPantryAt(2, pantry3);
-//			change = true;
-//		}
-		
-		String chore1 = request.getParameter("chore1");
-		String chore2 = request.getParameter("chore2");
-		String chore3 = request.getParameter("chore3");
-		ArrayList <String> chores = plan.getChores();
-		if(!chores.get(0).equals(chore1)){
-			plan.setChoresAt(0, chore1);
-			change = true;
-		}
-		if(!chores.get(1).equals(chore2)){
-			plan.setChoresAt(1, chore2);
-			change = true;
-		}
-		if(!chores.get(2).equals(chore3)){
-			plan.setChoresAt(2, chore3);
-			change = true;
+		int pantryCounter = Integer.parseInt(request.getParameter("pantryCounter"));
+		ArrayList<String> pantry = plan.getPantry();
+		for(int i=0; i <= pantryCounter; i++){
+			String pantryItem = request.getParameter("pantryItem"+i);
+			if(pantry.size() >= i){
+				if(!pantry.get(i).equals(pantryItem)){
+					plan.setPantryAt(i, pantryItem);
+					change = true;
+				}
+			}else{
+				plan.addPantry(pantryItem);
+				change = true;
+			}
 		}
 		
-		String sitter1 = request.getParameter("sitter1");
-		String sitter2 = request.getParameter("sitter2");
-		String sitter3 = request.getParameter("sitter3");
-		ArrayList <String> sitters = plan.getSitters();
-		if(!sitters.get(0).equals(sitter1)){
-			plan.setSittersAt(0, sitter1);
-			change = true;
-		}
-		if(!sitters.get(1).equals(sitter2)){
-			plan.setSittersAt(1, sitter2);
-			change = true;
-		}
-		if(!sitters.get(2).equals(sitter3)){
-			plan.setSittersAt(2, sitter3);
-			change = true;
+		
+		
+		int choreCounter = Integer.parseInt(request.getParameter("choreCounter"));
+		ArrayList<String> chores = plan.getChores();
+		for(int i=0; i <= choreCounter; i++){
+			String chore = request.getParameter("chore"+i);
+			if(chores.size() >= i){
+				if(!chores.get(i).equals(chore)){
+					plan.setChoresAt(i, chore);
+					change = true;
+				}
+			}else{
+				plan.addChores(chore);
+				change = true;
+			}
 		}
 		
-		String date1 = request.getParameter("date1");
-		String date2 = request.getParameter("date2");
-		String date3 = request.getParameter("date3");
-		ArrayList <String> dates = plan.getDates();
-		if(!dates.get(0).equals(date1)){
-			plan.setDatesAt(0, date1);
-			change = true;
-		}
-		if(!dates.get(1).equals(date2)){
-			plan.setDatesAt(1, date2);
-			change = true;
-		}
-		if(!dates.get(2).equals(date3)){
-			plan.setDatesAt(2, date3);
-			change = true;
+		
+		
+		int sitterCounter = Integer.parseInt(request.getParameter("sitterCounter"));
+		ArrayList<String> sitters = plan.getSitters();
+		for(int i =0; i <= sitterCounter; i++){
+			String sitter = request.getParameter("sitter"+i);
+			if(sitters.size() >= i){
+				if(!sitters.get(i).equals(sitter)){
+					plan.setSittersAt(i, sitter);
+					change = true;
+				}
+			}else{
+				plan.addSitters(sitter);
+				change = true;
+			}
 		}
 		
-		String outting1 = request.getParameter("outting1");
-		String outting2 = request.getParameter("outting2");
-		String outting3 = request.getParameter("outting3");
+		
+		
+		int dateCounter = Integer.parseInt(request.getParameter("dateCounter"));
+		ArrayList<String> dates = plan.getDates();
+		for(int i =0; i <= dateCounter; i++){
+			String date = request.getParameter("date"+i);
+			if(dates.size() >= i){
+				if(!dates.get(i).equals(date)){
+					plan.setDatesAt(i, date);
+					change = true;
+				}
+			}else{
+				plan.addDates(date);
+				change = true;
+			}
+		}
+		
+		
+		
+		int outCounter = Integer.parseInt(request.getParameter("outCounter"));
 		ArrayList<String> outtings = plan.getOuttings();
-		if(!outtings.get(0).equals(outting1)){
-			plan.setOuttingsAt(0, outting1);
-			change = true;
-		}
-		if(!outtings.get(1).equals(outting2)){
-			plan.setOuttingsAt(1, outting2);
-			change = true;
-		}
-		if(!outtings.get(2).equals(outting3)){
-			plan.setOuttingsAt(2, outting3);
-			change = true;
-		}
-		
-		String lactator1 = request.getParameter("lactator1");
-		String lactator2 = request.getParameter("lactator2");
-		String lactator3 = request.getParameter("lactator3");
-		ArrayList <String> lactators = plan.getLactators();
-		if(!lactators.get(0).equals(lactator1)){
-			plan.setLactactorsAt(0, lactator1);
-			change = true;
-		}
-		if(!lactators.get(1).equals(lactator2)){
-			plan.setLactactorsAt(1, lactator2);
-			change = true;
-		}
-		if(!lactators.get(2).equals(lactator3)){
-			plan.setLactactorsAt(2, lactator3);
-			change = true;
+		for(int i =0; i <= outCounter; i++){
+			String outting = request.getParameter("outting"+i);
+			if(outtings.size() >= i){
+				if(!outtings.get(i).equals(outting)){
+					plan.setOuttingsAt(i, outting);
+					change = true;
+				}
+			}else{
+				plan.addOuttings(outting);
+				change = true;
+			}
 		}
 		
-		String moodyPeople1 = request.getParameter("moodyPeople1");
-		String moodyPeople2 = request.getParameter("moodyPeople2");
-		String moodyPeople3 = request.getParameter("moodyPeople3");
-		ArrayList <String> moodyPeople = plan.getMoodyPeople();
-		if(!moodyPeople.get(0).equals(moodyPeople1)){
-			plan.setMoodyPeopleAt(0, moodyPeople1);
-			change = true;
+		
+		
+		int lactCounter = Integer.parseInt(request.getParameter("lactCounter"));
+		ArrayList<String> lactators = plan.getLactators();
+		for(int i =0; i <= lactCounter; i++){
+			String lactator = request.getParameter("lactator"+i);
+			if(lactators.size() >= i){
+				if(!lactators.get(i).equals(lactator)){
+					plan.setLactactorsAt(i, lactator);
+					change = true;
+				}
+			}else{
+				plan.addLactators(lactator);
+				change = true;
+			}
 		}
-		if(!moodyPeople.get(1).equals(moodyPeople2)){
-			plan.setMoodyPeopleAt(1, moodyPeople2);
-			change = true;
+		
+		
+		
+		int moodyCounter = Integer.parseInt(request.getParameter("moodyCounter"));
+		ArrayList<String> moodyPeople = plan.getMoodyPeople();
+		for(int i =0; i <= moodyCounter; i++){
+			String moodyPerson = request.getParameter("moodyPerson"+i);
+			if(moodyPeople.size() >= i){
+				if(!moodyPeople.get(i).equals(moodyPerson)){
+					plan.setMoodyPeopleAt(i, moodyPerson);
+					change = true;
+				}
+			}else{
+				plan.addMoodyPeople(moodyPerson);
+				change = true;
+			}
 		}
-		if(!moodyPeople.get(2).equals(moodyPeople3)){
-			plan.setMoodyPeopleAt(2, moodyPeople3);
-			change = true;
-		}
+		
 		
 		
 		model.addAttribute("plan", plan);

@@ -47,7 +47,7 @@
 				<h3>Do-ers</h3>
 				<p>List three people who would be able to be an extra set of hands or come fold that mountain of laundry, get your house back to it's bare minimum, etc. These are the do-ers in your life whose love language is taking care of you.</p>
 				<form action="/u/myplan" method="post">
-					<label th:each="doer,doerCounter : ${plan.doers}">Doer:
+					<label th:each="doer,doerCounter : ${plan.doers}">
 						<input name="'doer'+${doerCounter}" type="text" th:value="${doer}"></input>
 						<input th:if="${doerCounter.last}" name="doerCounter" type="hidden" th:value="${doerCounter}"></input>					
 					</label>
@@ -59,8 +59,9 @@
 				<h3>Encouragers</h3>
 				<p>The think of the people in your life who are the listeners and encouragers. These are the people whom you can call when you are overwhelmed and just need a non-judgmental ear. We all get to the place in the first few weeks and months of having a new baby where we just need to vent and hear some encouragment.</p>
 				<form action="/u/myplan" method="post">
-					<label th:each="encourager, encouragerCounter : ${plan.encouragers}">Encourager:
-						<input name="'encourager'+${encouragerCounter}" type="text" th:value="${encourager}"></input>	
+					<label th:each="encourager, encouragerCounter : ${plan.encouragers}">
+						<input name="'encourager'+${encouragerCounter}" type="text" th:value="${encourager}"></input>
+						<input th:if="${encouragerCounter.last}" name="encouragerCounter" type="hidden" th:value="${encouragerCounter}"></input>	
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -70,11 +71,15 @@
 				<h2>Feed Yourself!</h2>
 				<p>Also, stock the pantry with high far, high protein and quick to prepare foods (you will especially want these if nursing). Consider using some of your nesting energy for preparing and freezing individual portions: lasgna roll-ups, breakfast sandwiches/burritos, groaning muffins, small portions of soup. If your partner does not cook or if the family is out of town, you might consider making large frozen meals as well to feed the family. You can ask family/friends to host a "stock the freezer" shower for you, manage a meal-train for the first few weeks postpartum. Consider using a meal delivery service or prep service for a time (Time For Dinner, Blue Apron, etc). Don't forget to have on hand nuts, fruit, avocados, yogurt, etc for healthy snacks too.</p>
 				<form action="/u/myplan" method="post">
-					<label>Restaurants/Grocery stores that deliver:
-						<input th:each="emergencyFood, foodCounter : ${plan.emergencyFoods}" name="'emergencyFood'+${foodCounter}" type="text" th:value="${emergencyFood}"></input>
+					<p>Restaurants/Grocery stores that deliver:</p>
+					<label th:each="emergencyFood, foodCounter : ${plan.emergencyFoods}">
+						<input name="'emergencyFood'+${foodCounter}" type="text" th:value="${emergencyFood}"></input>
+						<input th:if="${foodCounter.last}" name="foodCounter" type="hidden" th:value="${foodCounter}">
 					</label>
-					<label>Ways you plan to stock the pantry:
-						<input th:each="pantryItem, pantryCounter : ${plan.pantry}" name="'pantryItem'+${pantryCounter}" type="text" th:value="${pantryItem}"></input>	
+					<p>Ways you plan to stock the pantry:</p>
+					<label th:each="pantryItem, pantryCounter : ${plan.pantry}">
+						<input name="'pantryItem'+${pantryCounter}" type="text" th:value="${pantryItem}"></input>	
+						<input th:if="${pantryCounter.last}" name="pantryCounter" type="hidden" th:value="${pantryCounter}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -84,8 +89,10 @@
 				<h2>Your Home</h2>
 				<p>For so many of us, how our home feels directly impacts how we feel. Make a plan for you bare minimum and then ask for help getting there. What are the most important housekeeping things to you (dishes kept up, generally tidy, laundry done, floors clean, bathrooms clean, kitchen sink shiny, etc)?</p>
 				<form action="/u/myplan" method="post">
-					<label>Three things your partner needs to maintain:
-						<input th:each="chore, choreCounter : ${plan.chores}" name="'chore'+${choreCounter}" type="text" th:value="${chore}"></input>				
+					<p>Three things your partner needs to maintain:</p>
+					<label th:each="chore, choreCounter : ${plan.chores}">
+						<input name="'chore'+${choreCounter}" type="text" th:value="${chore}"></input>
+						<input th:if="${choreCounter.last}" name="choreCounter" type="hidden" th:value="${choreCounter}"></input>				
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -96,8 +103,10 @@
 				<p>Before baby comes, spend some time (like multiple times, every day, especially if you have preschoolers and toddlers) talking about what newborns are actually like. A lot of kids imagine a playmate just like them and may have expectations of playing with the baby and baby interacting with them. Talking about how newborns can't do anything on their own (even eat, sit, talk, roll over, hug, smile, etc) can help young children understand better how you will have to help baby constantly. Finding  books at the library that emphasize a newborn's dependence as well as books that focus siblings emotion can be helpful. Consider making a booklet of pictures of your older kids as "helpless" newborns that you did everything for when it was their turn.</p>
 				<p>After baby comes, it helps to have a plan for making sure older siblings aren't feeling neglected or displaced. Having special activities available for while you are nursing baby (books, puzzles, etc) is one idea. Consider making plans for older siblings to play with friends or family outside of the house, especially for the first couple of weeks postpartum. Or consider hiring a mother's helper or postpartum doula to assist.</p>
 				<form action="/u/myplan" method="post">
-					<label>List folks who can either come play with your older kids or take them out for special excursions/playdates:
-						<input th:each="sitter, sitterCounter : ${plan.sitters}" name="'sitter'+ ${sitterCounter}" type="text" th:value="${sitter}"></input>
+					<p>List folks who can either come play with your older kids or take them out for special excursions/playdates:</p>
+					<label th:each="sitter, sitterCounter : ${plan.sitters}">
+						<input name="'sitter'+ ${sitterCounter}" type="text" th:value="${sitter}"></input>
+						<input th:if="${sitterCounter.last}" name="sitterCounter" type="hidden" th:value="${sitterCounter}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -107,8 +116,10 @@
 				<h2>Connect with your spouse</h2>
 				<p>Brainstorm some ways you can actively foster connection during the postpartum year. If you are comfortable leaving baby early on for date-nights, super! If you are not, be proactive about finding ways to tune-in to each other. This is so important to your well-being!! Be creative: can you set aside a date night at home (no screens? Special drinks? Read aloud? Order in after the kids are in bed? Collaborative art-making?). Lack of money and time are not obstacles unless you let them be. There is always a way to foster connection with each other even in the most restrictive of circumstances.</p>
 				<form action="/u/myplan" method="post">
-					<label>List your best ideas:
-						<input th:each="date, dateCounter : ${plan.dates}" name="'date'+${dateCounter}" type="text" th:value="${date}"></input>
+					<p>List your best ideas:</p>
+					<label th:each="date, dateCounter : ${plan.dates}">
+						<input name="'date'+${dateCounter}" type="text" th:value="${date}"></input>
+						<input th:if="${dateCounter.last}" name="dateCounter" type="hidden" th:value="${dateCounter}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -118,8 +129,10 @@
 			<h2>Get out and about!</h2>
 			<p>Take walks, find peer groups at places like Kangaroo Kids, AmberSky, Parenting Resource. If you took a private childbirth class, that is often a good place to start. Plan an outing and connection time for you every week after the initial rest period. Isolation in motherhood can feel utterly overwhelming!</p>
 				<form action="/u/myplan" method="post">
-					<label>Name three favorite places/people you can go to/call to get out of the house.
-						<input th:each="outting, outCounter : ${plan.outtings}" name="'outting'+${outCounter}" type="text" th:value="${outting}"></input>
+					<p>Name three favorite places/people you can go to/call to get out of the house.</p>
+					<label th:each="outting, outCounter : ${plan.outtings}">
+						<input name="'outting'+${outCounter}" type="text" th:value="${outting}"></input>
+						<input th:if="${outCounter.last}" name="outCounter" type="hidden" th:value="${outCounter}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -129,8 +142,9 @@
 				<h2>Breastfeeding troubleshooting</h2>
 				<p>The first few days/weeks of breastfeeding are sometimes bumpy. List three lactation counselors you can call if you need help troubleshooting breastfeeding. These can also be breastfeeding circles/support groups but do include at least one counselor.</p>
 				<form action="/u/myplan" method="post">
-					<label>
-						<input th:each="lactator, lactCounter : ${plan.lactators}" name="'lactator'+${lactCounter}" type="text" th:value="${lactator}"></input>
+					<label th:each="lactator, lactCounter : ${plan.lactators}">
+						<input name="'lactator'+${lactCounter}" type="text" th:value="${lactator}"></input>
+						<input th:if="${lactCounter.last}" name="lactCounter" type="hidden" th:value="${lactCounter}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -147,7 +161,10 @@
 				</ul>
 				<p>If you have a counselor already, list their number here. If you do not have a counselor already then list three resources of counselors who specialize in postpartum support. Having someone who understands postpartum resources is important to getting good care. Ask your doctor, midwife, doula, or a friend who may have already received care for postpartum mood disorders.</p>
 				<form action="/u/myplan" method="post">
-					<input th:each="moodyPerson, moodyCounter : ${plan.moodyPeople}" name="'moodyPerson'+${moodyCounter}" type="text" th:value="${moodyPerson}"></input>
+					<label th:each="moodyPerson, moodyCounter : ${plan.moodyPeople}">
+						<input name="'moodyPerson'+${moodyCounter}" type="text" th:value="${moodyPerson}"></input>
+						<input th:if="${moodyCounter.last}" name="moodyCounter" type="hidden" th:value="${moodyCounter}"></input>
+					</label>
 					<input type="submit" value="Save"></input>
 				</form>
 			</article>

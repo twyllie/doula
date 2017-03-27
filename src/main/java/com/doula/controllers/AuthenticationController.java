@@ -89,6 +89,7 @@ public class AuthenticationController extends AbstractController {
 
 		
 		User user = new User(email, password, false);
+		planDao.save(user.getPlan());
 		userDao.save(user);
 		setUserInSession(request.getSession(), user);
 		

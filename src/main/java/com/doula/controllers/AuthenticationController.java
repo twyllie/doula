@@ -96,13 +96,13 @@ public class AuthenticationController extends AbstractController {
 		return "redirect: /signin";
 	}
 	
-	
-	
-	@RequestMapping(value = "/signout", method = RequestMethod.GET)
-	public String signout(HttpServletRequest request){
-		request.getSession().invalidate();
-		return "redirect:/preview";
-	}
-	
+//	
+//	
+//	@RequestMapping(value = "/signout", method = RequestMethod.GET)
+//	public String signout(HttpServletRequest request){
+//		request.getSession().invalidate();
+//		return "redirect:/preview";
+//	}
+//	
 	
 }

@@ -19,12 +19,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/admin/**").hasRole("ADMIN")
 				.and()
 			.formLogin()
-				.loginPage("/signin")
+				.loginPage("/signin").defaultSuccessUrl("/u/home")
 				.permitAll()
 				.and()
 			.logout()
 				.logoutUrl("/signout")
-				.logoutSuccessUrl("/signin?signout");
+				.logoutSuccessUrl("/signin?signout")
+				.permitAll();
 		
 	}
 }

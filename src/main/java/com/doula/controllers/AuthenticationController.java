@@ -38,21 +38,18 @@ public class AuthenticationController extends AbstractController {
 	
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public String signin(HttpServletRequest request, Model model){
+	public String signin(HttpServletRequest request){
 		
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		
-		if(User.isValidEmail(email)){
-			User user = userDao.findByEmail(email);
-			if(user.isMatchingPassword(password)){
-				setUserInSession(request.getSession(), user);
-				return "redirect: /u/home";
-			}
-		}
-		
-		model.addAttribute("error", "Either the email address or password are incorrect.");
-		model.addAttribute("email", email);
+//		String email = request.getParameter("email");
+//		String password = request.getParameter("password");
+//		
+//		if(User.isValidEmail(email)){
+//			User user = userDao.findByEmail(email);
+//			if(user.isMatchingPassword(password)){
+//				setUserInSession(request.getSession(), user);
+//				return "redirect: /u/home";
+//			}
+//		}
 		
 		return "signin";
 	}
@@ -86,14 +83,15 @@ public class AuthenticationController extends AbstractController {
 			model.addAttribute("email_error", "This is an invalid email");
 			return "signup";
 		}
+		
+		//TODO: Make a check for the email being in use already.
 
 		
 		User user = new User(email, password, false);
 		planDao.save(user.getPlan());
 		userDao.save(user);
-		setUserInSession(request.getSession(), user);
 		
-		return "redirect: /signin";
+		return "redirect:/signin";
 	}
 	
 //	

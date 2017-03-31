@@ -1,18 +1,18 @@
 package com.doula.models;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Table(name = "user")
@@ -41,32 +41,24 @@ public class User extends AbstractEntity{
 	@JoinColumn(name = "plan_uid")
 	private Plan plan;
 	
+	@ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles;
 	
-	@Column(name = "roles")
-	private ArrayList<String> roles;
-	
-	
-	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
 	
 	
 	//CONSTRUCTORS
 	public User(){}
 	
-	public User(String email, String password, boolean admin){
+	public User(String email, String password){
 		
 		super();
 		
 		this.created = new Date();
 		this.updated = created;
 		this.email = email;
-		this.pwHash = hashPassword(password);
+		this.pwHash = password;
 		this.plan = new Plan(this.created);
-		this.roles = new ArrayList<String>();
-		this.roles.add("ROLE_USER");
-		if(admin){
-			this.roles.add("ROLE_ADMIN");
-		}
 		
 		
 	}
@@ -117,10 +109,12 @@ public class User extends AbstractEntity{
 		this.plan = plan;
 	}
 	
-	public ArrayList<String> getRoles(){
+	
+	
+	public Set<Role> getRoles(){
 		return this.roles;
 	}
-	public void setRoles(ArrayList<String> roles){
+	public void setRoles(Set<Role> roles){
 		this.roles = roles;
 	}
 	
@@ -141,15 +135,4 @@ public class User extends AbstractEntity{
 		return matcher.matches();
 	}
 	
-	
-	
-	private static String hashPassword(String password) {		
-		return encoder.encode(password);
-	}
-	
-	
-	
-	public boolean isMatchingPassword(String password){
-		return encoder.matches(password, pwHash);
-	}
 }

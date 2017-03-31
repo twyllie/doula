@@ -2,15 +2,35 @@ package com.doula.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.doula.models.User;
+import com.doula.services.SecurityService;
+import com.doula.services.UserService;
+
+import validator.UserValidator;
 
 @Controller
 public class AuthenticationController extends AbstractController {
+	
+	
+	
+	@Autowired
+    private UserService userService;
+	
+	
+
+    @Autowired
+    private SecurityService securityService;
+    
+    
+
+    @Autowired
+    private UserValidator userValidator;
 	
 	
 	
@@ -67,27 +87,29 @@ public class AuthenticationController extends AbstractController {
 		String password = request.getParameter("password");
 		String verify = request.getParameter("verify");
 		
+		if(!userValidator.validatePassword(password)){
+			model.addAttribute("password_erro", "Invalid password");
+			return "signup";
+		}
+		
 		
 		if(!password.equals(verify)){
-			model.addAttribute("email", email);
-			model.addAttribute("verify_error", "The passwords do not match");
-			return "signup";
+			model.addAttribute("verify_error", "The passwords do not match.");
+			return "signup"; 
 		}
-		if(!User.isValidPassword(password)){
-			model.addAttribute("email", email);
-			model.addAttribute("password_error", "This is an invalid password");
-			return "signup";
-		}		
-		if(!User.isValidEmail(email)){
-			model.addAttribute("email", email);
-			model.addAttribute("email_error", "This is an invalid email");
+		
+		if(!userValidator.validateEmail(email)){
+			model.addAttribute("email_error", "The email address is invalid");
 			return "signup";
 		}
 		
-		//TODO: Make a check for the email being in use already.
+		if(!userValidator.isDuplicate(email)){
+			model.addAttribute("email_error", "Email is already in use.");
+			return "signup";
+		}
 
 		
-		User user = new User(email, password, false);
+		User user = new User(email, password);
 		planDao.save(user.getPlan());
 		userDao.save(user);
 		

@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.doula.models.User;
-import com.doula.services.SecurityService;
 import com.doula.services.UserService;
-
-import validator.UserValidator;
 
 @Controller
 public class AuthenticationController extends AbstractController {
@@ -21,16 +18,7 @@ public class AuthenticationController extends AbstractController {
 	
 	@Autowired
     private UserService userService;
-	
-	
-
-    @Autowired
-    private SecurityService securityService;
     
-    
-
-    @Autowired
-    private UserValidator userValidator;
 	
 	
 	
@@ -87,7 +75,7 @@ public class AuthenticationController extends AbstractController {
 		String password = request.getParameter("password");
 		String verify = request.getParameter("verify");
 		
-		if(!userValidator.validatePassword(password)){
+		if(!User.isValidPassword(password)){
 			model.addAttribute("password_erro", "Invalid password");
 			return "signup";
 		}
@@ -98,20 +86,20 @@ public class AuthenticationController extends AbstractController {
 			return "signup"; 
 		}
 		
-		if(!userValidator.validateEmail(email)){
+		if(!User.isValidEmail(email)){
 			model.addAttribute("email_error", "The email address is invalid");
 			return "signup";
 		}
 		
-		if(!userValidator.isDuplicate(email)){
+		if(userService.findByEmail(email) != null){
 			model.addAttribute("email_error", "Email is already in use.");
 			return "signup";
 		}
 
 		
 		User user = new User(email, password);
-		planDao.save(user.getPlan());
-		userDao.save(user);
+		userService.save(user, false);
+		
 		
 		return "redirect:/signin";
 	}

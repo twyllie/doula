@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,17 +12,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.doula.models.Plan;
 import com.doula.models.User;
+import com.doula.services.SecurityService;
 
 @Controller
 public class PlanController extends AbstractController {
 	
 	
 	
+	@Autowired
+	SecurityService securityService;
+	
+	
+	
 	@RequestMapping(value = "/u/myplan", method = RequestMethod.GET)
 	public String myplanForm(HttpServletRequest request, Model model){
-		User user = getUserFromSession(request.getSession());
-		int planuid = user.getPlan().getUid();
-		Plan plan = planDao.findByUid(planuid);
+		User user = userDao.findByEmail(securityService.findLoggedInUsername());
+		Plan plan = user.getPlan();
 		model.addAttribute("plan", plan);
 		return "plan";
 	}
@@ -30,9 +36,9 @@ public class PlanController extends AbstractController {
 	
 	@RequestMapping(value = "/u/myplan", method = RequestMethod.POST)
 	public String myplan(HttpServletRequest request, Model model){
-		User user = getUserFromSession(request.getSession());
-		int planuid = user.getPlan().getUid();
-		Plan plan = planDao.findByUid(planuid);
+		User user = userDao.findByEmail(securityService.findLoggedInUsername());
+		Plan plan = user.getPlan();
+		model.addAttribute("plan", plan);
 		boolean change = false;
 		
 		

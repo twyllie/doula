@@ -21,7 +21,13 @@ public class Role extends AbstractEntity{
 	
 	
 	
-	public Role(){}
+	protected Role(){}
+	
+	public Role(String name){
+		super();
+		
+		this.name = name;
+	}
 	
 	
 	

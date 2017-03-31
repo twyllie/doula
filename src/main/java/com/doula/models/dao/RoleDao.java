@@ -14,4 +14,7 @@ import com.doula.models.Role;
 public interface RoleDao extends CrudRepository<Role, Integer>{
 	
 	List<Role> findAll();
+	
+	Role findByName(String name);
+	
 }

@@ -6,7 +6,7 @@ public interface UserService {
 	
 	
 	
-    void save(User user);
+    void save(User user, boolean admin);
 
     
     

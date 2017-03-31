@@ -14,6 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 @Entity
 @Table(name = "user")
 public class User extends AbstractEntity{
@@ -47,6 +49,10 @@ public class User extends AbstractEntity{
 	
 	
 	
+	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+	
+	
 	//CONSTRUCTORS
 	public User(){}
 	
@@ -57,7 +63,7 @@ public class User extends AbstractEntity{
 		this.created = new Date();
 		this.updated = created;
 		this.email = email;
-		this.pwHash = password;
+		this.pwHash = hashPassword(password);
 		this.plan = new Plan(this.created);
 		
 		
@@ -135,4 +141,21 @@ public class User extends AbstractEntity{
 		return matcher.matches();
 	}
 	
+	
+	
+	public void newPassword(String newPassword){
+		this.pwHash = encoder.encode(newPassword);
+	}
+	
+	
+	
+	private static String hashPassword(String password) {		
+		return encoder.encode(password);
+	}
+	
+	
+	
+	public boolean isMatchingPassword(String password){
+		return encoder.matches(password, pwHash);
+	}
 }

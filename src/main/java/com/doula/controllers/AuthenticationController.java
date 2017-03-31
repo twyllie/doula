@@ -39,14 +39,14 @@ public class AuthenticationController extends AbstractController {
 	
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
-	public String signinForm(){
+	public String signinGet(){
 		return "signin";
 	}
 	
 	
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public String signin(HttpServletRequest request){
+	public String signinPost(HttpServletRequest request){
 		
 //		String email = request.getParameter("email");
 //		String password = request.getParameter("password");
@@ -63,14 +63,14 @@ public class AuthenticationController extends AbstractController {
 	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public String signupForm(){
+	public String signupGet(){
 		return "signup";
 	}
 	
 	
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String signup(HttpServletRequest request, Model model){
+	public String signupPost(HttpServletRequest request, Model model){
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String verify = request.getParameter("verify");
@@ -102,6 +102,20 @@ public class AuthenticationController extends AbstractController {
 		
 		
 		return "redirect:/signin";
+	}
+	
+	
+	
+	@RequestMapping(value="/admin/signup", method = RequestMethod.GET)
+	public String adminSignupGet(){
+		return "admin_signup";
+	}
+	
+	
+	
+	@RequestMapping(value="/admin/signup", method = RequestMethod.POST)
+	public String adminSignupPost(HttpServletRequest request, Model model){
+		return "admin_signup";
 	}
 	
 //	

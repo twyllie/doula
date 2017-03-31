@@ -74,7 +74,7 @@
 					<p>Restaurants/Grocery stores that deliver:</p>
 					<label th:each="emergencyFood, foodCounter : ${plan.emergencyFoods}">
 						<input name="'emergencyFood'+${foodCounter}" type="text" th:value="${emergencyFood}"></input>
-						<input th:if="${foodCounter.last}" name="foodCounter" type="hidden" th:value="${foodCounter}">
+						<input th:if="${foodCounter.last}" name="foodCounter" type="hidden" th:value="${foodCounter}"></input>
 					</label>
 					<p>Ways you plan to stock the pantry:</p>
 					<label th:each="pantryItem, pantryCounter : ${plan.pantry}">

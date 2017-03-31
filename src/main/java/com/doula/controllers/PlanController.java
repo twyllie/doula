@@ -27,9 +27,7 @@ public class PlanController extends AbstractController {
 	@RequestMapping(value = "/u/myplan", method = RequestMethod.GET)
 	public String myplanForm(HttpServletRequest request, Model model){
 		User user = userDao.findByEmail(securityService.findLoggedInUsername());
-		System.out.println(user.getEmail());
-		int planId = user.getPlan().getUid();
-		Plan plan = planDao.findByUid(planId);
+		Plan plan = user.getPlan();
 		model.addAttribute("plan", plan);
 		return "plan";
 	}
@@ -39,8 +37,7 @@ public class PlanController extends AbstractController {
 	@RequestMapping(value = "/u/myplan", method = RequestMethod.POST)
 	public String myplan(HttpServletRequest request, Model model){
 		User user = userDao.findByEmail(securityService.findLoggedInUsername());
-		int planId = user.getPlan().getUid();
-		Plan plan = planDao.findByUid(planId);
+		Plan plan = user.getPlan();
 		model.addAttribute("plan", plan);
 		boolean change = false;
 		

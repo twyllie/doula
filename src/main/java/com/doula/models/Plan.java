@@ -72,6 +72,56 @@ public class Plan extends AbstractEntity {
 		this.created = time;
 		this.updated = this.created;
 		
+		this.doers = new ArrayList<String>();
+		this.doers.add("");
+		this.doers.add("");
+		this.doers.add("");
+		
+		
+		this.encouragers = new ArrayList<String>();
+		this.encouragers.add("");
+		this.encouragers.add("");
+		this.encouragers.add("");
+		
+		this.emergencyFoods  = new ArrayList<String>();
+		this.emergencyFoods.add("");
+		this.emergencyFoods.add("");
+		this.emergencyFoods.add("");
+		
+		this.pantry  = new ArrayList<String>();
+		this.pantry.add("");
+		this.pantry.add("");
+		this.pantry.add("");
+		
+		this.chores  = new ArrayList<String>();
+		this.chores.add("");
+		this.chores.add("");
+		this.chores.add("");
+		
+		this.sitters  = new ArrayList<String>();
+		this.sitters.add("");
+		this.sitters.add("");
+		this.sitters.add("");
+		
+		this.dates  = new ArrayList<String>();
+		this.dates.add("");
+		this.dates.add("");
+		this.dates.add("");
+		
+		this.outtings  = new ArrayList<String>();
+		this.outtings.add("");
+		this.outtings.add("");
+		this.outtings.add("");
+		
+		this.lactators  = new ArrayList<String>();
+		this.lactators.add("");
+		this.lactators.add("");
+		this.lactators.add("");
+		
+		this.moodyPeople  = new ArrayList<String>();
+		this.moodyPeople.add("");
+		this.moodyPeople.add("");
+		this.moodyPeople.add("");
 		
 	}
 	

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+	<head th:replace="template :: dochead">
+	</head>
+	
+	<body>
+	
+		<div>
+			<h1>Admin Account</h1>
+		</div>
+		
+		<div>
+			<form action="/a/signup" method="POST">
+				<label>Email:<input name="email" type="email" th:value="${email}"></input></label>
+				<span class="error" th:text="${email_error}"></span>
+				<label>Password:<input name="password" type="password"></input></label>
+				<span class="error" th:text="${password_error}"></span>
+				<label>Re-Type Password<input name="verify" type="password"></input></label>
+				<span class="error" th:text="${verify_error}"></span>
+				<input type="submit"></input>
+			</form>
+		</div>
+	</body>
+	
+</html>

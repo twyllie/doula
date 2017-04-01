@@ -106,16 +106,46 @@ public class AuthenticationController extends AbstractController {
 	
 	
 	
-	@RequestMapping(value="/admin/signup", method = RequestMethod.GET)
+	@RequestMapping(value="/a/signup", method = RequestMethod.GET)
 	public String adminSignupGet(){
 		return "admin_signup";
 	}
 	
 	
 	
-	@RequestMapping(value="/admin/signup", method = RequestMethod.POST)
+	@RequestMapping(value="/a/signup", method = RequestMethod.POST)
 	public String adminSignupPost(HttpServletRequest request, Model model){
-		return "admin_signup";
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String verify = request.getParameter("verify");
+		
+		if(!User.isValidPassword(password)){
+			model.addAttribute("password_error", "Invalid password");
+			return "signup";
+		}
+		
+		
+		if(!password.equals(verify)){
+			model.addAttribute("verify_error", "The passwords do not match.");
+			return "signup"; 
+		}
+		
+		if(!User.isValidEmail(email)){
+			model.addAttribute("email_error", "The email address is invalid");
+			return "signup";
+		}
+		
+		if(userService.findByEmail(email) != null){
+			model.addAttribute("email_error", "Email is already in use.");
+			return "signup";
+		}
+
+		
+		User user = new User(email, password);
+		userService.save(user, true);
+		
+		
+		return "redirect:/signin";
 	}
 	
 //	

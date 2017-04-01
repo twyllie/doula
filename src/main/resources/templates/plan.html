@@ -48,8 +48,8 @@
 				<p>List three people who would be able to be an extra set of hands or come fold that mountain of laundry, get your house back to it's bare minimum, etc. These are the do-ers in your life whose love language is taking care of you.</p>
 				<form action="/u/myplan" method="post">
 					<label th:each="doer,doerCounter : ${plan.doers}">
-						<input name="'doer'+${doerCounter}" type="text" th:value="${doer}"></input>
-						<input th:if="${doerCounter.last}" name="doerCounter" type="hidden" th:value="${doerCounter}"></input>					
+						<input th:name="'doer'+${doerCounter.index}" type="text" th:value="${doer}"></input>
+						<input th:if="${doerCounter.last}" name="doerCounter" type="hidden" th:value="${doerCounter.index}"></input>					
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -60,8 +60,8 @@
 				<p>The think of the people in your life who are the listeners and encouragers. These are the people whom you can call when you are overwhelmed and just need a non-judgmental ear. We all get to the place in the first few weeks and months of having a new baby where we just need to vent and hear some encouragment.</p>
 				<form action="/u/myplan" method="post">
 					<label th:each="encourager, encouragerCounter : ${plan.encouragers}">
-						<input name="'encourager'+${encouragerCounter}" type="text" th:value="${encourager}"></input>
-						<input th:if="${encouragerCounter.last}" name="encouragerCounter" type="hidden" th:value="${encouragerCounter}"></input>	
+						<input th:name="'encourager'+${encouragerCounter.index}" type="text" th:value="${encourager}"></input>
+						<input th:if="${encouragerCounter.last}" name="encouragerCounter" type="hidden" th:value="${encouragerCounter.index}"></input>	
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -73,13 +73,13 @@
 				<form action="/u/myplan" method="post">
 					<p>Restaurants/Grocery stores that deliver:</p>
 					<label th:each="emergencyFood, foodCounter : ${plan.emergencyFoods}">
-						<input name="'emergencyFood'+${foodCounter}" type="text" th:value="${emergencyFood}"></input>
-						<input th:if="${foodCounter.last}" name="foodCounter" type="hidden" th:value="${foodCounter}"></input>
+						<input th:name="'emergencyFood'+${foodCounter.index}" type="text" th:value="${emergencyFood}"></input>
+						<input th:if="${foodCounter.last}" name="foodCounter" type="hidden" th:value="${foodCounter.index}"></input>
 					</label>
 					<p>Ways you plan to stock the pantry:</p>
 					<label th:each="pantryItem, pantryCounter : ${plan.pantry}">
-						<input name="'pantryItem'+${pantryCounter}" type="text" th:value="${pantryItem}"></input>	
-						<input th:if="${pantryCounter.last}" name="pantryCounter" type="hidden" th:value="${pantryCounter}"></input>
+						<input th:name="'pantryItem'+${pantryCounter.index}" type="text" th:value="${pantryItem}"></input>	
+						<input th:if="${pantryCounter.last}" name="pantryCounter" type="hidden" th:value="${pantryCounter.index}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -91,8 +91,8 @@
 				<form action="/u/myplan" method="post">
 					<p>Three things your partner needs to maintain:</p>
 					<label th:each="chore, choreCounter : ${plan.chores}">
-						<input name="'chore'+${choreCounter}" type="text" th:value="${chore}"></input>
-						<input th:if="${choreCounter.last}" name="choreCounter" type="hidden" th:value="${choreCounter}"></input>				
+						<input name="'chore'+${choreCounter.index}" type="text" th:value="${chore}"></input>
+						<input th:if="${choreCounter.last}" name="choreCounter" type="hidden" th:value="${choreCounter.index}"></input>				
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -105,8 +105,8 @@
 				<form action="/u/myplan" method="post">
 					<p>List folks who can either come play with your older kids or take them out for special excursions/playdates:</p>
 					<label th:each="sitter, sitterCounter : ${plan.sitters}">
-						<input name="'sitter'+ ${sitterCounter}" type="text" th:value="${sitter}"></input>
-						<input th:if="${sitterCounter.last}" name="sitterCounter" type="hidden" th:value="${sitterCounter}"></input>
+						<input name="'sitter'+ ${sitterCounter.index}" type="text" th:value="${sitter}"></input>
+						<input th:if="${sitterCounter.last}" name="sitterCounter" type="hidden" th:value="${sitterCounter.index}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -118,8 +118,8 @@
 				<form action="/u/myplan" method="post">
 					<p>List your best ideas:</p>
 					<label th:each="date, dateCounter : ${plan.dates}">
-						<input name="'date'+${dateCounter}" type="text" th:value="${date}"></input>
-						<input th:if="${dateCounter.last}" name="dateCounter" type="hidden" th:value="${dateCounter}"></input>
+						<input name="'date'+${dateCounter.index}" type="text" th:value="${date}"></input>
+						<input th:if="${dateCounter.last}" name="dateCounter" type="hidden" th:value="${dateCounter.index}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -131,8 +131,8 @@
 				<form action="/u/myplan" method="post">
 					<p>Name three favorite places/people you can go to/call to get out of the house.</p>
 					<label th:each="outting, outCounter : ${plan.outtings}">
-						<input name="'outting'+${outCounter}" type="text" th:value="${outting}"></input>
-						<input th:if="${outCounter.last}" name="outCounter" type="hidden" th:value="${outCounter}"></input>
+						<input name="'outting'+${outCounter.index}" type="text" th:value="${outting}"></input>
+						<input th:if="${outCounter.last}" name="outCounter" type="hidden" th:value="${outCounter.index}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -143,8 +143,8 @@
 				<p>The first few days/weeks of breastfeeding are sometimes bumpy. List three lactation counselors you can call if you need help troubleshooting breastfeeding. These can also be breastfeeding circles/support groups but do include at least one counselor.</p>
 				<form action="/u/myplan" method="post">
 					<label th:each="lactator, lactCounter : ${plan.lactators}">
-						<input name="'lactator'+${lactCounter}" type="text" th:value="${lactator}"></input>
-						<input th:if="${lactCounter.last}" name="lactCounter" type="hidden" th:value="${lactCounter}"></input>
+						<input name="'lactator'+${lactCounter.index}" type="text" th:value="${lactator}"></input>
+						<input th:if="${lactCounter.last}" name="lactCounter" type="hidden" th:value="${lactCounter.index}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>
@@ -162,8 +162,8 @@
 				<p>If you have a counselor already, list their number here. If you do not have a counselor already then list three resources of counselors who specialize in postpartum support. Having someone who understands postpartum resources is important to getting good care. Ask your doctor, midwife, doula, or a friend who may have already received care for postpartum mood disorders.</p>
 				<form action="/u/myplan" method="post">
 					<label th:each="moodyPerson, moodyCounter : ${plan.moodyPeople}">
-						<input name="'moodyPerson'+${moodyCounter}" type="text" th:value="${moodyPerson}"></input>
-						<input th:if="${moodyCounter.last}" name="moodyCounter" type="hidden" th:value="${moodyCounter}"></input>
+						<input name="'moodyPerson'+${moodyCounter.index}" type="text" th:value="${moodyPerson}"></input>
+						<input th:if="${moodyCounter.last}" name="moodyCounter" type="hidden" th:value="${moodyCounter.index}"></input>
 					</label>
 					<input type="submit" value="Save"></input>
 				</form>

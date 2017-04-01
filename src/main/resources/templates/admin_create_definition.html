@@ -6,8 +6,8 @@
 	<body>
 		<nav th:replace="template :: admin_navigation"></nav>
 		<h1>Definition</h1>
-		<form>
-			<input name="title" type="text" th:value="${title}"></input>
+		<form action="/admin/create/definition" method="post">
+			<label>Term:<input name="title" type="text" th:value="${title}"></input></label>
 			<div class="error" th:text="${title_error}"></div>
 			<textarea name="body" th:value="${body}"></textarea>
 			<div class="error" th:text="${body_error}"></div>

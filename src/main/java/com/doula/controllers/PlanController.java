@@ -45,7 +45,11 @@ public class PlanController extends AbstractController {
 		
 		//Get every field and check if they are different from existing fields, if so reset them.
 		String doctor = request.getParameter("doctor");
-		if(!doctor.equals(plan.getDoctor())){
+		if(plan.getDoctor() == null){
+			plan.setDoctor(doctor);
+			change = true;
+		}
+		else if(!doctor.equals(plan.getDoctor())){
 			plan.setDoctor(doctor);
 			change = true;
 		}
@@ -53,7 +57,11 @@ public class PlanController extends AbstractController {
 		
 		
 		String pedi = request.getParameter("pedi");
-		if(!pedi.equals(plan.getPedi())){
+		if(plan.getPedi() == null){
+			plan.setPedi(pedi);
+			change = true;
+		}
+		else if(!pedi.equals(plan.getPedi())){
 			plan.setPedi(pedi);
 			change = true;
 		}
@@ -61,7 +69,11 @@ public class PlanController extends AbstractController {
 		
 		
 		String doula = request.getParameter("doula");
-		if(!doula.equals(plan.getDoula())){
+		if(plan.getDoula() == null){
+			plan.setDoula(doula);
+			change = true;
+		}
+		else if(!doula.equals(plan.getDoula())){
 			plan.setDoula(doula);
 			change = true;
 		}
@@ -69,32 +81,40 @@ public class PlanController extends AbstractController {
 		
 		
 		String coordinator = request.getParameter("coordinator");
-		if(!coordinator.equals(plan.getCoordinator())){
+		if(plan.getCoordinator() == null){
+			plan.setCoordinator(coordinator);
+			change = true;
+		}
+		else if(!coordinator.equals(plan.getCoordinator())){
 			plan.setCoordinator(coordinator);
 			change  = true;
 		}
 		
 		
-		
-		//Get the number of elements that the form has sent.
-		int doerCounter = Integer.parseInt(request.getParameter("doerCounter"));
-		//Get the collection that Plan already has, for comparison
-		ArrayList<String> doers = plan.getDoers();
-		//Iterate through the received elements to see if they are different from the present ones.
-		for(int i=0; i <= doerCounter; i++){
-			String doer = request.getParameter("doer"+i);
-			//See if the current received doer is in the collection already.
-			if(doers.size() >= i){
-				//If it is, see if it has changed and update accordingly.
-				if(!doers.get(i).equals(doer)){
-					plan.setDoersAt(i, doer);
+		//Protective null shield
+		String doerCounterS = request.getParameter("doerCounter");
+		if(doerCounterS != null){
+			//Get the number of elements that the form has sent.
+			int doerCounter = Integer.parseInt(doerCounterS);
+			//Get the collection that Plan already has, for comparison
+			ArrayList<String> doers = plan.getDoers();
+			//Iterate through the received elements to see if they are different from the present ones.
+			for(int i=0; i <= doerCounter; i++){
+				String doer = request.getParameter("doer"+i);
+				//See if the current received doer is in the collection already.
+				if(doers.size() >= i){
+					//If it is, see if it has changed and update accordingly.
+					if(!doers.get(i).equals(doer)){
+						plan.setDoersAt(i, doer);
+						change = true;
+					}
+				}else{
+					//If it isn't, add it.
+					plan.addDoers(doer);
 					change = true;
 				}
-			}else{
-				plan.addDoers(doer);
-				change = true;
+				
 			}
-			
 		}
 		
 		

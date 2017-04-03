@@ -119,154 +119,181 @@ public class PlanController extends AbstractController {
 		
 		
 		
-		int encouragerCounter = Integer.parseInt(request.getParameter("encouragerCounter"));
-		ArrayList<String> encouragers = plan.getEncouragers();
-		for(int i=0; i <= encouragerCounter;i++){
-			String encourager = request.getParameter("encourager"+i);
-			if(encouragers.size() >= i){
-				if(!encouragers.get(i).equals(encourager)){
-					plan.setEncouragersAt(i, encourager);
+		String encouragerCounterS = request.getParameter("encouragerCounter");
+		if(encouragerCounterS != null){
+			int encouragerCounter = Integer.parseInt(request.getParameter("encouragerCounter"));
+			ArrayList<String> encouragers = plan.getEncouragers();
+			for(int i=0; i <= encouragerCounter;i++){
+				String encourager = request.getParameter("encourager"+i);
+				if(encouragers.size() >= i){
+					if(!encouragers.get(i).equals(encourager)){
+						plan.setEncouragersAt(i, encourager);
+						change = true;
+					}
+				}else{
+					plan.addEncouragers(encourager);
 					change = true;
 				}
-			}else{
-				plan.addEncouragers(encourager);
-				change = true;
 			}
 		}
 		
 		
 		
-		int foodCounter = Integer.parseInt(request.getParameter("foodCounter"));
-		ArrayList<String> emergencyFoods = plan.getEmergencyFoods();
-		for(int i=0; i <= foodCounter; i++){
-			String emergencyFood = request.getParameter("emergencyFood"+i);
-			if(emergencyFoods.size() >= i){
-				if(!emergencyFoods.get(i).equals(emergencyFood)){
-					plan.setEmergencyFoodAt(i, emergencyFood);
+		String foodCounterS = request.getParameter("foodCounter");
+		if(foodCounterS != null){
+			int foodCounter = Integer.parseInt(request.getParameter("foodCounter"));
+			ArrayList<String> emergencyFoods = plan.getEmergencyFoods();
+			for(int i=0; i <= foodCounter; i++){
+				String emergencyFood = request.getParameter("emergencyFood"+i);
+				if(emergencyFoods.size() >= i){
+					if(!emergencyFoods.get(i).equals(emergencyFood)){
+						plan.setEmergencyFoodAt(i, emergencyFood);
+						change = true;
+					}
+				}else{
+					plan.addEmergencyFood(emergencyFood);
 					change = true;
 				}
-			}else{
-				plan.addEmergencyFood(emergencyFood);
-				change = true;
 			}
 		}
 		
 		
 		
-		int pantryCounter = Integer.parseInt(request.getParameter("pantryCounter"));
-		ArrayList<String> pantry = plan.getPantry();
-		for(int i=0; i <= pantryCounter; i++){
-			String pantryItem = request.getParameter("pantryItem"+i);
-			if(pantry.size() >= i){
-				if(!pantry.get(i).equals(pantryItem)){
-					plan.setPantryAt(i, pantryItem);
+		String pantryCounterS = request.getParameter("pantryCounter");
+		if(pantryCounterS != null){
+			int pantryCounter = Integer.parseInt(request.getParameter("pantryCounter"));
+			ArrayList<String> pantry = plan.getPantry();
+			for(int i=0; i <= pantryCounter; i++){
+				String pantryItem = request.getParameter("pantryItem"+i);
+				if(pantry.size() >= i){
+					if(!pantry.get(i).equals(pantryItem)){
+						plan.setPantryAt(i, pantryItem);
+						change = true;
+					}
+				}else{
+					plan.addPantry(pantryItem);
 					change = true;
 				}
-			}else{
-				plan.addPantry(pantryItem);
-				change = true;
 			}
 		}
 		
 		
 		
-		int choreCounter = Integer.parseInt(request.getParameter("choreCounter"));
-		ArrayList<String> chores = plan.getChores();
-		for(int i=0; i <= choreCounter; i++){
-			String chore = request.getParameter("chore"+i);
-			if(chores.size() >= i){
-				if(!chores.get(i).equals(chore)){
-					plan.setChoresAt(i, chore);
+		String choreCounterS = request.getParameter("choreCounter");
+		if(choreCounterS != null){
+			int choreCounter = Integer.parseInt(request.getParameter("choreCounter"));
+			ArrayList<String> chores = plan.getChores();
+			for(int i=0; i <= choreCounter; i++){
+				String chore = request.getParameter("chore"+i);
+				if(chores.size() >= i){
+					if(!chores.get(i).equals(chore)){
+						plan.setChoresAt(i, chore);
+						change = true;
+					}
+				}else{
+					plan.addChores(chore);
 					change = true;
 				}
-			}else{
-				plan.addChores(chore);
-				change = true;
 			}
 		}
 		
 		
 		
-		int sitterCounter = Integer.parseInt(request.getParameter("sitterCounter"));
-		ArrayList<String> sitters = plan.getSitters();
-		for(int i =0; i <= sitterCounter; i++){
-			String sitter = request.getParameter("sitter"+i);
-			if(sitters.size() >= i){
-				if(!sitters.get(i).equals(sitter)){
-					plan.setSittersAt(i, sitter);
+		String sitterCounterS = request.getParameter("sitterCounter");
+		if(sitterCounterS != null){
+			int sitterCounter = Integer.parseInt(request.getParameter("sitterCounter"));
+			ArrayList<String> sitters = plan.getSitters();
+			for(int i =0; i <= sitterCounter; i++){
+				String sitter = request.getParameter("sitter"+i);
+				if(sitters.size() >= i){
+					if(!sitters.get(i).equals(sitter)){
+						plan.setSittersAt(i, sitter);
+						change = true;
+					}
+				}else{
+					plan.addSitters(sitter);
 					change = true;
 				}
-			}else{
-				plan.addSitters(sitter);
-				change = true;
 			}
 		}
 		
 		
 		
-		int dateCounter = Integer.parseInt(request.getParameter("dateCounter"));
-		ArrayList<String> dates = plan.getDates();
-		for(int i =0; i <= dateCounter; i++){
-			String date = request.getParameter("date"+i);
-			if(dates.size() >= i){
-				if(!dates.get(i).equals(date)){
-					plan.setDatesAt(i, date);
+		String dateCounterS = request.getParameter("dateCounter");
+		if(dateCounterS != null){
+			int dateCounter = Integer.parseInt(request.getParameter("dateCounter"));
+			ArrayList<String> dates = plan.getDates();
+			for(int i =0; i <= dateCounter; i++){
+				String date = request.getParameter("date"+i);
+				if(dates.size() >= i){
+					if(!dates.get(i).equals(date)){
+						plan.setDatesAt(i, date);
+						change = true;
+					}
+				}else{
+					plan.addDates(date);
 					change = true;
 				}
-			}else{
-				plan.addDates(date);
-				change = true;
 			}
 		}
 		
 		
 		
-		int outCounter = Integer.parseInt(request.getParameter("outCounter"));
-		ArrayList<String> outtings = plan.getOuttings();
-		for(int i =0; i <= outCounter; i++){
-			String outting = request.getParameter("outting"+i);
-			if(outtings.size() >= i){
-				if(!outtings.get(i).equals(outting)){
-					plan.setOuttingsAt(i, outting);
+		String outCounterS = request.getParameter("outCounter");
+		if(outCounterS != null){
+			int outCounter = Integer.parseInt(request.getParameter("outCounter"));
+			ArrayList<String> outtings = plan.getOuttings();
+			for(int i =0; i <= outCounter; i++){
+				String outting = request.getParameter("outting"+i);
+				if(outtings.size() >= i){
+					if(!outtings.get(i).equals(outting)){
+						plan.setOuttingsAt(i, outting);
+						change = true;
+					}
+				}else{
+					plan.addOuttings(outting);
 					change = true;
 				}
-			}else{
-				plan.addOuttings(outting);
-				change = true;
 			}
 		}
 		
 		
 		
-		int lactCounter = Integer.parseInt(request.getParameter("lactCounter"));
-		ArrayList<String> lactators = plan.getLactators();
-		for(int i =0; i <= lactCounter; i++){
-			String lactator = request.getParameter("lactator"+i);
-			if(lactators.size() >= i){
-				if(!lactators.get(i).equals(lactator)){
-					plan.setLactactorsAt(i, lactator);
+		String lactCounterS = request.getParameter("lactCounter");
+		if(lactCounterS != null){
+			int lactCounter = Integer.parseInt(request.getParameter("lactCounter"));
+			ArrayList<String> lactators = plan.getLactators();
+			for(int i =0; i <= lactCounter; i++){
+				String lactator = request.getParameter("lactator"+i);
+				if(lactators.size() >= i){
+					if(!lactators.get(i).equals(lactator)){
+						plan.setLactactorsAt(i, lactator);
+						change = true;
+					}
+				}else{
+					plan.addLactators(lactator);
 					change = true;
 				}
-			}else{
-				plan.addLactators(lactator);
-				change = true;
 			}
 		}
 		
 		
 		
-		int moodyCounter = Integer.parseInt(request.getParameter("moodyCounter"));
-		ArrayList<String> moodyPeople = plan.getMoodyPeople();
-		for(int i =0; i <= moodyCounter; i++){
-			String moodyPerson = request.getParameter("moodyPerson"+i);
-			if(moodyPeople.size() >= i){
-				if(!moodyPeople.get(i).equals(moodyPerson)){
-					plan.setMoodyPeopleAt(i, moodyPerson);
+		String moodyCounterS = request.getParameter("moodyCounter");
+		if(moodyCounterS != null){
+			int moodyCounter = Integer.parseInt(request.getParameter("moodyCounter"));
+			ArrayList<String> moodyPeople = plan.getMoodyPeople();
+			for(int i =0; i <= moodyCounter; i++){
+				String moodyPerson = request.getParameter("moodyPerson"+i);
+				if(moodyPeople.size() >= i){
+					if(!moodyPeople.get(i).equals(moodyPerson)){
+						plan.setMoodyPeopleAt(i, moodyPerson);
+						change = true;
+					}
+				}else{
+					plan.addMoodyPeople(moodyPerson);
 					change = true;
 				}
-			}else{
-				plan.addMoodyPeople(moodyPerson);
-				change = true;
 			}
 		}
 		

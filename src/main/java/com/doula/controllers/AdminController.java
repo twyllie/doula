@@ -211,6 +211,8 @@ public class AdminController extends AbstractController {
 				List<Lesson> lessons = lessonDao.findAllByOrderByOrderId();
 				model.addAttribute("lessons", lessons);
 				return "admin_update_lesson_list";
+			case "lessonOrder":
+				return "redirect:/admin/update/lessonorder";
 			default:
 				break;
 		}
@@ -331,6 +333,7 @@ public class AdminController extends AbstractController {
 	@RequestMapping(value = "admin/update/lessonorder", method = RequestMethod.POST)
 	public String updateLessonOrder(HttpServletRequest request, Model model){
 		int counter = Integer.parseInt(request.getParameter("counter"));
+		System.out.println(counter);
 		for(int i=1; i <= counter;i++){
 			int uid = Integer.parseInt(request.getParameter("uid"+ i));
 			int oid = Integer.parseInt(request.getParameter("newOrder"+i));

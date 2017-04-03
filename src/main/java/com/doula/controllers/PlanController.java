@@ -45,49 +45,57 @@ public class PlanController extends AbstractController {
 		
 		//Get every field and check if they are different from existing fields, if so reset them.
 		String doctor = request.getParameter("doctor");
-		if(plan.getDoctor() == null){
-			plan.setDoctor(doctor);
-			change = true;
-		}
-		else if(!doctor.equals(plan.getDoctor())){
-			plan.setDoctor(doctor);
-			change = true;
+		if(doctor != null){
+			if(plan.getDoctor() == null){
+				plan.setDoctor(doctor);
+				change = true;
+			}
+			else if(!doctor.equals(plan.getDoctor())){
+				plan.setDoctor(doctor);
+				change = true;
+			}
 		}
 		
 		
 		
 		String pedi = request.getParameter("pedi");
-		if(plan.getPedi() == null){
-			plan.setPedi(pedi);
-			change = true;
-		}
-		else if(!pedi.equals(plan.getPedi())){
-			plan.setPedi(pedi);
-			change = true;
+		if(pedi != null){
+			if(plan.getPedi() == null){
+				plan.setPedi(pedi);
+				change = true;
+			}
+			else if(!pedi.equals(plan.getPedi())){
+				plan.setPedi(pedi);
+				change = true;
+			}
 		}
 		
 		
 		
 		String doula = request.getParameter("doula");
-		if(plan.getDoula() == null){
-			plan.setDoula(doula);
-			change = true;
-		}
-		else if(!doula.equals(plan.getDoula())){
-			plan.setDoula(doula);
-			change = true;
+		if(doula != null){
+			if(plan.getDoula() == null){
+				plan.setDoula(doula);
+				change = true;
+			}
+			else if(!doula.equals(plan.getDoula())){
+				plan.setDoula(doula);
+				change = true;
+			}
 		}
 		
 		
 		
 		String coordinator = request.getParameter("coordinator");
-		if(plan.getCoordinator() == null){
-			plan.setCoordinator(coordinator);
-			change = true;
-		}
-		else if(!coordinator.equals(plan.getCoordinator())){
-			plan.setCoordinator(coordinator);
-			change  = true;
+		if(coordinator != null){
+			if(plan.getCoordinator() == null){
+				plan.setCoordinator(coordinator);
+				change = true;
+			}
+			else if(!coordinator.equals(plan.getCoordinator())){
+				plan.setCoordinator(coordinator);
+				change  = true;
+			}
 		}
 		
 		

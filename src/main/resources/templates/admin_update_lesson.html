@@ -7,14 +7,15 @@
 		<nav th:replace="template :: admin_navigation"></nav>
 		<h1>Article</h1>
 		<form>
-			<input name="title" type="text" th:value="${title}"></input>
+			<input name="title" type="text" th:value="${lesson.title}"></input>
 			<div class="error" th:text="title_error"></div>
-			<input name="videoRef" type="text" th:value="${videoRef}"></input>
+			<input name="videoRef" type="text" th:value="${lesson.videoRef}"></input>
 			<div class="error" th:text="videoRef_error"></div>
-			<textarea name="body" th:value="${body}"></textarea>
+			<textarea name="body" th:value="${lesson.body}"></textarea>
 			<div class="error" th:text="body_error"></div>
 			<input type="submit"></input>
 		</form>
+		<a th:href="'/admin/delete/lesson/'+${lesson.uid}">delete</a>
 	</body>
 	
 </html>

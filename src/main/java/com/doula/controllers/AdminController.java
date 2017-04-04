@@ -226,9 +226,7 @@ public class AdminController extends AbstractController {
 	@RequestMapping(value = "admin/update/article/{uid}", method = RequestMethod.GET)
 	public String updateArticleForm(Model model, @PathVariable int uid){
 		Article article = articleDao.findByUid(uid);
-		model.addAttribute("title", article.getTitle());
-		model.addAttribute("headline", article.getHeadline());
-		model.addAttribute("body", article.getBody());
+		model.addAttribute("article", article);
 		return "admin_update_article";
 	}
 	
@@ -261,8 +259,7 @@ public class AdminController extends AbstractController {
 	@RequestMapping(value = "admin/update/definition/{uid}", method = RequestMethod.GET)
 	public String updateDefinitionForm(Model model, @PathVariable int uid){
 		Definition def = definitionDao.findByUid(uid);
-		model.addAttribute("title", def.getTitle());
-		model.addAttribute("body", def.getBody());
+		model.addAttribute("def", def);
 		return "admin_update_definition";
 	}
 	
@@ -294,11 +291,8 @@ public class AdminController extends AbstractController {
 	@RequestMapping(value = "admin/update/lesson/{uid}", method = RequestMethod.GET)
 	public String updateLessonForm(HttpServletRequest request, Model model, @PathVariable int uid){
 		Lesson lesson = lessonDao.findByUid(uid);
-		model.addAttribute("title", lesson.getTitle());
-		model.addAttribute("body", lesson.getBody());
-		model.addAttribute("videoRef", lesson.getVideoRef());
-		model.addAttribute("orderId", lesson.getOrderId());
-		return "admin_update_single";
+		model.addAttribute("lesson", lesson);
+		return "admin_update_lesson";
 	}
 	
 	

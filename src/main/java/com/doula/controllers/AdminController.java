@@ -352,4 +352,36 @@ public class AdminController extends AbstractController {
 		model.addAttribute("lesson", lesson);
 		return "admin_single_lesson";
 	}
+	
+	
+	
+	@RequestMapping(value = "admin/delete/article/{uid}", method = RequestMethod.GET)
+	public String deleteArticle(@PathVariable int uid){
+		Article article = articleDao.findByUid(uid);
+		articleDao.delete(article);
+		return "redirect:/admin?delete";
+	}
+	
+	
+	@RequestMapping(value = "admin/delete/definition/{uid}", method = RequestMethod.GET)
+	public String deleteDefinition(@PathVariable int uid){
+		Definition definition = definitionDao.findByUid(uid);
+		definitionDao.delete(definition);
+		return "redirect:/admin?delete";
+	}
+	
+	
+	
+	@RequestMapping(value = "admin/delete/lesson/{uid}", method = RequestMethod.GET)
+	public String deleteLesson(@PathVariable int uid){
+		Lesson lesson = lessonDao.findByUid(uid);
+		lessonDao.delete(lesson);
+		List<Lesson> lessons = lessonDao.findAllByOrderByOrderId();
+		for(int i = 1; i <= lessons.size(); i++){
+			Lesson l = lessons.get(i);
+			l.setOrderId(i);
+			lessonDao.save(l);
+		}
+		return "redirect:/admin?delete";
+	}
 }

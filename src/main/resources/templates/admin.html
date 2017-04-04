@@ -6,6 +6,7 @@
 	<body>
 		<nav th:replace="template :: admin_navigation"></nav>
 		
+		<div th:if="${param.delete != null}"><p>The item has been deleted.</p></div>
 		<div>
 			<h1>Metrics</h1>
 			<p>Once I learn how to actually track any sales metrics, those will be here. This will be clickable and take you to all of that good, good business info.</p>

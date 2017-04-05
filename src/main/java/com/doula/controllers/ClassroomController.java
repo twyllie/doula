@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.doula.models.Headline;
 import com.doula.models.Lesson;
 
 @Controller
@@ -17,7 +18,8 @@ public class ClassroomController extends AbstractController {
 	
 	@RequestMapping(value = "/u/home", method = RequestMethod.GET)
 	public String dashboard(Model model){
-		
+		List<Headline> headlines = headlineDao.findAll();
+		model.addAttribute("headline", headlines.get(0));
 		return "dashboard";
 	}
 

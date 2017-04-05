@@ -6,9 +6,9 @@
 	<body>
 		<nav th:replace="template :: user_navigation"></nav>
 		
-		<div>
-			<h1>HEADLINE!!</h1>
-			<p>A small headline of stuff that's going on. Maybe a link to a facebook live-cast</p>
+		<div class="headline">
+			<h1 th:text="${headline.title}">Welcome!</h1>
+			<p th:text="${headline.body}">Our App has launched! Enjoy the class!</p>
 		</div>
 		
 		<section>

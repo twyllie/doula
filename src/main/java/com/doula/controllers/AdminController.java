@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.doula.models.Article;
 import com.doula.models.Definition;
+import com.doula.models.Headline;
 import com.doula.models.Lesson;
 
 @Controller
@@ -20,7 +21,7 @@ public class AdminController extends AbstractController {
 	
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String adminForm(){
+	public String adminForm(Model model){
 		return "admin";
 	}
 	
@@ -188,7 +189,7 @@ public class AdminController extends AbstractController {
 	
 	
 	@RequestMapping(value = "admin/update", method = RequestMethod.GET)
-	public String updateSelection(){
+	public String updateSelection(Model model){
 		return "admin_update";
 	}
 	
@@ -213,12 +214,46 @@ public class AdminController extends AbstractController {
 				return "admin_update_lesson_list";
 			case "lessonOrder":
 				return "redirect:/admin/update/lessonorder";
+			case "headline":
+				List<Headline> headlines = headlineDao.findAll();
+				if(headlines.isEmpty()){
+					Headline headline = new Headline("Welcome!", "Our App has launched! Enjoy the class!");
+					headlineDao.save(headline);
+					model.addAttribute("headline", headline);
+					return "admin_update_headline";
+				}
+				model.addAttribute("headline", headlines.get(0));
+				return "admin_update_headline";
 			default:
 				break;
 		}
 		error = "Please select an item from the list.";
 		model.addAttribute("error", error);
 		return "admin_update";
+	}
+	
+	
+	
+	@RequestMapping(value="admin/update/headline", method = RequestMethod.POST)
+	public String updateHeadlineForm(HttpServletRequest request, Model model){
+		int uid = Integer.parseInt(request.getParameter("uid"));
+		String title = request.getParameter("title");
+		String body = request.getParameter("body");
+		Headline headline = headlineDao.findByUid(uid);
+		if(!title.isEmpty() && !body.isEmpty()){
+			headline.setTitle(title);
+			headline.setBody(body);
+			headlineDao.save(headline);
+			model.addAttribute("headline", headline);
+			return "admin_update_headline";
+		}
+		if(title.isEmpty()){
+			model.addAttribute("title_error", "Cannot be empty");
+		}
+		if(body.isEmpty()){
+			model.addAttribute("body_error", "Cannot be empty");
+		}
+		return "admin_update_headline";
 	}
 	
 	

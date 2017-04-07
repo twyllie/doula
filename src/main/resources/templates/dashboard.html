@@ -6,9 +6,9 @@
 	<body>
 		<nav th:replace="template :: user_navigation"></nav>
 		
-		<div class="headline">
-			<h1 th:text="${headline.title}">Welcome!</h1>
-			<p th:text="${headline.body}">Our App has launched! Enjoy the class!</p>
+		<div th:if="${headline}!=null" class="headline">
+			<h1 th:text="${headline.title}"></h1>
+			<p th:text="${headline.body}"></p>
 		</div>
 		
 		<section>

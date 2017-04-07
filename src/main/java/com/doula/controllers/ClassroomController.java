@@ -19,7 +19,9 @@ public class ClassroomController extends AbstractController {
 	@RequestMapping(value = "/u/home", method = RequestMethod.GET)
 	public String dashboard(Model model){
 		List<Headline> headlines = headlineDao.findAll();
-		model.addAttribute("headline", headlines.get(0));
+		if(!headlines.isEmpty()){
+			model.addAttribute("headline", headlines.get(0));
+		}
 		return "dashboard";
 	}
 

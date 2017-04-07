@@ -2,30 +2,70 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 	<head th:fragment="dochead">
 		<link th:href="@{/css/normalize.css}" rel="stylesheet" />
-		<link th:href="@{/css/styles.css}" rel="stylesheet" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
+		<link rel="icon" href="favicon.ico" type="image/ico" sizes="32x32"></link>
 		<title>Doula</title>
+		<style type="text/css">
+			body {
+				paddin-top: 70px;
+				padding-bottom: 70px; 
+			}
+		</style>
 	</head>
 	
 	<body>
 	
-		<nav th:fragment="user_navigation">
-			<ul>
-				<li><a href="/u/home">Home</a></li>
-				<li><a href="/u/myplan">MyPlan</a></li>
-				<li><a href="/u/blog">Articles</a></li>
-				<li><a href="/u/classroom">Class</a></li>
-				<li><a href="/signout">Logout</a></li>
-			</ul>
+		<nav class="navbar navbar-default" th:fragment="user_navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+      				</button>
+					<a class="navbar-brand" href="http://www.mamawisebirth.com/" target="_blank">
+						<img alt="logo" src="mamawise_logo.jpg"></img>
+					</a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="nav-item"><a href="/u/home">Home</a></li>
+						<li class="nav-item"><a href="/u/myplan">MyPlan</a></li>
+						<li class="nav-item"><a href="/u/blog">Articles</a></li>
+						<li class="nav-item"><a href="/u/classroom">Class</a></li>
+						<li class="nav-item"><a href="/signout">Logout</a></li>
+					</ul>
+				</div>
+			</div>
 		</nav>
 	
-		<nav th:fragment="admin_navigation">
-			<ul>
-				<li><a href="/admin">Home</a></li>
-				<li><a href="/u/home">User View</a></li>
-				<li><a href="/admin/create">Add Content</a></li>
-				<li><a href="/admin/update">Edit Content</a></li>
-				<li><a href="/signout">Logout</a></li>
-			</ul>
+		<nav class="navbar navbar-default" th:fragment="admin_navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+      				</button>
+					<a class="navbar-brand" href="http://www.mamawisebirth.com/" target="_blank">
+						<img alt="logo" src="mamawise_logo.jpg"></img>
+					</a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="nav-item"><a href="/admin">Home</a></li>
+						<li class="nav-item"><a href="/u/home">User View</a></li>
+						<li class="nav-item"><a href="/admin/create">Add Content</a></li>
+						<li class="nav-item"><a href="/admin/update">Edit Content</a></li>
+						<li class="nav-item"><a href="/signout">Logout</a></li>
+					</ul>
+				</div>
+			</div>
 		</nav>
 		
 	</body>

@@ -5,11 +5,21 @@
 	
 	<body>
 		<div>
-			<div th:if="${param.signout != null}"><p>You have been signed out.</p></div>
-			<div th:if="${param.error != null}" class="error"><p>Either the username or password are incorrect</p></div>
+			<div th:if="${param.signout != null}" class="alert alert-success">
+				You have been signed out.
+			</div>
+			<div th:if="${param.error != null}" class="error" class="alert alert-danger">
+				Either the username or password are incorrect
+			</div>
 			<form action="/signin" method="POST">
-				<label>Email:<input name="username" type="email" th:value="${email}"></input></label>
-				<label>Password:<input name="password" type="password"></input></label>
+				<div class="form-group">
+					<label for="email">Email:</label>
+					<input class="form-control" id="email" name="username" type="email" th:value="${email}"></input>
+				</div>
+				<div class="form-group">
+					<label for="password">Password:</label>
+					<input class="form-control" id="password" name="password" type="password"></input>
+				</div>
 				<input type="submit"></input>
 			</form>
 		</div>

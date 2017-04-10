@@ -10,7 +10,9 @@
 				<div  class="col-sm-8 col-sm-offset-2 text-center">
 					<h1>Postpartum Planning Worksheet</h1>
 					<p>Planning for your postpartum is just as important as planning for your birth! The purpose of the worksheet is to help you think through resources you might need in the postpartum period and to collect them all into one place. It can be difficult to think who and how to ask for help when you are in the middle of it, so thinking creatively about it all before hand can be very helpful.</p>
+					
 					<br></br>
+					
 					<div>
 						<h3>In order to help anyone who might be assisting you, collect some important numbers here:</h3>
 						<form action="/u/myplan" method="post">
@@ -23,89 +25,99 @@
 								<input class="form-control" id="pedi" name="pedi" type="tel" th:value="${plan.pedi}"></input>
 							</div>
 							<div>
-								<input class="form-control" id="doula" name="doula" type="tel" th:value="${plan.doula}"></input>
 								<label for="doula">Doula/Support person:</label>
+								<input class="form-control" id="doula" name="doula" type="tel" th:value="${plan.doula}"></input>
 							</div>
-							<input type="submit" value="save"></input>
+							<input class="btn btn-default" type="submit" value="save"></input>
 						</form>
 					</div>
+					
 					<br></br>
+					
+					<div>
+						<h2>Your body!</h2>
+						<p>Your pelvic floor stretches to twice it's length at the end of pregnancy and three times it's length after vaginal birth. It is recommended to consider yourself on modified bedrest for two weeks after birth (any birth) in order to heal well physically. This means, stairs only a couple of times a day, not standing or walking for long periods and generally allowing yourself to be well taken care of. In order for this to be successful, you will need support and to prepare.</p>
+						<ul>
+							<li><p>Consider belly-binding or wearing abdominal support belt postpartum to help support your organs and muscles as they shift back into place. Also do some learning about diastasis rectii (seperation of the abdominal muscles) and pelvic floor healing postpartum. My favorite online resource for this is <a href="https://pelvicexercises.com.au/" target="_blank">here</a> but check around for physical therapists in your area who specialize in these issues.</p></li>
+							<li><p>Create nests in the key locations around the house (your bed, near your favorite chair). Stock these with diaper changing items, water bottle, snacks, books/activities for older toddlers. The idea is once you've landed there, you should be able to stay there for a while.</p></li>
+							<li><p>Consider asking for someone else to come stay with you if your partner is back to work already. This is extra important if you have older children. Mothers, sisters, aunts, friends, someone who you trust who will be willing to work for you.</p></li>
+							<li><p>Partners need to be prepared to do all the housework for a couple of weeks! Yep, all of it. You just had a baby and that is a tremendously demanding physical feat. And if you are breastfeeding, there's a whole lot more than healing going on in your body now, too. Figure out what the minimum is (agree on it: dishes, floors tidy, you know what makes you feel crazy when it's out of control). If this is just not going to happen for whatever reasons, consider hiring a housecleaning service short-term (makes a great shower gift). But take your physical recovery seriously.</p></li>
+						</ul>
+					</div>
+					
+					<div>
+						<h3>Warriors</h3>
+						<p>I call these folks your warriors because they are not your rescuers, they are friends and family who are willing to jump in with you and for you. I've broken it down into two basic groups: the do-ers and the encouragers (and sometimes they overlap, in which case, you have some excellent folks in your corner). Before we get to naming those folks, though, a thought about accepting help. We are a culture that values independence and it can be difficult to shake off the inner voice that tells you "you really should just get up and do it." I have found that asking someone else to be the coordinator for your help can relieve some of the pressure of that (incorrect) inner voice. Consider asking someone you love and trust to coordinate helpers and meals for you for a few weeks. Then when anyone asks how they can help, you can leave it to your coordinator to fit people with your needs. This can also help clearly define the boundaries around receiving help. Most of us need solid help during the early postpartum weeks. It is good to be surrounded by willing hands and supportive words. In short, look for the helpers, encouragers, and the do-ers and feel free to say no to those who you will need to host or who want to receive from you, not give to you. The early weeks of pastpartum is a season of receiving for mothers.</p>
+						<form action="/u/myplan" method="post">
+							<div class="form-group">
+								<label for="coordinator">Postpartum coordinator's number:</label>
+								<input class="form-control" id="coordinator" name="coordinator" type="tel" th:value="${plan.coordinator}"></input>
+							</div>
+							<input class="btn btn-default" type="submit" value="save"></input>
+						</form>
+					</div>
+					
+					<br></br>
+					
+					<div>
+						<h3>Do-ers</h3>
+						<p>List three people who would be able to be an extra set of hands or come fold that mountain of laundry, get your house back to it's bare minimum, etc. These are the do-ers in your life whose love language is taking care of you.</p>
+						<form action="/u/myplan" method="post">
+							
+							<div class="form-group" th:each="doer,doerCounter : ${plan.doers}">
+								<label th:for="'doer'+${doerCounter.index}"></label>
+								<input class="form-control" th:id="'doer'+${doerCounter.index}" th:name="'doer'+${doerCounter.index}" type="text" th:value="${doer}"></input>
+								<input th:if="${doerCounter.last}" name="doerCounter" type="hidden" th:value="${doerCounter.index}"></input>
+							</div>
+							<input class="btn btn-default" type="submit" value="save"></input>
+						</form>
+					</div>
+					
+					<br></br>
+					
+					<div>
+						<h3>Encouragers</h3>
+						<p>The think of the people in your life who are the listeners and encouragers. These are the people whom you can call when you are overwhelmed and just need a non-judgmental ear. We all get to the place in the first few weeks and months of having a new baby where we just need to vent and hear some encouragment.</p>
+						<form action="/u/myplan" method="post">
+							<div class="form-group" th:each="encourager, encouragerCounter : ${plan.encouragers}">
+								<label th:for="'encourager'+${encouragerCounter.index}"></label>
+								<input class="form-control" th:id="'encourager'+${encouragerCounter.index}" th:name="'encourager'+${encouragerCounter.index}" type="text" th:value="${encourager}"></input>
+								<input th:if="${encouragerCounter.last}" name="encouragerCounter" type="hidden" th:value="${encouragerCounter.index}"></input>
+							</div>
+							<input class="btn btn-default" type="submit" value="save"></input>
+						</form>
+					</div>
+					
+					<br></br>
+					
+					<div>
+						<h2>Feed Yourself!</h2>
+						<p>Also, stock the pantry with high far, high protein and quick to prepare foods (you will especially want these if nursing). Consider using some of your nesting energy for preparing and freezing individual portions: lasgna roll-ups, breakfast sandwiches/burritos, groaning muffins, small portions of soup. If your partner does not cook or if the family is out of town, you might consider making large frozen meals as well to feed the family. You can ask family/friends to host a "stock the freezer" shower for you, manage a meal-train for the first few weeks postpartum. Consider using a meal delivery service or prep service for a time (Time For Dinner, Blue Apron, etc). Don't forget to have on hand nuts, fruit, avocados, yogurt, etc for healthy snacks too.</p>
+						<form action="/u/myplan" method="post">
+							<p class="text-left">Restaurants/Grocery stores that deliver:</p>
+							<div class="form-group" th:each="emergencyFood, foodCounter : ${plan.emergencyFoods}">
+								<label th:for="'emergencyFood'+${foodCounter.index}"></label>
+								<input class="form-control" th:id="'emergencyFood'+${foodCounter.index}" th:name="'emergencyFood'+${foodCounter.index}" type="text" th:value="${emergencyFood}"></input>
+								<input th:if="${foodCounter.last}" name="foodCounter" type="hidden" th:value="${foodCounter.index}"></input>
+							</div>
+							<p class="text-left">Ways you plan to stock the pantry:</p>
+							<div class="form-group" th:each="pantryItem, pantryCounter : ${plan.pantry}">
+								<label th:for="'pantryItem'+${pantryCounter.index}"></label>
+								<input class="form-control" th:id="'pantryItem'+${pantryCounter.index}" th:name="'pantryItem'+${pantryCounter.index}" type="text" th:value="${pantryItem}"></input>	
+								<input th:if="${pantryCounter.last}" name="pantryCounter" type="hidden" th:value="${pantryCounter.index}"></input>
+							</div>
+							<input class="btn btn-default" type="submit" value="Save"></input>
+						</form>
+					</div>
+					
+					<br></br>
+					
 				</div>
 			</div>
 		</div>
-		
-		<div>
-			
-		</div>
+	
 		
 		<section>
-			
-			<article>
-				
-			</article>
-			
-			<article>
-				<h2>Your body!</h2>
-				<p>Your pelvic floor stretches to twice it's length at the end of pregnancy and three times it's length after vaginal birth. It is recommended to consider yourself on modified bedrest for two weeks after birth (any birth) in order to heal well physically. This means, stairs only a couple of times a day, not standing or walking for long periods and generally allowing yourself to be well taken care of. In order for this to be successful, you will need support and to prepare.</p>
-				<ul>
-					<li><p>Consider belly-binding or wearing abdominal support belt postpartum to help support your organs and muscles as they shift back into place. Also do some learning about diastasis rectii (seperation of the abdominal muscles) and pelvic floor healing postpartum. My favorite online resource for this is <a href="https://pelvicexercises.com.au/" target="_blank">here</a> but check around for physical therapists in your area who specialize in these issues.</p></li>
-					<li><p>Create nests in the key locations around the house (your bed, near your favorite chair). Stock these with diaper changing items, water bottle, snacks, books/activities for older toddlers. The idea is once you've landed there, you should be able to stay there for a while.</p></li>
-					<li><p>Consider asking for someone else to come stay with you if your partner is back to work already. This is extra important if you have older children. Mothers, sisters, aunts, friends, someone who you trust who will be willing to work for you.</p></li>
-					<li><p>Partners need to be prepared to do all the housework for a couple of weeks! Yep, all of it. You just had a baby and that is a tremendously demanding physical feat. And if you are breastfeeding, there's a whole lot more than healing going on in your body now, too. Figure out what the minimum is (agree on it: dishes, floors tidy, you know what makes you feel crazy when it's out of control). If this is just not going to happen for whatever reasons, consider hiring a housecleaning service short-term (makes a great shower gift). But take your physical recovery seriously.</p></li>
-				</ul>
-			</article>
-			
-			<article>
-				<h2>Warriors</h2>
-				<p>I call these folks your warriors because they are not your rescuers, they are friends and family who are willing to jump in with you and for you. I've broken it down into two basic groups: the do-ers and the encouragers (and sometimes they overlap, in which case, you have some excellent folks in your corner). Before we get to naming those folks, though, a thought about accepting help. We are a culture that values independence and it can be difficult to shake off the inner voice that tells you "you really should just get up and do it." I have found that asking someone else to be the coordinator for your help can relieve some of the pressure of that (incorrect) inner voice. Consider asking someone you love and trust to coordinate helpers and meals for you for a few weeks. Then when anyone asks how they can help, you can leave it to your coordinator to fit people with your needs. This can also help clearly define the boundaries around receiving help. Most of us need solid help during the early postpartum weeks. It is good to be surrounded by willing hands and supportive words. In short, look for the helpers, encouragers, and the do-ers and feel free to say no to those who you will need to host or who want to receive from you, not give to you. The early weeks of pastpartum is a season of receiving for mothers.</p>
-				<form action="/u/myplan" method="post">
-					<label>Postpartum coordinator's number:<input name="coordinator" type="tel" th:value="${plan.coordinator}"></input></label>
-					<input type="submit" value="Save"></input>
-				</form>
-			</article>
-			
-			<article>
-				<h3>Do-ers</h3>
-				<p>List three people who would be able to be an extra set of hands or come fold that mountain of laundry, get your house back to it's bare minimum, etc. These are the do-ers in your life whose love language is taking care of you.</p>
-				<form action="/u/myplan" method="post">
-					<label th:each="doer,doerCounter : ${plan.doers}">
-						<input th:name="'doer'+${doerCounter.index}" type="text" th:value="${doer}"></input>
-						<input th:if="${doerCounter.last}" name="doerCounter" type="hidden" th:value="${doerCounter.index}"></input>					
-					</label>
-					<input type="submit" value="Save"></input>
-				</form>
-			</article>
-			
-			<article>
-				<h3>Encouragers</h3>
-				<p>The think of the people in your life who are the listeners and encouragers. These are the people whom you can call when you are overwhelmed and just need a non-judgmental ear. We all get to the place in the first few weeks and months of having a new baby where we just need to vent and hear some encouragment.</p>
-				<form action="/u/myplan" method="post">
-					<label th:each="encourager, encouragerCounter : ${plan.encouragers}">
-						<input th:name="'encourager'+${encouragerCounter.index}" type="text" th:value="${encourager}"></input>
-						<input th:if="${encouragerCounter.last}" name="encouragerCounter" type="hidden" th:value="${encouragerCounter.index}"></input>	
-					</label>
-					<input type="submit" value="Save"></input>
-				</form>
-			</article>
-			
-			<article>
-				<h2>Feed Yourself!</h2>
-				<p>Also, stock the pantry with high far, high protein and quick to prepare foods (you will especially want these if nursing). Consider using some of your nesting energy for preparing and freezing individual portions: lasgna roll-ups, breakfast sandwiches/burritos, groaning muffins, small portions of soup. If your partner does not cook or if the family is out of town, you might consider making large frozen meals as well to feed the family. You can ask family/friends to host a "stock the freezer" shower for you, manage a meal-train for the first few weeks postpartum. Consider using a meal delivery service or prep service for a time (Time For Dinner, Blue Apron, etc). Don't forget to have on hand nuts, fruit, avocados, yogurt, etc for healthy snacks too.</p>
-				<form action="/u/myplan" method="post">
-					<p>Restaurants/Grocery stores that deliver:</p>
-					<label th:each="emergencyFood, foodCounter : ${plan.emergencyFoods}">
-						<input th:name="'emergencyFood'+${foodCounter.index}" type="text" th:value="${emergencyFood}"></input>
-						<input th:if="${foodCounter.last}" name="foodCounter" type="hidden" th:value="${foodCounter.index}"></input>
-					</label>
-					<p>Ways you plan to stock the pantry:</p>
-					<label th:each="pantryItem, pantryCounter : ${plan.pantry}">
-						<input th:name="'pantryItem'+${pantryCounter.index}" type="text" th:value="${pantryItem}"></input>	
-						<input th:if="${pantryCounter.last}" name="pantryCounter" type="hidden" th:value="${pantryCounter.index}"></input>
-					</label>
-					<input type="submit" value="Save"></input>
-				</form>
-			</article>
-			
 			<article>
 				<h2>Your Home</h2>
 				<p>For so many of us, how our home feels directly impacts how we feel. Make a plan for you bare minimum and then ask for help getting there. What are the most important housekeeping things to you (dishes kept up, generally tidy, laundry done, floors clean, bathrooms clean, kitchen sink shiny, etc)?</p>

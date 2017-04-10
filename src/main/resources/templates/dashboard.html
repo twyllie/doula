@@ -6,34 +6,37 @@
 	<body>
 		<nav th:replace="template :: user_navigation"></nav>
 		
-		<div th:if="${headline}!=null" class="headline">
-			<h1 th:text="${headline.title}"></h1>
-			<p th:text="${headline.body}"></p>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 text-left">
+					<h2>class<small> last lesson</small></h2>
+					<form action="/u/classroom">
+						<button type="submit" class="btn btn-default">resume</button>
+					</form>
+				</div>
+				<br></br>
+				<div class="col-sm-8 col-sm-offset-2 text-left">
+					<h2>myplan <small> of mice and men</small></h2>
+					<form action="/u/myplan">
+						<button type="submit" class="btn btn-default">resume</button>
+					</form>
+				</div>
+				<br></br>
+				<div class="col-sm-8 col-sm-offset-2 text-left">
+					<h2>did you know?<small><a href="/u/reference"> parse the jargon</a></small></h2>
+					<div>
+						<h6 th:text="${def.title}"></h6>
+						<p th:text="${def.body}"></p>
+					</div>
+					<br></br>
+					<h2><a href="/u/blog">blog<small> recent</small></a></h2>
+						<div th:each="article : ${articles}">
+							<h5><a th:text="${article.title}" th:href="'/u/blog/'+${article.uid}"></a><small th:text="' '+${article.headline}"></small></h5>
+						</div>
+					<br></br>
+				</div>
+			</div>
 		</div>
-		
-		<section>
-			<article>
-				<h1>Blog Highlights</h1>
-				<p>Highlight from the blog posts</p>
-			</article>
-			
-			<article>
-				<h1>Did you know?</h1>
-				<p>Random link to one of the inputted definitions</p>
-			</article>
-		
-			<article>
-				<h1>Planning State</h1>
-				<p>Status of user's planning in MyPlan.</p>
-			</article>
-			
-			<article>
-				<h1>Class Status</h1>
-				<p>A thumbnail link to the specific video that the user left off in.</p>
-			</article>
-		</section>		
-		
-		
 	</body>
 	
 </html>

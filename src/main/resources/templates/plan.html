@@ -5,22 +5,43 @@
 	
 	<body>
 		<nav th:replace="template :: user_navigation"></nav>
+		<div class="container-fluid">
+			<div class="row">
+				<div  class="col-sm-8 col-sm-offset-2 text-center">
+					<h1>Postpartum Planning Worksheet</h1>
+					<p>Planning for your postpartum is just as important as planning for your birth! The purpose of the worksheet is to help you think through resources you might need in the postpartum period and to collect them all into one place. It can be difficult to think who and how to ask for help when you are in the middle of it, so thinking creatively about it all before hand can be very helpful.</p>
+					<br></br>
+					<div>
+						<h3>In order to help anyone who might be assisting you, collect some important numbers here:</h3>
+						<form action="/u/myplan" method="post">
+							<div class="form-group">
+								<label for="doctor">Your doctor/midwife:</label>
+								<input class="form-control" id="doctor" name="doctor" type="tel" th:value="${plan.doctor}"></input>	
+							</div>
+							<div class="form-group">
+								<label for="doctor">Baby's pediatrician:</label>
+								<input class="form-control" id="pedi" name="pedi" type="tel" th:value="${plan.pedi}"></input>
+							</div>
+							<div>
+								<input class="form-control" id="doula" name="doula" type="tel" th:value="${plan.doula}"></input>
+								<label for="doula">Doula/Support person:</label>
+							</div>
+							<input type="submit" value="save"></input>
+						</form>
+					</div>
+					<br></br>
+				</div>
+			</div>
+		</div>
 		
 		<div>
-			<h1>Postpartum Planning Worksheet</h1>
-			<p>Planning for your postpartum is just as important as planning for your birth! The purpose of the worksheet is to help you think through resources you might need in the postpartum period and to collect them all into one place. It can be difficult to think who and how to ask for help when you are in the middle of it, so thinking creatively about it all before hand can be very helpful.</p>
+			
 		</div>
 		
 		<section>
 			
 			<article>
-				<h2>In order to help anyone who might be assisting you, collect some important numbers here:</h2>
-				<form action="/u/myplan" method="post">
-					<label>Your doctor/midwife:<input name="doctor" type="tel" th:value="${plan.doctor}"></input></label>
-					<label>Baby's pediatrician:<input name="pedi" type="tel" th:value="${plan.pedi}"></input></label>
-					<label>Doula/Support person:<input name="doula" type="tel" th:value="${plan.doula}"></input></label>
-					<input type="submit" value="Save"></input>
-				</form>
+				
 			</article>
 			
 			<article>

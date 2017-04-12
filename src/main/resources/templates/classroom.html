@@ -6,21 +6,25 @@
 	<body>
 		<nav th:replace="template :: user_navigation"></nav>
 		
-		<aside>
-			<ul>
-				<li th:each="lesson : ${lessons}"><a th:href="'/u/classroom/'+${lesson.uid}" th:text="${lesson.title}"></a></li>
-			</ul>
-		</aside>
-		
-		<section>
-			<div>
-				<iframe th:src="${single_lesson.videoRef}" width="640" height="360"></iframe>
+		<div class="container-fluid">
+			<div class="row">
+				<div>
+					<ul>
+						<li th:each="lesson : ${lessons}"><a th:href="'/u/classroom/'+${lesson.uid}" th:text="${lesson.title}"></a></li>
+					</ul>
+				</div>
+				
+				<div class="col-sm-6 col-sm-offset-3 text-center">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item center-block" th:src="${single_lesson.videoRef}" width="640" height="360"></iframe>
+					</div>
+					<br></br>
+					<div>
+						<h3>lesson notes:</h3>
+						<p th:text="${single_lesson.body}"></p>
+					</div>
+				</div>
 			</div>
-			
-			<div>
-				<p th:text="${single_lesson.body}"></p>
-			</div>
-		</section>
-		
+		</div>
 	</body>
 </html>

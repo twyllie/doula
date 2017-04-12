@@ -8,21 +8,26 @@
 		
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-8 col-sm-offset-2 text-left">
+				<div class="col-sm-6 col-sm-offset-3 text-left">
+					<div class="text-center">
+						<h1 th:text="${headline.title}">Headline!!!</h1>
+						<p th:text="${headline.body}">A small headline of stuff that's going on</p>
+					</div>
+					<br></br>
 					<h2>class<small> last lesson</small></h2>
 					<form action="/u/classroom">
 						<button type="submit" class="btn btn-default">resume</button>
 					</form>
 				</div>
 				<br></br>
-				<div class="col-sm-8 col-sm-offset-2 text-left">
+				<div class="col-sm-6 col-sm-offset-3 text-left">
 					<h2>myplan <small> of mice and men</small></h2>
 					<form action="/u/myplan">
 						<button type="submit" class="btn btn-default">resume</button>
 					</form>
 				</div>
 				<br></br>
-				<div class="col-sm-8 col-sm-offset-2 text-left">
+				<div class="col-sm-6 col-sm-offset-3 text-left">
 					<h2>did you know?<small><a href="/u/reference"> parse the jargon</a></small></h2>
 					<div>
 						<h6 th:text="${def.title}"></h6>

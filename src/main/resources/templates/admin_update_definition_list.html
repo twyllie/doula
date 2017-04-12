@@ -5,12 +5,17 @@
 	
 	<body>
 		<nav th:replace="template :: admin_navigation"></nav>
-		<section>
-			<article th:each="definition : ${definitions}">
-				<a th:href="'/admin/update/definition/'+${definition.uid}" th:text="${definition.title}"></a>
-				<p th:text="${definition.created}"></p>
-			</article>
-		</section>
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4 text-left">
+					<div th:each="definition : ${definitions}">
+						<a th:href="'/admin/update/definition/'+${definition.uid}" th:text="${definition.title}"></a>
+						<span><small th:text="${definition.created}"></small></span>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 	
 </html>

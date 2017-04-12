@@ -9,20 +9,33 @@
 	<body>
 		<nav th:replace="template :: admin_navigation"></nav>
 		
-		<div class="headline">
-			<h1 th:text="${headline.title}">Headline!!!</h1>
-			<p th:text="${headline.body}">A small headline of stuff that's going on.</p>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4 text-center">
+					<div>
+						<h1 th:text="${headline.title}">Headline!!!</h1>
+						<p th:text="${headline.body}">A small headline of stuff that's going on.</p>
+					</div>
+					<br></br>
+					<h1>Update Headline:</h1>
+					<form>
+						<div>
+							<label class="sr-only" for="title"></label>
+							<input class="form-control" id="title" name="title" type="text"></input>
+						</div>
+						<div>
+							<label class="sr-only" for="body"></label>
+							<textarea class="form-control" id="body" name="body" rows="6"></textarea>
+						</div>
+						<input name="uid" type="hidden" th:value="${headline.uid}"></input>
+						<button class="btn btn-default" type="submit">save</button>
+					</form>
+					
+					<div th:if="${title_error}" class="alert alert-danger" th:text="${title_error}"></div>
+					<div th:if="${body_error}" class="alert alert-danger" th:text="${body_error}"></div>
+				</div>
+			</div>
 		</div>
-		
-		<h1>Update Headline</h1>
-		<form>
-			<input name="title" type="text"></input>
-			<div class="error" th:text="${title_error}"></div>
-			<textarea name="body"></textarea>
-			<div class="error" th:text="${body_error}"></div>
-			<input name="uid" type="hidden" th:value="${headline.uid}">
-			<input type="submit"></input>
-		</form>
 	</body>
 	
 </html>

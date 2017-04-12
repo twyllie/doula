@@ -13,14 +13,17 @@
         				<span class="icon-bar"></span>
         				<span class="icon-bar"></span>
       				</button>
-					<a class="navbar-brand " href="http://www.mamawisebirth.com/" target="_blank">
+					<a class="navbar-brand " href="/">
 						<!-- <img alt="logo" src="mamawise_logo.jpg" height="20px" width="20px"></img> -->
-						Mamawise Birth
+						Brandname
 					</a>
 				</div>
 				
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="http://www.mamawisebirth.com/" target="_blank">MamaWise Birth</a>
+						</li>
 						<li class="nav-item">
 							<a href="/signup"><span class="glyphicon glyphicon-user"></span> sign up</a>
 						</li>
@@ -45,7 +48,7 @@
 	
 		<div class="container-fluid">
 			<div class="row">
-				<div  class="col-sm-8 col-sm-offset-2 text-center">
+				<div  class="col-sm-4 col-sm-offset-4 text-center">
 					<div>
 						<h1>Stuff about payment plans</h1>
 						<p>Vice ethical brooklyn you probably haven't heard of them. Twee DIY pitchfork, migas tofu unicorn crucifix cliche fashion axe lo-fi organic messenger bag. Farm-to-table gastropub flexitarian, lyft pop-up 8-bit fashion axe keytar vape food truck bicycle rights hell of pour-over. Cray 8-bit four dollar toast street art portland kombucha brunch. Aesthetic helvetica freegan selvage, kinfolk church-key gluten-free activated charcoal. Cliche heirloom fanny pack marfa post-ironic hell of, hella affogato. Art party irony organic taxidermy chia.</p>
@@ -56,20 +59,21 @@
 							<div class="form-group">
 								<label for="email">Email:</label>
 								<input class="form-control" id="email" name="email" type="email" th:value="${email}"></input>
-								<span class="alert alert-danger" th:if="${email_error}" th:text="${email_error}"></span>
+								
 							</div>
 							<div class="form-group">
 								<label>Password:</label>
 								<input class="form-control" id="password" name="password" type="password"></input>
-								<span class="alert alert-danger" th:if="${password_error}" th:text="${password_error}"></span>
 							</div>
 							<div class="form-group">
 								<label for="verify">Re-Type Password:</label>
 								<input class="form-control" id="verify" name="verify" type="password"></input>
-								<span class="alert alert-danger" th:if="${verify_error}" th:text="${verify_error}"></span>
 							</div>
 							<button type="submit" class="btn btn-default">submit</button>					
 						</form>
+						<div class="alert alert-danger" th:if="${verify_error}" th:text="${verify_error}"></div>
+						<div class="alert alert-danger" th:if="${password_error}" th:text="${password_error}"></div>
+						<div class="alert alert-danger" th:if="${email_error}" th:text="${email_error}"></div>
 					</div>
 				</div>
 			</div>

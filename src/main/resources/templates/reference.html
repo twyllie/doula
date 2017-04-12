@@ -4,11 +4,13 @@
 	
 	<body>
 		<nav th:replace="template :: user_navigation"></nav>
-		<section>
-			<article th:each = "def : ${definitions}">
-				<h2><a href="'/u//reference/'+${def.uid}" th:text="${def.title}"></a></h2>
-			</article>
-		</section>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4" th:each = "def : ${definitions}">
+					<h2><a th:href="'/u/reference/'+${def.uid}" th:text="${def.title}"></a></h2>
+				</div>
+			</div>
+		</div>
 	</body>
 
 </html>

@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 	<head th:replace="template :: dochead">
 	</head>
@@ -6,13 +6,14 @@
 	<body>
 		<nav th:replace="template :: user_navigation"></nav>
 		
-		<section>
-			<article>
-				<h2 th:text="${def.title}"></h2>
-				<p th:text="${def.body}"></p>
-			</article>
-		</section>
-		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+					<h2 th:text="${def.title}"></h2>
+					<p th:text="${def.body}"></p>
+				</div>
+			</div>
+		</div>
 	</body>
 
 </html>

@@ -5,15 +5,29 @@
 	
 	<body>
 		<nav th:replace="template :: admin_navigation"></nav>
-		<h1>Definition</h1>
-		<form>
-			<input name="title" type="text" th:value="${def.title}"></input>
-			<div class="error" th:text="${title_error}"></div>
-			<textarea name="body" th:value="${def.body}"></textarea>
-			<div class="error" th:text="${body_error}"></div>
-			<input type="submit"></input>
-		</form>
-		<a th:href="'/admin/delete/definition/'+${def.uid}">delete</a>
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4 text-center">
+					<h1>Definition</h1>
+					<form th:action="'/admin/update/definition/'+${def.uid}" method="post">
+						<div class="form-group">
+							<label class="sr-only" for="title"></label>
+							<input class="form-control" id="title" name="title" type="text" th:value="${def.title}"></input>
+						</div>
+						<div class="form-group">
+							<label class="sr-only" for="body"></label>
+							<textarea class="form-control" id="body" name="body" th:text="${def.body}" rows="6"></textarea>
+						</div>
+						<button class="btn btn-default" type="submit">save</button>
+					</form>
+					<a th:href="'/admin/delete/definition/'+${def.uid}">delete</a>
+					<div th:if="${title_error}" class="alert alert-danger" th:text="${title_error}"></div>
+					<div th:if="${body_error}" class="alert alert-danger" th:text="${body_error}"></div>
+				</div>
+			</div>
+		</div>
+
 	</body>
 	
 </html>

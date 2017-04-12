@@ -4,21 +4,26 @@
 	</head>
 	
 	<body>
-	
-		<div>
-			<h1>Admin Account</h1>
-		</div>
-		
-		<div>
-			<form action="/a/signup" method="POST">
-				<label>Email:<input name="email" type="email" th:value="${email}"></input></label>
-				<span class="error" th:text="${email_error}"></span>
-				<label>Password:<input name="password" type="password"></input></label>
-				<span class="error" th:text="${password_error}"></span>
-				<label>Re-Type Password<input name="verify" type="password"></input></label>
-				<span class="error" th:text="${verify_error}"></span>
-				<input type="submit"></input>
-			</form>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4 text-center">
+					<div>
+						<h1>Admin Account</h1>
+					</div>
+					<br></br>
+					<div>
+						<form action="/a/signup" method="POST">
+							<label>Email:<input name="email" type="email" th:value="${email}"></input></label>
+							<span class="error" th:text="${email_error}"></span>
+							<label>Password:<input name="password" type="password"></input></label>
+							<span class="error" th:text="${password_error}"></span>
+							<label>Re-Type Password<input name="verify" type="password"></input></label>
+							<span class="error" th:text="${verify_error}"></span>
+							<input type="submit"></input>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 	

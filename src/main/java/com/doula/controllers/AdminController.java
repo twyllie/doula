@@ -270,11 +270,18 @@ public class AdminController extends AbstractController {
 	@RequestMapping(value = "admin/update/article/{uid}", method = RequestMethod.POST)
 	public String updateArticle(HttpServletRequest request, Model model, @PathVariable int uid){
 		String title = request.getParameter("title");
+		String headline = request.getParameter("headline");
 		String body = request.getParameter("body");
 		Article article = articleDao.findByUid(uid);
-		article.setBody(body);
-		article.setTitle(title);
-		article.getHeadline();
+		if(article.getTitle() != title){
+			article.setTitle(title);
+		}
+		if(article.getHeadline() != headline){
+			article.setHeadline(headline);
+		}
+		if(article.getBody() != body){
+			article.setBody(body);
+		}
 		article.modified();
 		articleDao.save(article);
 		return "redirect:/admin/article/" + uid;

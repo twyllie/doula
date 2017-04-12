@@ -4,12 +4,15 @@
 	
 	<body>
 		<nav th:replace="template :: user_navigation"></nav>
-		<section>
-			<article th:each = "article : ${articles}">
-				<h2><a th:href="'/u/blog/'+${article.uid}" th:text="${article.title}"></a></h2>
-				<p th:text="${article.headline}"></p>
-			</article>
-		</section>
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4 text-center" th:each = "article : ${articles}">
+					<h2><a th:href="'/u/blog/'+${article.uid}" th:text="${article.title}"></a></h2>
+					<p th:text="${article.headline}"></p>
+				</div>
+			</div>
+		</div>
 	</body>
 
 </html>

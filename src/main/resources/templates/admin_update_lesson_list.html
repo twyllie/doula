@@ -5,12 +5,17 @@
 	
 	<body>
 		<nav th:replace="template :: admin_navigation"></nav>
-		<section>
-			<article th:each="lesson : ${lessons}">
-				<a th:href="'/admin/update/lesson/'+${lesson.uid}" th:text="${lesson.title}"></a>
-				<p th:text="${lesson.created}"></p>
-			</article>
-		</section>
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4 text-left">
+					<div th:each="lesson : ${lessons}">
+						<a th:href="'/admin/update/lesson/'+${lesson.uid}" th:text="${lesson.title}"></a>
+						<span><small th:text="${lesson.created}"></small></span>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 	
 </html>

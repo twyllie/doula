@@ -5,17 +5,35 @@
 	
 	<body>
 		<nav th:replace="template :: admin_navigation"></nav>
-		<h1>Article</h1>
-		<form>
-			<input name="title" type="text" th:value="${article.title}"></input>
-			<div class = "error" th:text="${title_error}"></div>
-			<input name="headline" type="text" th:value="${article.headline}"></input>
-			<div class= "error" th:text="${headline_error}"></div>
-			<textarea name="body" th:value="${article.body}"></textarea>
-			<div class= "error" th:text="${body_error}"></div>
-			<input type="submit"></input>
-		</form>
-		<a th:href="'/admin/delete/article/'+${article.uid}">delete</a>
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4 text-center">
+					<h1>Article</h1>
+		
+					<div th:if="${title_error}" class="alert alert-danger" th:text="${title_error}"></div>
+					<div th:if="${headline_error}" class="alert alert-danger" th:text="${headline_error}"></div>
+					<div th:if="${body_error}" class="alert alert-danger" th:text="${body_error}"></div>
+					
+					<form th:action="'/admin/update/article/'+${article.uid}" method="post">
+						<div class="form-group">
+							<label class="sr-only" for="title"></label>
+							<input id="title" class="form-control" name="title" type="text" th:value="${article.title}"></input>
+						</div>
+						<div class="form-group">
+							<label class="sr-only" for="headline"></label>
+							<input id="headline" class="form-control" name="headline" type="text" th:value="${article.headline}"></input>
+						</div>
+						<div class="form-group">
+							<label class="sr-only" for="body"></label>
+							<textarea id="body" class="form-control" name="body" th:text="${article.body}" rows="12"></textarea>
+						</div>
+						<button class="btn btn-default" type="submit">save</button>
+					</form>
+					<a th:href="'/admin/delete/article/'+${article.uid}">delete</a>
+				</div>
+			</div>
+		</div>
 	</body>
 	
 </html>

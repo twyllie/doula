@@ -6,18 +6,25 @@
 	<body>
 		<nav th:replace="template :: admin_navigation"></nav>
 		
-		<form action="/admin/update" method="POST">
-			<select name="type">
-				<option value="headline">Headline</option>
-				<option value="article">Article</option>
-				<option value="definition">Definition</option>
-				<option value="lesson">Lesson</option>
-				<option value="lessonOrder">Lesson Order</option> 
-			</select>
-			<input type="submit" value="Select"></input>
-			<div><span class="error" th:text="${error}"></span></div>
-		</form>
-	
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4 text-center">
+					<form action="/admin/update" method="POST">
+						<div class="form-group">
+							<select class="form-control" name="type">
+								<option value="headline">Headline</option>
+								<option value="article">Article</option>
+								<option value="definition">Definition</option>
+								<option value="lesson">Lesson</option>
+								<option value="lessonOrder">Lesson Order</option> 
+							</select>
+						</div>
+						<input class="btn btn-default" type="submit" value="select"></input>
+						<div th:if="${error}" class="alert alert-success" th:text="${error}"></div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</body>
 	
 </html>

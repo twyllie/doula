@@ -5,16 +5,31 @@
 	
 	<body>
 		<nav th:replace="template :: admin_navigation"></nav>
-		<h1>Article</h1>
-		<form action ="/admin/create/lesson" method="post">
-			<label>Title:<input name="title" type="text" th:value="${title}"></input></label>
-			<div class="error" th:text="${title_error}"></div>
-			<label>Video Location:<input name="videoRef" type="text" th:value="${videoRef}"></input></label>
-			<div class="error" th:text="${videoRef_error}"></div>
-			<textarea name="body" th:value="${body}"></textarea>
-			<div class="error" th:text="${body_error}"></div>
-			<input type="submit"></input>
-		</form>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4 text-center">
+					<h1>Article</h1>
+					<form action ="/admin/create/lesson" method="post">
+					 	<div class="form-group">
+							<label for="title">Title:</label>
+							<input class="form-control" id="title" name="title" type="text" th:value="${title}"></input>
+						</div>
+						<div class="form-group">
+							<label for="videoRef">Video Location:</label>
+							<input class="form-control" id="videoRef" name="videoRef" type="text" th:value="${videoRef}"></input>
+						</div>
+						<div class="form-group">
+							<label for="body">Additional Notes:</label>
+							<textarea class="form-control" id="body" name="body" th:text="${body}" rows="12"></textarea>
+						</div>						
+						<button class="btn btn-default" type="submit">save</button>
+					</form>
+					<div th:if="${title_error}" class="alert alert-danger" th:text="${title_error}"></div>
+					<div th:if="${videoRef_error}" class="alert alert-danger" th:text="${videoRef_error}"></div>
+					<div th:if="${body_error}" class="alert alert-danger" th:text="${body_error}"></div>
+				</div>
+			</div>
+		</div>
 	</body>
 	
 </html>

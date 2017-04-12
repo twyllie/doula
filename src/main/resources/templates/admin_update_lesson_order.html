@@ -4,25 +4,24 @@
 	
 	<body>
 		<nav th:replace="template :: admin_navigation"></nav>
-		<form action="/admin/update/lessonorder" method="post">
-			<table>
-				<tr>
-					<th>Order</th>
-					<th>Name</th>
-				</tr>
-				<tr th:each="lesson,counter : ${lessons}">
-					<td>
-						<select th:name="'newOrder'+${counter.count}">
-							<option th:each="number : ${counter.size}" th:value="${numberStat.count}" th:text="${numberStat.count}"></option>
-						</select>
-						<input type="hidden" th:name="'uid'+${counter.count}" th:value="${lesson.uid}"></input>
-					</td>
-					<td th:text="${lesson.title}"></td>
-				</tr>
-			</table>
-			<input type="hidden" name="counter" th:value="${lessons.size()}"></input>
-			<input type="submit" value="Save"></input>
-		</form>
+		
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-4 col-sm-offset-4 text-left">
+						<form action="/admin/update/lessonorder" method="post">
+							<div class="form-group" th:each="lesson,counter : ${lessons}">
+									<select th:name="'newOrder'+${counter.count}" class="form-control">
+										<option th:each="number : ${lessons.size()}" th:value="${numberStat.count}" th:text="${numberStat.count}"></option>
+									</select>
+									<label th:for="'newOrder'+${counter.count}" th:text="${lesson.title}"></label>
+								<input type="hidden" th:name="'uid'+${counter.count}" th:value="${lesson.uid}"></input>
+							</div>
+							<input type="hidden" name="counter" th:value="${lessons.size()}"></input>
+							<button class="btn btn-default" type="submit">save</button>
+						</form>
+					</div>
+				</div>
+			</div>
 	</body>
 	
 </html>

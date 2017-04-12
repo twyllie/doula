@@ -20,7 +20,7 @@ public class PlanController extends AbstractController {
 	
 	
 	@Autowired
-	MySecurityService securityService;
+	private MySecurityService securityService;
 	
 	
 	

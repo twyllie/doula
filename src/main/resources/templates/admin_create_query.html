@@ -6,17 +6,21 @@
 	<body>
 		<nav th:replace="template :: admin_navigation"></nav>
 		
-		<form action="/admin/create" method="post">
-				
-				<select name="type">
-					<option value="article">Article</option>
-					<option value="definition">Definition</option>
-					<option value="lesson">Lesson</option>
-				</select>
-						
-			<input type="submit"></input>
-			
-		</form>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4 text-center">
+					<form action="/admin/create" method="post">	
+						<select class="form-control" name="type">
+							<option value="article">Article</option>
+							<option value="definition">Definition</option>
+							<option value="lesson">Lesson</option>
+						</select>
+						<br></br>
+						<button class="btn btn-default" type="submit">select</button>
+					</form>
+				</div>
+			</div>
+		</div>
 	</body>
 	
 </html>

@@ -5,14 +5,25 @@
 	
 	<body>
 		<nav th:replace="template :: admin_navigation"></nav>
-		<h1>Definition</h1>
-		<form action="/admin/create/definition" method="post">
-			<label>Term:<input name="title" type="text" th:value="${title}"></input></label>
-			<div class="error" th:text="${title_error}"></div>
-			<textarea name="body" th:value="${body}"></textarea>
-			<div class="error" th:text="${body_error}"></div>
-			<input type="submit"></input>
-		</form>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4 text-center">
+					<h1>Definition</h1>
+					<form action="/admin/create/definition" method="post">
+						<div class="form-group">
+							<label for="title">Term:</label>
+							<input class="form-control" id="title" name="title" type="text" th:value="${title}"></input>
+						</div>
+						<div class="form-group">
+							<label for="body"></label>
+							<textarea class="form-control" id="body" name="body" th:text="${body}" rows="6"></textarea>
+						</div>
+						<button class="btn btn-default" type="submit">save</button>
+					</form>
+					<div th:if="${title_error}" class="alert alert-danger" th:text="${title_error}"></div>
+					<div th:if="${body_error}" class="alert alert-danger" th:text="${body_error}"></div>
+				</div>
+			</div>
+		</div>
 	</body>
-	
 </html>

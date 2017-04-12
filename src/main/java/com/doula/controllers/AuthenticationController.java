@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.doula.models.User;
+import com.doula.services.MySecurityService;
 import com.doula.services.UserService;
 
 @Controller
@@ -18,12 +19,24 @@ public class AuthenticationController extends AbstractController {
 	
 	@Autowired
     private UserService userService;
+	
+	@Autowired
+	private MySecurityService securityService;
     
 	
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String root(){
+		if(userDao.findByEmail(securityService.findLoggedInUsername())!=null){
+			User user = userDao.findByEmail(securityService.findLoggedInUsername());
+			if(user.getRoles().contains("ROLE_ADMIN")){
+				return "redirect:/admin";
+			}
+			if(user.getRoles().contains("ROLE_ADMIN")){
+				return "redirect:/u/home";
+			}
+		}
 		//TODO: Implement a check to see if the user is logged in already.
 		//If they are redirect straight to the dash.
 		return "redirect:/preview";
@@ -47,18 +60,6 @@ public class AuthenticationController extends AbstractController {
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public String signinPost(HttpServletRequest request){
-		
-//		String email = request.getParameter("email");
-//		String password = request.getParameter("password");
-//		
-//		if(User.isValidEmail(email)){
-//			User user = userDao.findByEmail(email);
-//			if(user.isMatchingPassword(password)){
-//				setUserInSession(request.getSession(), user);
-//				return "redirect: /u/home";
-//			}
-//		}
-		
 		return "signin";
 	}
 	

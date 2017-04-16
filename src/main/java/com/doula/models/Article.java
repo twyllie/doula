@@ -29,7 +29,7 @@ public class Article extends AbstractEntity{
 	private String headline;
 	
 	@NotNull
-	@Column(name = "body")
+	@Column(name = "body", columnDefinition="TEXT")
 	private String body;
 	
 	@Column(name = "thumbnailRef")

@@ -27,7 +27,7 @@ public class Lesson extends AbstractEntity{
 	private String title;
 	
 	@NotNull
-	@Column(name = "body")
+	@Column(name = "body", columnDefinition="TEXT")
 	private String body;
 	
 	@NotNull

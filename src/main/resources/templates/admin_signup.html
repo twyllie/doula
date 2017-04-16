@@ -25,9 +25,9 @@
 							</div>
 							<button class="btn btn-default" type="submit">signup</button>
 						</form>
-						<div class="alert alert-danger" th:text="${email_error}"></div>
-						<div class="alert alert-danger" th:text="${password_error}"></div>
-						<div class="alert alert-danger" th:text="${verify_error}"></div>
+						<div th:if="${email_error}" class="alert alert-danger" th:text="${email_error}"></div>
+						<div th:if="${password_error}" class="alert alert-danger" th:text="${password_error}"></div>
+						<div th:if="${verify_error}" class="alert alert-danger" th:text="${verify_error}"></div>
 					</div>
 				</div>
 			</div>

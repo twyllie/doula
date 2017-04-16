@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.doula.models.Article;
 import com.doula.models.Definition;
 import com.doula.models.Headline;
 import com.doula.models.Lesson;
@@ -21,12 +22,17 @@ public class ClassroomController extends AbstractController {
 	public String dashboard(Model model){
 		List<Headline> headlines = headlineDao.findAll();
 		List<Definition> definitions = definitionDao.findAll();
+		List<Article> articles = articleDao.findAllByOrderByCreated();
 		if(!headlines.isEmpty()){
 			model.addAttribute("headline", headlines.get(0));
 		}
-		int randInt = (int) Math.floor(Math.random() * definitions.size());
-		model.addAttribute("def", definitions.get(randInt));
-		model.addAttribute("articles", articleDao.findAllByOrderByCreated());
+		if(!definitions.isEmpty()){
+			int randInt = (int) Math.floor(Math.random() * definitions.size());
+			model.addAttribute("def", definitions.get(randInt));
+		}
+		if(!articles.isEmpty()){
+			model.addAttribute("articles", articles);
+		}
 		return "dashboard";
 	}
 

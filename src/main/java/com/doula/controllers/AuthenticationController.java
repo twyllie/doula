@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.doula.models.Role;
 import com.doula.models.User;
 import com.doula.services.MySecurityService;
 import com.doula.services.UserService;
@@ -30,15 +31,16 @@ public class AuthenticationController extends AbstractController {
 	public String root(){
 		if(userDao.findByEmail(securityService.findLoggedInUsername())!=null){
 			User user = userDao.findByEmail(securityService.findLoggedInUsername());
-			if(user.getRoles().contains("ROLE_ADMIN")){
-				return "redirect:/admin";
+			for(Role role : user.getRoles()){
+				if(role.getName().equals("ROLE_ADMIN")){
+					return "redirect:/admin";
+				}
+				if(role.getName().equals("ROLE_USER")){
+					return "redirect:/u/home";
+				}
 			}
-			if(user.getRoles().contains("ROLE_ADMIN")){
-				return "redirect:/u/home";
-			}
+
 		}
-		//TODO: Implement a check to see if the user is logged in already.
-		//If they are redirect straight to the dash.
 		return "redirect:/preview";
 	}
 	

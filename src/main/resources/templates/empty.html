@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+	<head th:replace="template :: dochead">
+	</head>
+	
+	<body>
+
+		<nav th:replace="template :: user_navigation"></nav>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div  class="col-sm-4 col-sm-offset-4 text-center">
+					<div>
+						<h1 th:text="${location}"></h1>
+						<br></br>
+						<p th:text="${message}"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

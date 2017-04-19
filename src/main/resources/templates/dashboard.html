@@ -29,13 +29,20 @@
 				<br></br>
 				<div class="col-sm-6 col-sm-offset-3 text-left">
 					<h2>did you know?<small><a href="/u/reference"> parse the jargon</a></small></h2>
-					<div>
+					<div th:if="!${def}">
+						<p>There are no term definitions in the database yet...</p>
+					</div>
+					<div th:if="${def}">
 						<h6 th:text="${def.title}"></h6>
 						<p th:text="${def.body}"></p>
 					</div>
 					<br></br>
+					
 					<h2><a href="/u/blog">blog<small> recent</small></a></h2>
-						<div th:each="article : ${articles}">
+						<div th:if="!${articles}">
+							<p>There are no articles in the database yet...</p>
+						</div>
+						<div th:if="${articles}" th:each="article : ${articles}">
 							<h5><a th:text="${article.title}" th:href="'/u/blog/'+${article.uid}"></a><small th:text="' '+${article.headline}"></small></h5>
 						</div>
 					<br></br>

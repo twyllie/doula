@@ -39,8 +39,13 @@ public class ClassroomController extends AbstractController {
 	
 	
 	@RequestMapping(value = "/u/classroom", method = RequestMethod.GET)
-	public String classRoom(){
+	public String classRoom(Model model){
 		List<Lesson> lessons = lessonDao.findAllByOrderByOrderId();
+		if(lessons.isEmpty()){
+			model.addAttribute("location", "Classroom");
+			model.addAttribute("message", "There are no lessons in the database yet...");
+			return "empty";
+		}
 		int uid = lessons.get(0).getUid();
 		return "redirect:/u/classroom/"+ uid;
 	}
